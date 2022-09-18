@@ -1,12 +1,14 @@
 import React from "react";
-import "../styles/SignUp.css";
+import "./SignUp.css";
 import { IoMdArrowBack } from "react-icons/io";
-import { useState, useEffect } from "react";
-// install&import axios from "axios";
+import { useState } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { mainAxios } from '../../Axios';
+// import axios from "axios";
 
 const SignUp = () => {
-
-  //setup state for user
+//setup state for user
   const [user, setUser] = useState({
     firstname: "",
     lastname: "",
@@ -16,16 +18,12 @@ const SignUp = () => {
     password: "",
     confirm_password: ""
   });
-  // States for checking the error & success
-  const [success, setSuccess] = useState(false);
-  const [error, setError] = useState(false);
 
   // Handles user details change
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUser({ ...user, [name]: value });
   };
-
   // Handles success form
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -38,73 +36,55 @@ const SignUp = () => {
       user.password === "" ||
       user.confirm_password === ""
     ) {
-      setError(true);
-    } else {
-      setSuccess(true);
-      setError(false);
+        toast.info("Kindly,fill all fields", {
+            position: toast.POSITION.TOP_CENTER
+        });
+    } 
+    try {
+      const response = await mainAxios.post("user/register", {
+        firstname: user.firstname,
+        lastname: user.lastname,
+        username: user.username,
+        email: user.email,
+        phonenumber: user.phonenumber,
+        password: user.password,
+        confirm_password: user.confirm_password,
+      });
+      console.log('backend',response);
+      if (response.status === 201){
+          toast.success("User created successfully, check mail for verification", {
+            position: toast.POSITION.TOP_CENTER
+        });
+      }
+
+    } catch (err) {
+        if(err){
+            toast.error("Enter a unique username, email, or phonenumber", {
+                position: toast.POSITION.TOP_CENTER
+            });   
+        }
+      console.log(err)
     }
     //CLEAR INPUT FIELDS
-  //   setUser({
-  //   email: "",
-  //   phoneNumber: "",
-  //   password: "",
-  //   confirmPassword: "",
-  // })
-
-    // try {
-    //   const response = axios.post("http://localhost:3000/user/register", {
-    //     name: user.userName,
-    //     email: user.email,
-    //     phonenumber: user.phoneNumber,
-    //     password: user.password,
-    //     confirm_password: user.confirm_password,
-    //   });
-    //   console.log('backend',response);
-    // } catch (err) {
-    //   console.log(err)
-    // }
+    setUser({ firstname: "",
+    lastname: "",
+    username: "",
+    email: "",
+    phonenumber: "",
+    password: "",
+    confirm_password: ""})
   };
-
-  // Showing success message
-  const successMessage = () => {
-    return (
-      <div
-        className="success"
-        style={{
-          display: success ? '' : 'none',
-        }}>
-        <h1>User {user.username} successfully registered!!</h1>
-      </div>
-    );
-  };
- 
-  // Showing error message if error is true
-  const errorMessage = () => {
-    return (
-      <div
-        className="error"
-        style={{
-          display: error ? '' : 'none',
-        }}>
-        <h1>Please enter all the fields</h1>
-      </div>
-    );
-  };
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      console.log('This will be called after 2 seconds');
-    }, 2000);
-  
-    return () => clearTimeout(timeout);
-  }, []);
 
   return (
     <div className="signup_container">
+
+{/* <button onClick={notify}>Notify!</button> */}
+        <ToastContainer />
        {/* Calling to the methods */}
-       <div className="messages">
+       {/* <div className="messages">
         {errorMessage()}
         {successMessage()}
-      </div>
+      </div> */}
       <div className="icon_container">
         <div className="icon">&nbsp;</div>
         <h4 className="icon_text">

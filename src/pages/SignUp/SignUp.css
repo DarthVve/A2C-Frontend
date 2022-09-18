@@ -50,9 +50,9 @@
     justify-content: center;
     align-items: center;
     padding: 0.5rem;
-    background-color: rgb(232, 227, 227);
+    background: rgba(0, 0, 0, 0.05);
+border-radius: 3rem;
     border: none;
-    border-radius: 1rem;
     text-align: left;
   }
   .content_container .title{
@@ -62,7 +62,7 @@
     text-transform: capitalize;
   }
   .form_group div input{
-    width: 94%;
+    width: 93.5%;
     padding: 1rem;
     margin: 0.7rem 0rem;
     border: none;
@@ -72,15 +72,17 @@
         background: linear-gradient(75deg, rgb(186, 1, 146), orange);
         width: 100%;
         padding: 1rem;
-        margin: 0.7rem 0rem;
+        margin: 0.7rem auto;
         border: none;
-        color: rgb(224, 219, 219);
+        color: #fff;
         text-transform: capitalize;
         font-size: 1rem;
         cursor: pointer;
   }
+
   .form_group .signup_btn:hover{
     color: #fff;
+    opacity: 0.85;
   }
   .form_group p{
     text-align: center;
@@ -128,4 +130,40 @@
   a, button{
     cursor: pointer;
     text-decoration: none;
+  }
+
+/* MEDIA QUERIES */
+
+  @media screen and (max-width: 1000px) {
+    .form_group .signup_btn{
+        width: 108%;
+  }
+  .form_group div input{
+    width: 100%;
+  }
+  }
+  @media screen and (max-width: 900px) {
+    .form_group .signup_btn{
+        width: 110%;
+  }
+  .form_group div input{
+    width: 100%;
+  }
+  }
+  @media screen and (max-width: 400px) {
+    .form_group .signup_btn{
+        width: 125%;
+  }
+  .form_group div input{
+    width: 100%;
+  }
+  }
+
+  @media screen and (max-width: 300px) {
+    .form_group .signup_btn{
+        width: 125%;
+  }
+  .form_group div input{
+    width: 100%;
+  }
   }

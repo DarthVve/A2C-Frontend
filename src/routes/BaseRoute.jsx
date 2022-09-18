@@ -1,15 +1,15 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
-import { Login } from '../pages';
-import SignUp from "../pages/SignUp";
+
+import SignUp from "../pages/SignUp/SignUp";
 
 const BaseRoute = () => {
     return (
         <Routes>
             {/*Public routes*/}
             <Route path="/register" element={<SignUp/>}/>
-            <Route path="/login" element={<Login/>}/>
+            <Route path="/login" element={<></>}/>
             <Route path="/" element={<></>}/>
             
             {/*Protected Routes*/}

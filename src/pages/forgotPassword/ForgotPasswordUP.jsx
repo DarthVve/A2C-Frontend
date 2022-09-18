@@ -1,4 +1,4 @@
-import { FPupdatePassword } from "../components";
+import { FPupdatePassword } from "../../components";
 
 const ForgotPasswordUP = ()=>{
     return (

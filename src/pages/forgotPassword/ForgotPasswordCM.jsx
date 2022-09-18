@@ -1,4 +1,4 @@
-import { FPcheckMail } from "../components";
+import { FPcheckMail } from "../../components";
 
 const ForgotPasswordCM = ()=>{
     return (

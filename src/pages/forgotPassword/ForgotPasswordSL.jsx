@@ -1,4 +1,4 @@
-import { FPsendLink } from "../components";
+import { FPsendLink } from "../../components";
 
 const ForgotPasswordSL = ()=>{
     return (

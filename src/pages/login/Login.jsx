@@ -1,4 +1,4 @@
-import { NavBar } from "../components";
+import { NavBar } from "../../components";
 
 const Login = ()=>{
     return (<div>

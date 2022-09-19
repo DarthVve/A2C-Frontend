@@ -1,11 +1,9 @@
 import React from "react";
-import "./SignUp.css";
+import "./signUp.css";
 import { IoMdArrowBack } from "react-icons/io";
 import { useState } from "react";
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { mainAxios } from '../../Axios';
-// import axios from "axios";
+import mainAxios from '../../axios';
 
 const SignUp = () => {
 //setup state for user
@@ -24,6 +22,7 @@ const SignUp = () => {
     const { name, value } = e.target;
     setUser({ ...user, [name]: value });
   };
+
   // Handles success form
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -65,7 +64,8 @@ const SignUp = () => {
         }
       console.log(err)
     }
-    //CLEAR INPUT FIELDS
+
+    //Clear Input Fields
     setUser({ firstname: "",
     lastname: "",
     username: "",

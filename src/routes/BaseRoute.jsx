@@ -2,7 +2,7 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
 
-import SignUp from "../pages/SignUp/SignUp";
+import SignUp from "../pages/signUp/SignUp";
 
 const BaseRoute = () => {
     return (

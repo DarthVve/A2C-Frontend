@@ -1,8 +1,9 @@
 import { FPsendLink } from "../../components";
+import './ForgotPasswordSL.css'
 
 const ForgotPasswordSL = ()=>{
     return (
-        <div>
+        <div className="fpsl-page">
             <FPsendLink/>
         </div>
     )

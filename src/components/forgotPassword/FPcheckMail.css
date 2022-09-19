@@ -1,0 +1,80 @@
+.fpcm {
+    position: absolute;
+    width: 860px;
+    height: 527px;
+    left: 290px;
+    top: 160px;
+    background-color: white;
+}
+
+.fpcm img{
+    position: absolute;
+    left: 44.77%;
+    right: 44.77%;
+    top: 18.79%;
+    bottom: 67.55%;
+}
+
+.fpcm h1 {
+    position: absolute;
+    width: 252px;
+    height: 39px;
+    left: 304px;
+    top: 203px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 39px;
+    color: #03435F;
+}
+
+.fpcm-text {
+    position: absolute;
+    width: 319px;
+    height: 44px;
+    left: 271px;
+    top: 263px;
+    font-family: 'Manrope';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    text-align: center;
+    color: #21334F;
+}
+
+.fpcm-rslink {
+    position: absolute;
+    width: 331px;
+    height: 20px;
+    left: 265px;
+    top: 323px;
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    color: #012A4A;
+}
+
+.fpcm-rslink a {
+    color: #012A4A;
+}
+
+.fpcm-back2login {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 122px;
+    gap: 10px;
+    position: absolute;
+    width: 204px;
+    height: 54px;
+    left: 328px;
+    top: 375px;
+    background: linear-gradient(104.22deg, #DE3D6D 38.86%, #F5844C 82.71%);
+}

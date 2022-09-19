@@ -1,8 +1,9 @@
 import { FPupdatePassword } from "../../components";
+import './ForgotPasswordUP.css'
 
 const ForgotPasswordUP = ()=>{
     return (
-        <div>
+        <div className='fpup-page'>
             <FPupdatePassword/>
         </div>
     )

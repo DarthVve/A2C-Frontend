@@ -1,0 +1,136 @@
+.fpsl {
+    position: absolute;
+    width: 860px;
+    height: 527px;
+    margin: 160px 290px 337px 290px;
+    background-color: white;
+}
+
+.fpsl-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    gap: 50px;
+    position: absolute;
+    width: 432px;
+    height: 365px;
+    left: 214px;
+    top: 80px;
+}
+
+/* .fpsl-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    gap: 24px;
+    width: 432px;
+    height: 273px;
+} */
+
+.fpsl-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    gap: 24px;
+    width: 432px;
+    height: 273px;
+}
+
+.fpsl-heading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    gap: 24px;
+    width: 432px;
+    height: 101px;
+}
+
+.fpsl-heading h1 {
+    width: 263px;
+    height: 39px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 39px;
+    color: #21334F;
+}
+
+.fpsl-heading p {
+    width: 432px;
+    height: 38px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    color: #C4C4C4;
+}
+
+.fpsl-form-field {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 32px;
+    /* gap: 4px; */
+    width: 320px;
+    height: 76px;
+}
+
+.fpsl-form-field label {
+    width: 41px;
+    height: 24px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #03435F;
+}
+
+.fpsl-form-field input {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 9px 16px 8px;
+    gap: 16px;
+    width: 320px;
+    height: 48px;
+    background: #FFFFFF;
+    opacity: 0.8;
+    border: 1px solid #03435F;
+    border-radius: 6px;
+}
+
+.fpsl-subBtn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 24px;
+    gap: 16px;
+    width: 320px;
+    height: 48px;
+    background: linear-gradient(101.99deg, #DE3D6D 55.72%, #F5844C 103.65%);
+    border-radius: 6px;
+}
+
+.fpsl-back2login {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 16px 10px;
+    gap: 10px;
+    width: 136px;
+    height: 42px;
+    background: rgba(0, 0, 0, 0.06);
+    opacity: 0.8;
+}

@@ -1,8 +1,9 @@
 import { FPcheckMail } from "../../components";
+import './ForgotPasswordCM.css'
 
 const ForgotPasswordCM = ()=>{
     return (
-        <div>
+        <div className='fpcm-page'>
             <FPcheckMail/>
         </div>
     )

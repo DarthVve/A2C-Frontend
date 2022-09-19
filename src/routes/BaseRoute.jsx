@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
-import { Login, UserProfile } from '../pages';
+import { Login, Userprofile } from '../pages';
 
 
 const BaseRoute = () => {
@@ -10,7 +10,7 @@ const BaseRoute = () => {
             {/*Public routes*/}
             <Route path="/register" element={<></>}/>
             <Route path="/login" element={<Login />} />
-            <Route path="/userprofile" element={<UserProfile/>} />
+            <Route path="/userprofile" element={<Userprofile/>} />
             <Route path="/" element={<></>}/>
             
             {/*Protected Routes*/}

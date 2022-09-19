@@ -77,14 +77,7 @@ const SignUp = () => {
 
   return (
     <div className="signup_container">
-
-{/* <button onClick={notify}>Notify!</button> */}
         <ToastContainer />
-       {/* Calling to the methods */}
-       {/* <div className="messages">
-        {errorMessage()}
-        {successMessage()}
-      </div> */}
       <div className="icon_container">
         <div className="icon">&nbsp;</div>
         <h4 className="icon_text">

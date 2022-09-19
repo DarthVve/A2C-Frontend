@@ -5,7 +5,7 @@
     height: max-content;
     left: 0px;
     top: 0px;
-    background: rgba(243, 137, 84, 0.05);
+    background: #FFFFFF;
     padding: 1rem 0;
 }
 .icon_container{
@@ -63,15 +63,16 @@ border-radius: 3rem;
   }
   .form_group div input{
     width: 93.5%;
-    padding: 1rem;
+    padding: 0.5rem 1rem;
     margin: 0.7rem 0rem;
     border: none;
-    border: 1px solid grey;
+    background: #FFFFFF;
+border: 1px solid #D9D9D9;
   }
   .form_group .signup_btn{
         background: linear-gradient(75deg, rgb(186, 1, 146), orange);
         width: 100%;
-        padding: 1rem;
+        padding: 0.5rem 1rem;
         margin: 0.7rem auto;
         border: none;
         color: #fff;
@@ -88,7 +89,8 @@ border-radius: 3rem;
     text-align: center;
   }
   .form_group p span a{
-    color: rgb(186, 1, 146);
+    color: 
+    #DE3D6D;
   }
 
 /* POP UP */

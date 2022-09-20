@@ -2,8 +2,17 @@
     position: absolute;
     width: 860px;
     height: 527px;
-    margin: 160px 290px 337px 290px;
     background-color: white;
+    max-width: 90%;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .fpsl-main {
@@ -12,22 +21,12 @@
     align-items: center;
     padding: 0px;
     gap: 50px;
-    position: absolute;
     width: 432px;
-    height: 365px;
+    /* height: 365px; */
     left: 214px;
     top: 80px;
+    max-width: 100%;
 }
-
-/* .fpsl-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0px;
-    gap: 24px;
-    width: 432px;
-    height: 273px;
-} */
 
 .fpsl-form {
     display: flex;
@@ -36,7 +35,8 @@
     padding: 0px;
     gap: 24px;
     width: 432px;
-    height: 273px;
+    /* height: 273px; */
+    max-width: 90%;
 }
 
 .fpsl-heading {
@@ -44,32 +44,35 @@
     flex-direction: column;
     align-items: center;
     padding: 0px;
-    gap: 24px;
     width: 432px;
-    height: 101px;
+    /* height: 101px; */
+    max-width: 100%;
 }
 
 .fpsl-heading h1 {
     width: 263px;
     height: 39px;
-    font-family: 'Inter';
+    font-family: 'Inter', sans-serif;;
     font-style: normal;
     font-weight: 700;
     font-size: 32px;
     line-height: 39px;
     color: #21334F;
+    max-width: 90%;
+    text-align: center;
 }
 
 .fpsl-heading p {
     width: 432px;
     height: 38px;
-    font-family: 'Inter';
+    line-height: 19px;
+    font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
-    line-height: 19px;
+    font-size: 14px;
     text-align: center;
     color: #C4C4C4;
+    max-width: 100%;
 }
 
 .fpsl-form-field {
@@ -77,16 +80,15 @@
     flex-direction: column;
     align-items: flex-start;
     padding: 0px;
-    gap: 32px;
-    /* gap: 4px; */
+    gap: 4px;
     width: 320px;
-    height: 76px;
+    max-width: 90%;
 }
 
 .fpsl-form-field label {
     width: 41px;
     height: 24px;
-    font-family: 'Inter';
+    font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
@@ -107,6 +109,19 @@
     opacity: 0.8;
     border: 1px solid #03435F;
     border-radius: 6px;
+    font-family: 'Inter', sans-serif;
+    max-width: 100%;
+}
+
+.fpsl-form-field input::placeholder {
+    color: #C4C4C4;
+    width: 111px;
+    height: 24px;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 24px;
+    font-family:'Inter', sans-serif;
 }
 
 .fpsl-subBtn {
@@ -120,6 +135,16 @@
     height: 48px;
     background: linear-gradient(101.99deg, #DE3D6D 55.72%, #F5844C 103.65%);
     border-radius: 6px;
+    border: none;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    color: #FFFFFF;
+    max-width: 90%;
+    cursor: pointer;
 }
 
 .fpsl-back2login {
@@ -133,4 +158,12 @@
     height: 42px;
     background: rgba(0, 0, 0, 0.06);
     opacity: 0.8;
+    border: none;
+    color: #000000;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    cursor: pointer;
 }

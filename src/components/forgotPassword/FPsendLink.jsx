@@ -1,5 +1,6 @@
 import './FPsendLink.css'
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const FPsendLink = (props) => {
     return (
@@ -16,7 +17,9 @@ const FPsendLink = (props) => {
                         </div>
                         <button type='submit' className='fpsl-subBtn'>Reset password</button>
                 </form>
-                <button className='fpsl-back2login'>Back to Login</button>
+                <Link to='/login' style={{textDecoration: 'none'}}>
+                    <button className='fpsl-back2login'>Back to Login</button>
+                </Link>
             </div>
         </div>
     )

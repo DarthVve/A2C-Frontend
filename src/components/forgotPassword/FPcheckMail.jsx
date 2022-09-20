@@ -9,8 +9,8 @@ const FPcheckMail = (props) => {
             <img src={CMicon} alt='check email icon' />
             <h1>Check your email</h1>
             <p className='fpcm-text'>We sent a password reset link to your email. Please click the link to reset your password</p>
-            <p className='fpcm-rslink'>Don’t receive the email? Click to Resend link</p>
-            <Link to='/login'>
+            <p className='fpcm-rslink'>Don’t receive the email? <span style={{color: '#DF3E6E', cursor: 'pointer'}}>Click to Resend link</span></p>
+            <Link to='/login' style={{ textDecoration: 'none' }}>
                 <button className='fpcm-back2login'>Back to Login</button>            
             </Link>
         </div>

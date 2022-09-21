@@ -12,7 +12,7 @@ const BaseRoute = () => {
             <Route path="/verify-notice/:id" element={<VerifyNotice/>}/>
             <Route path="/forgotPassword" element={<ForgotPasswordSL/>} />
             <Route path="/forgotPassword/resend" element={<ForgotPasswordCM/>} />
-            <Route path="/forgotPassword/update" element={<ForgotPasswordUP/>} />
+            <Route path="/forgotPassword/update/:id" element={<ForgotPasswordUP/>} />
             
             {/*Protected Routes*/}
             <Route element={<ProtectedRoute/>}>

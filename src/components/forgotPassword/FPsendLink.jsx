@@ -17,7 +17,7 @@ const FPsendLink = () => {
         try {
             const response = await axios.patch('user/forgotPassword', { email });
             toast.success(response.data.msg);
-            navigate('/forgotPassword/resend', { state: { email } });
+            navigate('/forgotPassword/resend', { state: { email: email } });
         } catch (err) { toast.error(err.response?.data?.msg || "Something went wrong") };
     }
 

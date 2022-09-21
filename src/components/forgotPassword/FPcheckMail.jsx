@@ -1,14 +1,16 @@
 import './FPcheckMail.css'
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import CMicon from '../../assets/checkMail.svg';
 import axios from '../../axios';
 import { toast } from 'react-toastify';
 
-const FPcheckMail = (props) => {
+const FPcheckMail = () => {
+    const { state } = useLocation();
+    const email = state.email;
     const resendHandler = async () => {
         try {
-            const response = await axios.patch('user/forgotPassword', { email: props.location.state.email });
+            const response = await axios.patch('user/forgotPassword', { email });
             toast.success(response.data.msg);
         } catch (err) { toast.error(err.response?.data?.msg || console.error(err) || "Something went wrong") };
     }

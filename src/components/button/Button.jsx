@@ -18,7 +18,7 @@ const Button = ({ children, type="button", handleClick, disabled=false }) => {
   }
   
   return (
-    <button type={type} onClick={preHandleClick} disabled={disable}>
+    <button className="buttonComponent" type={type} onClick={preHandleClick} disabled={disable}>
       {children}
     </button>
   );

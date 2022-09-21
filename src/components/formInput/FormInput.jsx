@@ -24,9 +24,9 @@ const FormInput = ({ handleChange, label, type='text', name, placeholder, requir
   }
 
   return (
-    <fieldset>
-      <label htmlFor={name}>{label}</label>
-      <input type={type} name={name} placeholder={placeholder} 
+    <fieldset className="formInputGroup">
+      <label className="label" htmlFor={name}>{label}</label>
+      <input className="input" type={type} name={name} placeholder={placeholder} 
       onChange={preHandleChange} value={value} minLength={minLength}
       maxLength={maxLength} required={required} ref={field}/>
     </fieldset>

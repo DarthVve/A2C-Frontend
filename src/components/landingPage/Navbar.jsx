@@ -3,9 +3,9 @@ import vector from "../../assets/vector.png"
 import {NavLink,Router,Route,Link} from "react-router-dom"
 import styled from "styled-components"
  import UserProfileNav from './UserProfileNav'
- 
+
  function Navbar({dashboard, Landing}) {
-    const [isLogin, setIsLogin] = useState(true)
+    const [isLogin, setIsLogin] = useState(false)
     return (
       <NavbarStyle>
           <div className='Navbar-container'> 

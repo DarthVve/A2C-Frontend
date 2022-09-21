@@ -1,17 +1,17 @@
 import React, { useState } from 'react'
 import vector from "../../assets/vector.png"
-import {NavLink,Router,Route,Link} from "react-router-dom"
+import {NavLink} from "react-router-dom"
 import styled from "styled-components"
  import UserProfileNav from './UserProfileNav'
 
- function Navbar({dashboard, Landing}) {
+ function NavBar({dashboard, Landing}) {
     const [isLogin, setIsLogin] = useState(false)
     return (
       <NavbarStyle>
           <div className='Navbar-container'> 
               <div className='Navbar-brand'>
                   <img src={vector} alt='logo'/>
-                  <NavLink to="/landing" className='subject'>Airtime<span>2Cash</span></NavLink> 
+                  <NavLink to="/" className='subject'>Airtime<span>2Cash</span></NavLink> 
               </div>
   
               <div className='Navbar-menu' >
@@ -121,5 +121,5 @@ import styled from "styled-components"
     }
   `
   
-  export default Navbar
+  export default NavBar
   

@@ -17,9 +17,9 @@ const BaseRoute = () => {
             <Route path="/forgotPassword" element={<ForgotPasswordSL />} />
             <Route path="/forgotPassword/resend" element={<ForgotPasswordCM/>} />
             <Route path="/forgotPassword/update/:id" element={<ForgotPasswordUP/>} />
-            <Route path="/userprofile" element={<Userprofile />} />
-            <Route path="/usermodalprofile" element={<Modal/>} />
-            <Route path="/landing" element={<Landing/>} />
+            <Route path="/userprofile/:id" element={<Userprofile />} />
+            <Route path="/profile/:id" element={<Modal/>} />
+            <Route path="/" element={<Landing/>} />
             
             {/*Protected Routes*/}
             <Route element={<ProtectedRoute/>}>

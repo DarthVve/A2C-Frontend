@@ -42,8 +42,9 @@ const Login = () => {
             if (res.status === 200) {
                 toast.success("Login successful");
                 localStorage.setItem("userInfo", JSON.stringify(res.data.userInfo));
-                login(res.data.id)
-                navigate('/userprofile')
+                const id = res.data.userInfo.id;
+                login(id);
+                navigate(`/userprofile/${id}`)
             } else {
                 toast.error(res.data.msg);
             }

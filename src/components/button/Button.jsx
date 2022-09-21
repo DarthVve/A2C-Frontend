@@ -14,7 +14,7 @@ const Button = ({ children, type="button", handleClick, disabled=false }) => {
     typeof handleClick === 'function' && handleClick(e);
     setTimeout(() => {
       setDisable(false);
-    }, 800);
+    }, 3000);
   }
   
   return (

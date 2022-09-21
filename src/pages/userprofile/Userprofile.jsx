@@ -1,9 +1,10 @@
-import React, { useState, useRef } from 'react'
-import logo from '../../assets/Frame-8589.png'
-import './userprofile.css'
-import { useNavigate, useParams } from 'react-router-dom'
+import React, { useState, useRef } from 'react';
+import logo from '../../assets/Frame-8589.png';
+import './userprofile.css';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from '../../axios';
 import { toast } from 'react-toastify';
+import NavBar from '../../components';
 
 
 
@@ -18,7 +19,8 @@ export default function Userprofile() {
     const fileupload = useRef();
 
 
-    let { id } = useParams()
+    const { id } = useParams();
+    console.log(id);
     // const id = "a38e737f-362e-441e-bfc1-14c32c4c4bb0"
     let uploadPromise;
 
@@ -79,8 +81,7 @@ export default function Userprofile() {
     };
 
     return (
-    <>
-
+        <>
             <div className='profile-container'>
             {/* <div className='userNav'><img src={convertBase64} alt="avatar" /></div> */}
             <div className='header-section'></div> 

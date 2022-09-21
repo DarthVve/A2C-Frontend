@@ -6,7 +6,7 @@
   font-family: 'Inter';
   box-sizing: border-box;
 
-  .login__container {
+  .login_container {
     position: absolute;
     top: 0;
     left: 0;
@@ -23,7 +23,7 @@
     flex-direction: column;
   }
 
-  main {
+  .login_main {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -37,7 +37,7 @@
     max-width: 90%;
     max-height: 100%;
 
-    section {
+    .login_section {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -48,7 +48,7 @@
       max-width: 100%;
       max-height: 100%;
 
-      h1 {
+      .login_title {
         color: #21334F;
         font-weight: 700;
         font-size: 18px;
@@ -56,7 +56,7 @@
         padding: 0;
       }
 
-      .content {
+      .login_content {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -67,7 +67,7 @@
         max-width: 100%;
         max-height: 100%;
 
-        form {
+        .login_form {
           display: flex;
           flex-direction: column;
           justify-content: space-between;
@@ -78,7 +78,7 @@
           max-width: 100%;
           max-height: 100%;
   
-          a, .forgot-password {
+          a .forgot-password {
             margin-top: -10px;
             margin-bottom: 14px;
             font-size: 12px;
@@ -90,7 +90,7 @@
           }
         }
 
-        p {
+        .login_signup-prompt {
           margin: 0;
           align-self: center;
           font-size: 12px;

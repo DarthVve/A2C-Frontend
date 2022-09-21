@@ -13,7 +13,7 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <AuthProvider>
-        <Toastify />
+        <Toastify/>
         <Routes>
           <Route path='/*' element={<BaseRoute/>}/>
         </Routes>

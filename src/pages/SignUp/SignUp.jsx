@@ -58,18 +58,18 @@ const SignUp = () => {
 
   return (
     <div className="signup">
-      <div className="signup__container">
-        <main>
+      <div className="signup_container">
+        <main className="signup_main">
           <LogoWithTypeface />
           <Link to="/" style={{ textDecoration: 'none' }}>
             <button className="back_btn">
               <IoMdArrowBack /> Go back
             </button>
           </Link>
-          <section>
-            <h1>Create an account</h1> 
-            <div className="content">
-              <form onSubmit={ handleSubmit }>
+          <section className="signup_section">
+            <h1 className="signup_title">Create an account</h1> 
+            <div className="signup_content">
+              <form onSubmit={ handleSubmit } className="signup_form">
                 <FormInput label="First Name" type="text" name="firstname" placeholder="Enter your first name"
                 handleChange={handleChange} required={true} value={form.firstname} minLength={2} maxLength={250} setValidity={setValidity}/>
                 <FormInput label="Last Name" type="text" name="lastname" placeholder="Enter your last name"
@@ -86,7 +86,7 @@ const SignUp = () => {
                 handleChange={handleChange} required={true} value={form.confirm_password} minLength={3} maxLength={30} setValidity={setValidity}/>
                 <Button type="submit" disabled={!valid} handleClick={handleSubmit}>Sign Up</Button>
               </form>
-              <p>Already have an account? <Link to='/login' style={{ textDecoration: 'none' }}><span className="create-account">Sign In</span></Link></p>
+              <p className="signup_login-prompt">Already have an account? <Link to='/login' style={{ textDecoration: 'none' }}><span className="create-account">Sign In</span></Link></p>
             </div>
           </section>
         </main>

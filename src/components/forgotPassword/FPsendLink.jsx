@@ -14,13 +14,11 @@ const FPsendLink = () => {
 
     const submitHandler = async (e) => {
         e.preventDefault();
-        console.log(email);
         try {
             const response = await axios.patch('user/forgotPassword', { email });
-            response.status === 200 ? toast.success(response.data.msg) : toast.error(response.data.msg);
+            toast.success(response.data.msg);
             navigate('/forgotPassword/resend', { state: { email } });
-            console.log(response)
-        } catch (err) { console.error(err) };
+        } catch (err) { toast.error(err.response?.data?.msg || "Something went wrong") };
     }
 
     return (

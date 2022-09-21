@@ -1,4 +1,4 @@
-fieldset {
+.formInputGroup {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -9,7 +9,7 @@ fieldset {
   margin: 0;
   border: none;
 
-  label {
+  .label {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
@@ -18,7 +18,7 @@ fieldset {
     color: #21334F;
   }
 
-  input {
+  .input {
     width: 100%;
     box-sizing: border-box;
     align-self: stretch;

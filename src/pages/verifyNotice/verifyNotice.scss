@@ -6,7 +6,7 @@
   font-family: 'Inter';
   box-sizing: border-box;
 
-  .verify-notice__container {
+  .verify-notice_container {
     position: absolute;
     top: 0;
     left: 0;
@@ -23,7 +23,7 @@
     flex-direction: column;
   }
 
-  main {
+  .verify-notice_main {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -37,7 +37,7 @@
     max-width: 90%;
     max-height: 100%;
 
-    section {
+    .verify-notice_section {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -53,7 +53,7 @@
         height: 72px;
       }
 
-      .content {
+      .verify-notice_content {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -64,7 +64,7 @@
         max-width: 100%;
         max-height: 100%;
 
-        h1 {
+        .verify-notice_title {
           color: #21334F;
           font-weight: 700;
           font-size: 32px;
@@ -74,7 +74,7 @@
           text-align: center;
         }
 
-        p {
+        .verify-notice_message, .verify-notice_resend-prompt {
           text-align: center;
           margin: 0;
           font-size: 16px;

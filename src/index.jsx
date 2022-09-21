@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import 'react-toastify/dist/ReactToastify.css';
-import reportWebVitals from './reportWebVitals';
+// import reportWebVitals from './reportWebVitals';
 import BaseRoute from './routes/BaseRoute';
 import AuthProvider from './context/AuthProvider';
 import { Toastify } from './components';

@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef, useCallback} from 'react'
+import React, { useState, useRef } from 'react'
 import logo from '../../assets/Frame-8589.png'
 import './userprofile.css'
 import { useNavigate, useParams } from 'react-router-dom'

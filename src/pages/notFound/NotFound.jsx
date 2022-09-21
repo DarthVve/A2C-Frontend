@@ -26,7 +26,7 @@ const NotFound = () => {
           </div>
           <div className="not-found_content">
             <h1 className="not-found_title">Error: Page Not Found</h1> 
-            <p className="not-found_message">The page you requested does not exist or the link is broken. Check the URL for any typos.</p>
+            <p className="not-found_message">The page you requested ({path}) does not exist or the link is broken. Check the URL for any typos.</p>
             <Button handleClick={goToHome} type="button" disabled={false}>Home</Button>
             <button onClick={goBack} className='fpsl-back2login'>
               <IoMdArrowBack />Go Back

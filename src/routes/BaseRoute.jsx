@@ -1,7 +1,7 @@
 import React from "react";
 import ProtectedRoute from "./ProtectedRoute";
 import { Routes, Route } from "react-router-dom";
-import { SignUp, Login, VerifyNotice, ForgotPasswordSL, ForgotPasswordCM, ForgotPasswordUP } from '../pages';
+import { SignUp, Login, VerifyNotice, ForgotPasswordSL, ForgotPasswordCM, ForgotPasswordUP, NotFound } from '../pages';
 
 const BaseRoute = () => {
     return (
@@ -16,13 +16,13 @@ const BaseRoute = () => {
             
             {/*Protected Routes*/}
             <Route element={<ProtectedRoute/>}>
+                {/* <Route path="" element={<></>}/>
                 <Route path="" element={<></>}/>
-                <Route path="" element={<></>}/>
-                <Route path="" element={<></>}/>
+                <Route path="" element={<></>}/> */}
             </Route>
 
             {/*Catch Error*/}
-            <Route path='*' element={<></>}/>
+            <Route path='*' element={<NotFound/>}/>
         </Routes>
     )
 };

@@ -18,7 +18,15 @@ const SignUp = () => {
     confirm_password: "",
   });
   const [valid, setValid] = useState(false);
-  const [validities, setValidity] = useState({});
+  const [validities, setValidity] = useState({
+    firstname: false,
+    lastname: false,
+    email: false,
+    phonenumber: false,
+    username: false,
+    password: false,
+    confirm_password: false,
+  });
   const navigate = useNavigate();
 
   const validate = useCallback(() => {
@@ -40,20 +48,20 @@ const SignUp = () => {
     setForm({...form, [name]: value})
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    axios.post("/user/register", {...form})
-    .then((res) => {
-      if (res.status === 201) {
-        toast.success(res.data.msg);
-        navigate(`/verify-notice/${res.data.id}`)
-      } else {
-        toast.error(`${res.statusText}: ${res.data.msg}`);
-      }
-    })
-    .catch(err => {
-      toast.error(err.message);
-    })
+    try {
+        const res = await axios.post("/user/register", {...form})
+        if (res.status === 201) {
+            toast.success(res.data.msg);
+            navigate(`/verify-notice/${res.data.id}`)
+        } else {
+            toast.error(res.data.msg);
+        }
+    }
+    catch(err) {
+        toast.error(err.response?.data?.msg || "Something went wrong");
+    }
   }
 
   return (

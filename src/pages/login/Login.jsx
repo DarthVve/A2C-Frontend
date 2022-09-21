@@ -35,23 +35,24 @@ const Login = () => {
         setForm({...form, [name]: value})
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault();
-        axios.post("/user/login", {...form})
-        .then((res) => {
+        try {
+            const res = await axios.post("/user/login", {...form})
             if (res.status === 200) {
                 toast.success("Login successful");
+                localStorage.setItem("userInfo", JSON.stringify(res.data.userInfo));
                 login(res.data.id)
-                navigate('/dashboard')
+                navigate('/userprofile')
             } else {
-                res.data.msg && toast.error(res.data.msg);
+                toast.error(res.data.msg);
             }
-        })
-        .catch(err => {
-            toast.error(err.message);
-        })
+        }
+        catch(err) {
+            toast.error(err.response?.data?.msg || "Something went wrong");
+        }
     }
-
+    
     return (
     <div className="login">
         <div className="login_container">

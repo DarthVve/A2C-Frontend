@@ -6,14 +6,9 @@ import axios from '../../axios';
 import { toast } from 'react-toastify';
 import NavBar from '../../components';
 
-
-
-
-
-
 export default function Userprofile() {
      
-    const [user, setUser] = useState({})
+    const [user, setUser] = useState({ ...JSON.parse(localStorage.getItem('userInfo')), avatar: undefined })
     
     const [image, setImage] = useState();
     const fileupload = useRef();
@@ -21,7 +16,6 @@ export default function Userprofile() {
 
     const { id } = useParams();
     console.log(id);
-    // const id = "a38e737f-362e-441e-bfc1-14c32c4c4bb0"
     let uploadPromise;
 
     const navigate = useNavigate()
@@ -54,8 +48,18 @@ export default function Userprofile() {
             if (user.avatar) {
                 await uploadPromise; 
             }
-            console.log(image);
-            const response = await axios.patch( `/user/update/${id}`, {...user, avatar: image })
+            const response = await axios.patch(`/user/update/${id}`, {
+                firstname: user.firstname,
+                lastname: user.lastname,
+                phonenumber: user.phonenumber,
+                avatar: image
+            })
+            const { firstname, lastname, phonenumber, avatar} = response.data;
+            let localUser = JSON.parse(localStorage.getItem('userInfo'))
+            localUser = { ...localUser, firstname, lastname, phonenumber, avatar };
+            console.log("Local user: ", localUser)
+            localStorage.setItem('userInfo', JSON.stringify(localUser));
+            navigate('/user/dashboard')
             if (response.status === 200) {
                 toast.success("Update Successful")
                 navigate('/user/dashboard')

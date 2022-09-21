@@ -1,7 +1,7 @@
 import "./button.scss";
 import { useEffect, useState } from "react";
 
-const Button = ({ children, type="button", handleClick, disabled=false }) => {
+const Button = ({ children, type = "button", handleClick, disabled = false, className }) => {
   const [disable, setDisable] = useState(disabled);
 
   useEffect(() => {
@@ -9,16 +9,18 @@ const Button = ({ children, type="button", handleClick, disabled=false }) => {
   }, [disabled]);
 
   const preHandleClick = (e) => {
-    e.preventDefault();
-    setDisable(true);
-    typeof handleClick === 'function' && handleClick(e);
-    setTimeout(() => {
-      setDisable(false);
-    }, 3000);
+    if (type !== "submit") {
+      e.preventDefault();
+      setDisable(true);
+      typeof handleClick === 'function' && handleClick(e);
+      setTimeout(() => {
+        setDisable(false);
+      }, 3000);
+    }
   }
   
   return (
-    <button className="buttonComponent" type={type} onClick={preHandleClick} disabled={disable}>
+    <button className={"buttonComponent "+className} type={type} onClick={preHandleClick} disabled={disable}>
       {children}
     </button>
   );

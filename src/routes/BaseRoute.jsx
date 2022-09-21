@@ -5,6 +5,7 @@ import { SignUp, Login, VerifyNotice, ForgotPasswordSL, ForgotPasswordCM, Forgot
 import { Modal } from "../components";
 
 
+import Landing from "../pages/landing/Landing";
 
 const BaseRoute = () => {
     return (
@@ -18,6 +19,7 @@ const BaseRoute = () => {
             <Route path="/forgotPassword/update/:id" element={<ForgotPasswordUP/>} />
             <Route path="/userprofile" element={<Userprofile />} />
             <Route path="/usermodalprofile" element={<Modal/>} />
+            <Route path="/landing" element={<Landing/>} />
             
             {/*Protected Routes*/}
             <Route element={<ProtectedRoute/>}>

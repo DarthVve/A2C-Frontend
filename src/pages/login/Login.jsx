@@ -74,7 +74,7 @@ const Login = () => {
                         <p className="login_signup-prompt">Don't have an account? <Link to='/register' style={{ textDecoration: 'none' }}><span className="create-account">Create Account</span></Link></p>
                     </div>
                 </section>
-            </main>
+            </main> 
         </div>
     </div>
     )

@@ -18,7 +18,6 @@ const BaseRoute = () => {
             <Route path="/login" element={<Login/>} />
             <Route path="/verify-notice/:id" element={<VerifyNotice/>}/>
             <Route path="/userprofile/:id" element={<Userprofile/>} />
-            <Route path="/usermodalprofile" element={<Modal/>} />
             
             {/*Protected Routes*/}
             <Route element={<ProtectedRoute/>}>

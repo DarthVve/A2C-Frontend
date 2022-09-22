@@ -4,6 +4,7 @@ import './userprofile.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from '../../axios';
 import { toast } from 'react-toastify';
+import { NavBar } from '../../components';
 
 export default function Userprofile() {
     const [user, setUser] = useState({ ...JSON.parse(localStorage.getItem('userInfo')), avatar: undefined })

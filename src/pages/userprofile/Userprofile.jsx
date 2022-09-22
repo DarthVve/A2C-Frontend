@@ -4,7 +4,7 @@ import './userprofile.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from '../../axios';
 import { toast } from 'react-toastify';
-import NavBar from '../../components';
+
 
 export default function Userprofile() {
     const [user, setUser] = useState({ ...JSON.parse(localStorage.getItem('userInfo')), avatar: undefined })
@@ -100,6 +100,7 @@ export default function Userprofile() {
                         
                         <label className='user-label fileupload' htmlFor="avatar">Change Avatar
                         <input className='formInput form-input' name='avatar' id='avatar' ref={fileupload} type='file' value={user.avatar}   onChange={handleUpdate} /></label><br/>
+                        {/* eslint-disable-next-line no-useless-escape*/}
                         {image && <div className='currentfile'>{fileupload.current.value.split(/[\/\\]/).pop()}</div>}
                         <button id={user} className='saveBtn' disabled={!user}  type='submit'>Save</button>
                     </form>   

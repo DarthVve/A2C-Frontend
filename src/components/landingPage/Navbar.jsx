@@ -1,13 +1,14 @@
 import React, { useState,useEffect } from 'react'
 import vector from "../../assets/vector.png"
-import {NavLink, Link} from "react-router-dom"
+import { NavLink, Link } from "react-router-dom"
 import styled from "styled-components"
 import UserProfileNav from './UserProfileNav'
 import Hamburger from 'hamburger-react'
 
 
- function Navbar({dashboard, Landing}) {
+function Navbar({dashboard, Landing}) {
     const [isLogin, setIsLogin] = useState(false);
+    // eslint-disable-next-line no-unused-vars
     const [name, setName ] = useState(undefined);
     const [isOpen, setOpen] = useState(false) 
 
@@ -19,8 +20,9 @@ import Hamburger from 'hamburger-react'
           setIsLogin(true);  
           setName(data.username);
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
- 
+
     return (
       <NavbarStyle>
           <div className='Navbar-container'> 
@@ -35,24 +37,24 @@ import Hamburger from 'hamburger-react'
                       onToggle={toggled => {
                         if (toggled) {
                            // open a menu
-                           setOpen(true)
+                            setOpen(true)
                         } else {
                            // close a menu
-                           setOpen(false)
+                            setOpen(false)
                         }
                       }}
-                       />
-                   </div>         
+                        />
+                    </div>         
                   
               }
-               { (isOpen && Landing)  &&
+                { (isOpen && Landing)  &&
                           <NavMenuLinkStyle isOpen >
                             <Link className='mobile-menu' to="/">Home </Link>
                             <Link className='mobile-menu' to="/about">About us </Link>
                             <Link className='mobile-menu' to="/products">Products </Link>
                             <Link className='mobile-menu' to="/contact">Contact Us </Link>
                           </NavMenuLinkStyle>
-               }
+                }
               <div className='Navbar-menu' >
                     {        
                       Landing  &&
@@ -97,8 +99,6 @@ import Hamburger from 'hamburger-react'
     color:#03435F;
   }
 
-
- 
   }
 
   `
@@ -124,7 +124,7 @@ import Hamburger from 'hamburger-react'
         right:2rem;
         display:none;
       }
-     
+
     }
     .Navbar-brand{
       display: flex;
@@ -162,7 +162,7 @@ import Hamburger from 'hamburger-react'
       .last{
         margin-right:1em;
       }
-     .selected{
+        .selected{
         font-style: normal;
         font-weight: 700;
         font-size: 16px;

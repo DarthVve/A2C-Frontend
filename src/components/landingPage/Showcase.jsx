@@ -1,13 +1,24 @@
 import React from 'react'
-import styled from 'styled-components'
+import './showcase.scss';
 import showcaseImage  from "../../assets/showcaseImage.png"
 import {NavLink} from "react-router-dom"
 
 function Showcase() {
   return (
-    <ShowcaseStyle>
-        <div className='container'>
-            <div className='Showcase-title'>
+        <div className='showcase-container'>
+            <div className='showcase-hero'>
+                <section className='showcase-pitch'>
+                    <h1 className='showcase-heading'>
+                        Surplus Airtime? Don't worry we got you covered
+                    </h1>
+                    <p className='showcase-description'>Sell your airtime for cash, withdraw from your wallet anytime. You'll never have to waste call credits again!</p>
+                    <NavLink to="/register" className='showcase-button'>Get Started</NavLink>
+                </section>
+                <section className='showcase-image'>
+                    <img src={showcaseImage} alt="showcase" className='showcase-img'/>
+                </section>
+            </div>
+            {/* <div className='Showcase-title'>
                     <div className='text'>
                         <h1>
                             Surplus Airtime?
@@ -18,19 +29,12 @@ function Showcase() {
                         <p>Lorem ipsum dolor sit amet.</p>
                     </div>
                     <NavLink to="/register" className='btnSignUp'>Get Started</NavLink>
-            </div>
-                
-            <div className='Show'>
-                
-            </div>
+            </div> */}
         </div>
-        
-           
-        
-    </ShowcaseStyle>
   )
 }
-const ShowcaseStyle = styled.div`
+
+/*const ShowcaseStyle = styled.div`
     
     width:100%;
     max-width:1440px;
@@ -116,6 +120,7 @@ const ShowcaseStyle = styled.div`
 
     } 
 
-`
+`*/
+
 export default Showcase
 

@@ -8,11 +8,11 @@ import Youtube from '../../assets/Youtube.png'
 function Footer() {
   return (
     <FooterStyle>
-        <div className='container'>
+        <div className='footer-container'>
             <div className='logo'>
                 <img src={LogoFooter} alt="Logo"/>
             </div>
-            <div className='menu'>
+            <div className='footer-menu'>
                 <a href='#'>Home</a>
                 <a href='#'>About</a>
                 <a href='#'>Airtime2Cash</a>
@@ -35,10 +35,10 @@ function Footer() {
 }
 
 const FooterStyle = styled.div`
-    height: 284px;
-    width:100vw;
+    width:100%;
     margin-top:80px;
-    .container{
+
+    .footer-container{
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -58,15 +58,16 @@ const FooterStyle = styled.div`
             width: 269px;
             height: 70px;
         }
-        .menu{
-            width: 322px;
-            height: 26px;
+        .footer-menu{
+            min-width: max-content;
+            max-width: 100%;
             display: flex;
             flex-direction: row;
+            flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
             padding: 0px;
-            gap: 24px;
+            gap: 1em;
             
             a{
                 text-decoration:none;

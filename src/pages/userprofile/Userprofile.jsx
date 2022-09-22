@@ -15,7 +15,6 @@ export default function Userprofile() {
 
 
     const { id } = useParams();
-    console.log(id);
     let uploadPromise;
 
     const navigate = useNavigate()
@@ -100,7 +99,7 @@ export default function Userprofile() {
                         <input className='formInput form-input' type='text' name='firstname' placeholder='Enter your first name' value={user.firstname} onChange={handleUpdate}></input><br />
 
                         <label className="user-label" htmlFor="Last Name">Last Name</label>
-                        <input className='formInput form-input' type='text' name='lastname' placeholder='Enter your lastname name' value={user.lastname}  onChange={handleUpdate} /><br />
+                        <input className='formInput form-input' type='text' name='lastname' placeholder='Enter your last name' value={user.lastname}  onChange={handleUpdate} /><br />
 
                         <label className="user-label" htmlFor="Phone Number">Phone Number</label>
                         <input className='formInput form-input' name='phonenumber' type='text' placeholder='Enter your phone number' 
@@ -108,10 +107,7 @@ export default function Userprofile() {
                         
                         <label className='user-label fileupload' htmlFor="avatar">Change Avatar
                         <input className='formInput form-input' name='avatar' id='avatar' ref={fileupload} type='file' value={user.avatar}   onChange={handleUpdate} /></label><br/>
-
-                        {/* <label htmlFor="avatar">Change Avatar</label>
-                        <input type="file" name='avatar' ref={fileupload} value={user.avatar} onChange={handleUpdate} /> */}
-
+                        {image && <div className='currentfile'>{fileupload.current.value.split(/[\/\\]/).pop()}</div>}
                         <button id={user} className='saveBtn' disabled={!user}  type='submit'>Save</button>
                     </form>   
             </div>     

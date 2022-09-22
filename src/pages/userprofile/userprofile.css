@@ -154,12 +154,22 @@ input[type="file"] {
     align-items: center;
     justify-content: flex-start;
     padding-left: 50px;
-    min-height: 48px;
-    height: 48px;
+    min-height: 40px;
+    height: 40px;
     cursor: pointer;
     background-repeat: no-repeat;
     background-position: left;
     background-image: url('data: image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGRhdGEtbmFtZT0iTGF5ZXIgMSIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSIjREYzRTZFIiBkPSJNMTguNDIsOC4yMkE3LDcsMCwwLDAsNS4wNiwxMC4xMSw0LDQsMCwwLDAsNiwxOGExLDEsMCwwLDAsMC0yLDIsMiwwLDAsMSwwLTQsMSwxLDAsMCwwLDEtMSw1LDUsMCwwLDEsOS43My0xLjYxLDEsMSwwLDAsMCwuNzguNjcsMywzLDAsMCwxLC4yNCw1Ljg0LDEsMSwwLDAsMCwuNSwxLjk0LDUsNSwwLDAsMCwuMTctOS42MlptLTUuNzEsMi4wN2ExLDEsMCwwLDAtLjMzLS4yMSwxLDEsMCwwLDAtLjc2LDAsMSwxLDAsMCwwLS4zMy4yMWwtMywzYTEsMSwwLDAsMCwxLjQyLDEuNDJMMTEsMTMuNDFWMTlhMSwxLDAsMCwwLDIsMFYxMy40MWwxLjI5LDEuM2ExLDEsMCwwLDAsMS40MiwwLDEsMSwwLDAsMCwwLTEuNDJaIi8+PC9zdmc+');
+}
+
+.currentfile {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: bold;
+    line-height: 22px;
+    color: #21334F;
+    margin-top: -10px;
+    margin-bottom: 20px;
 }
 
 @media screen and (max-width: 600px) {

@@ -1,7 +1,7 @@
 import React from "react";
 import ProtectedRoute from "./ProtectedRoute";
 import { Routes, Route } from "react-router-dom";
-import { SignUp, Login, VerifyNotice, ForgotPasswordSL, ForgotPasswordCM, ForgotPasswordUP, NotFound, Userprofile } from '../pages';
+import { SignUp, Login, VerifyNotice, ForgotPasswordSL, ForgotPasswordCM, ForgotPasswordUP, NotFound, Userprofile, Dashboard } from '../pages';
 import { Modal } from "../components";
 
 
@@ -20,6 +20,7 @@ const BaseRoute = () => {
             <Route path="/userprofile" element={<Userprofile />} />
             <Route path="/usermodalprofile" element={<Modal/>} />
             <Route path="/landing" element={<Landing/>} />
+            <Route path="/dashboard" element={<Dashboard/>} />
             
             {/*Protected Routes*/}
             <Route element={<ProtectedRoute/>}>

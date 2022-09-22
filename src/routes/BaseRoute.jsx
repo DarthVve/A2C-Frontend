@@ -11,16 +11,16 @@ const BaseRoute = () => {
     return (
         <Routes>
             {/*Public routes*/}
-            <Route path="/register" element={<SignUp/>} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/verify-notice/:id" element={<VerifyNotice/>}/>
+            <Route path="/dashboard" element={<Dashboard/>} />
             <Route path="/forgotPassword" element={<ForgotPasswordSL />} />
             <Route path="/forgotPassword/resend" element={<ForgotPasswordCM/>} />
             <Route path="/forgotPassword/update/:id" element={<ForgotPasswordUP/>} />
-            <Route path="/userprofile" element={<Userprofile />} />
-            <Route path="/usermodalprofile" element={<Modal/>} />
             <Route path="/" element={<Landing/>} />
-            <Route path="/dashboard" element={<Dashboard/>} />
+            <Route path="/register" element={<SignUp/>} />
+            <Route path="/login" element={<Login/>} />
+            <Route path="/verify-notice/:id" element={<VerifyNotice/>}/>
+            <Route path="/userprofile" element={<Userprofile/>} />
+            <Route path="/usermodalprofile" element={<Modal/>} />
             
             {/*Protected Routes*/}
             <Route element={<ProtectedRoute/>}>

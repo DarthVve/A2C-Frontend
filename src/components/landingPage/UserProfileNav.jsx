@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "../../axios";
 import { useAuth } from "../../hooks/useAuth";
 import { toast } from 'react-toastify';
-import { Modal, UserAvatar } from '../';
+import { UserAvatar } from '../';
 
 function UserProfileNav({dashboard,setIsLogin}) {
   const [showDropdown, setShowDropdown] = useState(false)

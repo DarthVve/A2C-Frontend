@@ -1,5 +1,4 @@
 import React, { useState, useRef } from 'react'
-import { useNavigate } from 'react-router-dom'
 import axios from '../../axios';
 import { toast } from 'react-toastify';
 import './useravatar.css'
@@ -13,8 +12,6 @@ export default function UserAvatar({ close }) {
     const fileupload = useRef();
     const { id } = user;
     let uploadPromise;
-
-    const navigate = useNavigate()
 
     const hide = () => {
         console.log("closing");
@@ -75,19 +72,19 @@ export default function UserAvatar({ close }) {
         e.stopPropagation();
     }
 
-return (
-    <div className='user-modal' onClick={hide}>
-    <div className='header-section'></div> 
-        <div className='user-container' onClick={handleContainerClick}>
-        <img className='profile' onClick={() => {fileupload.current.click()}} src={image} alt="" />
-        <h1>User Profile</h1>
-        <form onSubmit={handleSubmit}>
-        <label className='user-label fileupload' htmlFor="avatar">
-            <input className='formInput form-input' name='avatar' id='avatar' ref={fileupload} type='file' onChange={handleUpdate} />
-        </label><br />
-        <Button className='saveBtn' disabled={false} type='submit'>Save</Button>
-        </form>
-    </div>
-    </div>
-)
+    return (
+        <div className='user-modal' onClick={hide}>
+        <div className='header-section'></div> 
+            <div className='user-container' onClick={handleContainerClick}>
+            <img className='profile' onClick={() => {fileupload.current.click()}} src={image} alt="" />
+            <h1>User Profile</h1>
+            <form onSubmit={handleSubmit}>
+            <label className='user-label fileupload' htmlFor="avatar">
+                <input className='formInput form-input' name='avatar' id='avatar' ref={fileupload} type='file' onChange={handleUpdate} />
+            </label><br />
+            <Button className='saveBtn' disabled={false} type='submit'>Save</Button>
+            </form>
+        </div>
+        </div>
+    )
 }

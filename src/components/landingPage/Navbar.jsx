@@ -3,7 +3,6 @@ import vector from "../../assets/vector.png"
 import {NavLink, Link} from "react-router-dom"
 import styled from "styled-components"
 import UserProfileNav from './UserProfileNav'
-import axios from '../../axios'
 import Hamburger from 'hamburger-react'
 
 

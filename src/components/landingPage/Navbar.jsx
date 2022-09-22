@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from 'react'
 import vector from "../../assets/vector.png"
-import {NavLink,Router,Route,Link} from "react-router-dom"
+import {NavLink, Link} from "react-router-dom"
 import styled from "styled-components"
 import UserProfileNav from './UserProfileNav'
 import axios from '../../axios'
@@ -54,9 +54,7 @@ import Hamburger from 'hamburger-react'
                             <Link className='mobile-menu' to="/contact">Contact Us </Link>
                           </NavMenuLinkStyle>
                }
-                  
               <div className='Navbar-menu' >
-                   
                     {        
                       Landing  &&
                       <>  
@@ -70,7 +68,6 @@ import Hamburger from 'hamburger-react'
                       <NavLink to="/Login" className='btnLogin'>Login</NavLink>
                     }
               </div> 
-              
           </div>
       </NavbarStyle>
     )

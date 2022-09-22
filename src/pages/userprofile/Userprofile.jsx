@@ -4,7 +4,7 @@ import './userprofile.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from '../../axios';
 import { toast } from 'react-toastify';
-import NavBar from '../../components';
+import { NavBar } from '../../components';
 
 export default function Userprofile() {
      
@@ -85,6 +85,7 @@ export default function Userprofile() {
 
     return (
         <>
+            <NavBar />
             <div className='profile-container'>
             {/* <div className='userNav'><img src={convertBase64} alt="avatar" /></div> */}
             <div className='header-section'></div> 

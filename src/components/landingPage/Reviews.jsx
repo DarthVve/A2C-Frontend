@@ -110,19 +110,19 @@ const ReviewStyle = styled.div`
             flex-wrap: nowrap;
             
             width: 100%;
-        display: flex;
-        gap: 0;
-        align-items: stretch;
-        overflow-x: scroll;
-        overflow-y: clip;
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-        scroll-behavior: smooth;
-        scroll-snap-type: x proximity;
+            display: flex;
+            gap: 0;
+            align-items: stretch;
+            overflow-x: scroll;
+            overflow-y: clip;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            scroll-behavior: smooth;
+            scroll-snap-type: x proximity;
 
-        &::-webkit-scrollbar {
-            display: none;
-        }
+            &::-webkit-scrollbar {
+                display: none;
+            }
 
             .review-box{
                 margin-right: 20px;

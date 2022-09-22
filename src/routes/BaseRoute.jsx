@@ -2,8 +2,6 @@ import React from "react";
 import ProtectedRoute from "./ProtectedRoute";
 import { Routes, Route } from "react-router-dom";
 import { SignUp, Login, VerifyNotice, ForgotPasswordSL, ForgotPasswordCM, ForgotPasswordUP, NotFound, Userprofile, Dashboard } from '../pages';
-import { Modal } from "../components";
-
 
 import Landing from "../pages/landing/Landing";
 
@@ -17,8 +15,7 @@ const BaseRoute = () => {
             <Route path="/forgotPassword" element={<ForgotPasswordSL />} />
             <Route path="/forgotPassword/resend" element={<ForgotPasswordCM/>} />
             <Route path="/forgotPassword/update/:id" element={<ForgotPasswordUP/>} />
-            <Route path="/userprofile" element={<Userprofile />} />
-            <Route path="/usermodalprofile" element={<Modal/>} />
+            <Route path="/userprofile/:id" element={<Userprofile />} />
             <Route path="/" element={<Landing/>} />
             <Route path="/dashboard" element={<Dashboard/>} />
             

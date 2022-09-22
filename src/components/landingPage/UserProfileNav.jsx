@@ -1,30 +1,48 @@
 import React,{useState} from 'react'
 import styled from 'styled-components'
 import { FiChevronDown } from 'react-icons/fi';
-
-import {Link} from 'react-router-dom'
+import { Link, useNavigate } from "react-router-dom";
+import axios from "../../axios";
+import { useAuth } from "../../hooks/useAuth";
+import { toast } from 'react-toastify';
+import { Modal, UserAvatar } from '../';
 
 function UserProfileNav({dashboard,setIsLogin}) {
   const [showDropdown, setShowDropdown] = useState(false)
-  const ProfileIcon ='https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50';
-  return (
+  const [showModal, setShowModal] = useState(false)
+  const { avatar, id } = JSON.parse(localStorage.getItem('userInfo'))
+  const { logout } = useAuth();
+  const navigate = useNavigate();
 
+  const handleLogout = async () => {
+    try {
+      const res = await axios.get('/user/logout')
+      if(res) {
+        toast.success("Logged out successfully");
+        logout();
+        localStorage.removeItem('userInfo')
+        navigate('/');
+      }
+    } catch (error) {
+      toast.error(error.message)
+    }
+  }
+
+  return (
     <Profile >
-        <Link to='/update'>
-          <img style={{borderRadius:"50%", width:"40px",height:"40px"}} 
-              src= {ProfileIcon}
-              alt='Profil Pic'/>
-        </Link> 
+        <img onClick={setShowModal.bind(null, true)} style={{borderRadius:"50%", width:"40px",height:"40px"}} 
+          src= {avatar}
+          alt='Profil Pic'
+        />
         <FiChevronDown onClick={()=>setShowDropdown(!showDropdown)}/>
         <Dropdown showDropdown={showDropdown}>
-        <Link to='update'><DropdownItem>  <img src={ProfileIcon} alt="" /> <span>Account</span> </DropdownItem></Link>
+        <Link to={`/userprofile/${id}`}><DropdownItem>  <img src={avatar} alt="" onClick={setShowModal.bind(null, true)}/> <span>Account</span> </DropdownItem></Link>
           <DropdownItem>  <span>Settings</span> </DropdownItem>
           <DropdownItem>  <span>Help Center</span> </DropdownItem>
-          <DropdownItem > <span>Logout</span> </DropdownItem>
+          <DropdownItem > <span onClick={handleLogout}>Logout</span> </DropdownItem>
       </Dropdown>
-      
+      {showModal && <UserAvatar close={setShowModal.bind(null, false)}/>}
     </Profile>
-
   )
 }
 const Profile = styled.div`

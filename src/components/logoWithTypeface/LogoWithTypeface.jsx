@@ -9,7 +9,7 @@ const LogoWithTypeface = () => {
         <span className="violet">Airtime</span><span className="orange">2Cash</span>
       </p>
     </div>
-  );
-}
+  )
+};
 
 export default LogoWithTypeface;

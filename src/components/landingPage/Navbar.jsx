@@ -204,7 +204,4 @@ function Navbar({dashboard, Landing}) {
     
   `
 
-  
-  
-  export default Navbar
-  
+export default Navbar

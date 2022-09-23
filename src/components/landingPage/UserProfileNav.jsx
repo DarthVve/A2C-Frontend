@@ -14,6 +14,10 @@ function UserProfileNav({dashboard,setIsLogin}) {
   const { logout } = useAuth();
   const navigate = useNavigate();
 
+  const redirect = () => {
+    navigate(`/userprofile/${id}`)
+  }
+
   const handleLogout = async () => {
     try {
       const res = await axios.get('/user/logout')
@@ -36,7 +40,7 @@ function UserProfileNav({dashboard,setIsLogin}) {
         />
         <FiChevronDown onClick={()=>setShowDropdown(!showDropdown)}/>
         <Dropdown showDropdown={showDropdown}>
-        <Link to={`/userprofile/${id}`}><DropdownItem>  <img src={avatar} alt="" onClick={setShowModal.bind(null, true)}/> <span>Account</span> </DropdownItem></Link>
+        <Link to={`/userprofile/${id}`}><DropdownItem>  <img src={avatar} alt="" onClick={setShowModal.bind(null, true)}/> <span onClick={redirect}>Account</span> </DropdownItem></Link>
           <DropdownItem>  <span>Settings</span> </DropdownItem>
           <DropdownItem>  <span>Help Center</span> </DropdownItem>
           <DropdownItem > <span onClick={handleLogout}>Logout</span> </DropdownItem>

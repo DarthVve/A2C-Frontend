@@ -44,7 +44,7 @@ const Login = () => {
                 localStorage.setItem("userInfo", JSON.stringify(res.data.userInfo));
                 const id = res.data.userInfo.id;
                 login(id);
-                navigate(`/userprofile/${id}`)
+                navigate(`/dashboard/${id}`);
             } else {
                 toast.error(res.data.msg);
             }

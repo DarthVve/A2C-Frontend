@@ -29,10 +29,7 @@ const SellAirtime = () => {
             .min(100)
             .max(50000)
             .required("min-amount = N100, max-amount = N50000"),
-        amountToReceive: Yup.number()
-            .min(100)
-            .max(50000)
-            .required("min-amount = N100, max-amount = N50000"),
+        amountToReceive: Yup.number(),
         ussd: Yup.string().required(),
         destinationPhoneNumber: Yup.string()
             .min(11)

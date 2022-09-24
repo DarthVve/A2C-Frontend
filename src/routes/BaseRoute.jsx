@@ -19,7 +19,7 @@ const BaseRoute = () => {
             <Route path="/login" element={<Login/>} />
             <Route path="/verify-notice/:id" element={<VerifyNotice/>}/>
             <Route path="/userprofile/:id" element={<Userprofile/>} />
-            <Route path="/sellairtime" element={<SellAirtime/>} />
+            <Route path="/testroute" element={<SellAirtime/>} />
             
             {/*Protected Routes*/}
             <Route element={<ProtectedRoute/>}>

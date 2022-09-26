@@ -9,7 +9,7 @@ const BaseRoute = () => {
     return (
         <Routes>
             {/*Public routes*/}
-            <Route path="/dashboard" element={<Dashboard/>} />
+            <Route path="/dashboard/:id" element={<Dashboard/>} />
             <Route path="/forgotPassword" element={<ForgotPasswordSL />} />
             <Route path="/forgotPassword/resend" element={<ForgotPasswordCM/>} />
             <Route path="/forgotPassword/update/:id" element={<ForgotPasswordUP/>} />

@@ -55,7 +55,7 @@ export default function Userprofile() {
             navigate('/user/dashboard')
             if (response.status === 200) {
                 toast.success("Update Successful")
-                navigate('/user/dashboard')
+                navigate(`/dashboard/${id}`)
                 }
         } catch (err) {
             toast.error("Update Failed")

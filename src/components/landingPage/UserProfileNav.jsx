@@ -7,12 +7,16 @@ import { useAuth } from "../../hooks/useAuth";
 import { toast } from 'react-toastify';
 import { UserAvatar } from '../';
 
-function UserProfileNav({dashboard,setIsLogin}) {
+function UserProfileNav({dashboard, setIsLogin}) {
   const [showDropdown, setShowDropdown] = useState(false)
   const [showModal, setShowModal] = useState(false)
   const { avatar, id } = JSON.parse(localStorage.getItem('userInfo'))
   const { logout } = useAuth();
   const navigate = useNavigate();
+
+  const reRoute = () => {
+    navigate(`/userprofile/${id}`)
+  }
 
   const handleLogout = async () => {
     try {
@@ -36,7 +40,7 @@ function UserProfileNav({dashboard,setIsLogin}) {
         />
         <FiChevronDown onClick={()=>setShowDropdown(!showDropdown)}/>
         <Dropdown showDropdown={showDropdown}>
-        <Link to={`/userprofile/${id}`}><DropdownItem>  <img src={avatar} alt="" onClick={setShowModal.bind(null, true)}/> <span>Account</span> </DropdownItem></Link>
+        <Link to={`/userprofile/${id}`}><DropdownItem>  <img src={avatar} alt="" onClick={setShowModal.bind(null, true)}/> <span onClick={reRoute}>Account</span> </DropdownItem></Link>
           <DropdownItem>  <span>Settings</span> </DropdownItem>
           <DropdownItem>  <span>Help Center</span> </DropdownItem>
           <DropdownItem > <span onClick={handleLogout}>Logout</span> </DropdownItem>

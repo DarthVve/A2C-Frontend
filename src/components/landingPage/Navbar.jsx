@@ -28,7 +28,7 @@ function Navbar({dashboard, Landing}) {
           <div className='Navbar-container'> 
               <div className='Navbar-brand'>
                   <img src={vector} alt='logo'/>
-                  <NavLink to="/landing" className='subject'>Airtime<span>2Cash</span></NavLink> 
+                  <NavLink to="/" className='subject'>Airtime<span>2Cash</span></NavLink> 
               </div>
               {  Landing  &&
                     <div className="hmg">
@@ -205,7 +205,4 @@ function Navbar({dashboard, Landing}) {
     
   `
 
-  
-  
-  export default Navbar
-  
+export default Navbar

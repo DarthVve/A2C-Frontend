@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+ *{
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+} 
+
+.mgboardheader{
+  display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    
+}
+  
+.mgboardcontainer{
+    width: 679px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 700px;
+    padding: 4% 4%;
+}
+
+.mgboardsubtitle a{
+    color: red;
+}
+
+label p{
+    font-size: 0.875rem;
+    color: #012A4A;
+}
+
+label {
+    width: 559px;
+    height: 73px;
+}
+
+input {
+    width: 100%;
+    height: 48px;
+    padding-left: 1rem;
+   
+}
+
+select{
+    width: 100%;
+    height: 48px;
+    color: #012A4A;
+    background: #FFF;
+    padding-left: 1rem;
+}
+
+.mgboardform{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+select option{
+    color: #012A4A;
+    background: #fff;
+    padding-left: 1rem;
+}
+.mgboardbtn{
+    width: 35.4%;
+    height: 3rem;
+    padding: 8px 16px;
+    background: linear-gradient(92.1deg, #DE3D6D 55.67%, #F5844C 101.51%);
+    color: white;
+    margin-top: 3rem;
+
+}
+.mgboardbtn :active{
+animation-timing-function: ease-out;
+animation-duration: 300ms;
+}

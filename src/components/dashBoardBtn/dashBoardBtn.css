@@ -1,0 +1,14 @@
+.mgboardbtn{
+    width: 35.4%;
+    height: 3rem;
+    padding: 8px 16px;
+    background: linear-gradient(92.1deg, #DE3D6D 55.67%, #F5844C 101.51%);
+    color: white;
+    margin-top: 3rem;
+
+}
+.mgboardbtn :active{
+animation-timing-function: ease-out;
+animation-duration: 300ms;
+
+}

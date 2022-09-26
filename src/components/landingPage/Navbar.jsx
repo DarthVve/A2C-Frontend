@@ -108,15 +108,16 @@ function Navbar({dashboard, Landing}) {
     height: 96px;
     background: #FFFFFF;
     position:relative;
-    
-    position:relative;
+    top:0;
+    left:0;
+    right:0;
     .Navbar-container{
       display: flex;
       justify-content:space-between;
       align-items:center;
       max-width: 85%;
       margin: 12px auto;
-      over-flow:none;
+      over-flow:hidden;
       
       .hmg{
         position:absolute;

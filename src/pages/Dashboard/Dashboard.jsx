@@ -9,7 +9,7 @@ function Dashboard() {
   const [title,setTitle] = useState("Dashboard")
   const [clicked,setClicked] = useState([{"sell":false,"withdraw":false,"account":false,"history":false}])
   const [page,setPage] = useState("sellAirtime");
-  const [isopen, setOpen] = useState(false)
+  const [isopen, setOpen] = useState(true)
 
   
   const handleSellAirtime = ()=>{
@@ -62,11 +62,16 @@ function Dashboard() {
 
       </div>
       <div className='container'>
-        {isopen && <Hamburger  />}
+        
         
          <h1 className='dashboard-title'>{title}</h1>
 
          <div className='inner-container'>
+              {isopen && 
+                  <div className="hamburger">
+                    <Hamburger  />
+                  </div>
+              }
             <div className='button-container'>
                 
                 {(page === "sellAirtime" || page === "withdraw") &&
@@ -131,10 +136,17 @@ const DashboardStyle = styled.div`
     max-width: 559px;
     width:78.53%;
     height: 812px;
-
+    position:relative;
     display:flex;
     flex-direction:column;
   }
+  
+  .hamburger{
+    position:absolute;
+    right:10px;
+    top:160px;
+  }
+
   .button-container{
     max-width: 553px;
     width:100%;
@@ -153,10 +165,7 @@ const DashboardStyle = styled.div`
     max-width: 553px;
     width:100%;
     margin-top:2em;
-    
-    .humb{
-      color:red;
-    }
+  
     .nav-link{
       font-family: 'Inter';
       font-style: normal;

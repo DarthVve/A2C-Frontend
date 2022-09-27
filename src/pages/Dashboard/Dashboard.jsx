@@ -124,20 +124,20 @@ const DashboardStyle = styled.div`
     position:absolute;
     top:11em;
     max-width: 679px;
-    width: 47.152%;
+    width: unset;
     border: 1px solid #D9D9D9;
     background: #FFFFFF;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 3.75em;
-    height:1106px;
+   
     
   }
   .inner-container{
     max-width: 559px;
     width:78.53%;
-    height: 812px;
+   
     position:relative;
     display:flex;
     flex-direction:column;
@@ -262,5 +262,7 @@ const DashboardStyle = styled.div`
       z-index:2;
     }
 }
+
+
 `
 export default Dashboard

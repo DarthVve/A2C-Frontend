@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import { SignUp, Login, VerifyNotice, ForgotPasswordSL, ForgotPasswordCM, ForgotPasswordUP, NotFound, Userprofile, Dashboard } from '../pages';
 
 import Landing from "../pages/landing/Landing";
+import { WithdrawBalance } from "../components";
 
 const BaseRoute = () => {
     return (
@@ -17,7 +18,8 @@ const BaseRoute = () => {
             <Route path="/register" element={<SignUp/>} />
             <Route path="/login" element={<Login/>} />
             <Route path="/verify-notice/:id" element={<VerifyNotice/>}/>
-            <Route path="/userprofile/:id" element={<Userprofile/>} />
+            <Route path="/userprofile/:id" element={<Userprofile />} />
+            <Route path='/withdraw' element={<WithdrawBalance/>} />
             
             {/*Protected Routes*/}
             <Route element={<ProtectedRoute/>}>

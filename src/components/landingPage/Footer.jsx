@@ -13,10 +13,10 @@ function Footer() {
                 <img src={LogoFooter} alt="Logo"/>
             </div>
             <div className='footer-menu'>
-                <a href='#'>Home</a>
-                <a href='#'>About</a>
-                <a href='#'>Airtime2Cash</a>
-                <a href='#'>Contact</a>
+                <a href='/'>Home</a>
+                <a href='/'>About</a>
+                <a href='/'>Airtime2Cash</a>
+                <a href='/'>Contact</a>
             </div>
             <div className='bottom'>
                 <div className='divider'></div>

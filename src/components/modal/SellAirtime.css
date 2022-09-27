@@ -5,22 +5,6 @@
 justify-content: center;
   align-items: center;
 }
-.dashboard_frame .form_container  .selected_title {
-  position: relative;
-  left: 0px;
-  top: 0px;
-  align-self: flex-start;
-  text-transform: capitalize;
-  margin: 2rem 0rem 1.5rem 0rem;
-  width: max-content;
-  height: 1rem;
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 17px;
-  color: #012a4a;
-}
 
 /* FORM STYLE */
 

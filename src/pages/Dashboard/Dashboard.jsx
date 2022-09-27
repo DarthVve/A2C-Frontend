@@ -4,6 +4,7 @@ import styled from "styled-components"
 import {DashboardButton} from '../../components';
 import {Link} from "react-router-dom"
 import Hamburger from 'hamburger-react'
+import SellAirtime from '../../components/sellAirtime/SellAirtime';
 
 function Dashboard() {
   const [title,setTitle] = useState("Dashboard")
@@ -49,7 +50,7 @@ function Dashboard() {
     setClicked(newArr)   
   }
   const renderPage = ()=>{
-    if(page === "sellAirtime") return "SellAirtime"
+    if(page === "sellAirtime") return <SellAirtime/>
     if(page === "withdraw") return "Withdraw"
     if(page === "account") return "Account"
     if(page === "history") return "History"

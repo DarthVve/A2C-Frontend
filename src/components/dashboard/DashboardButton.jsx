@@ -20,8 +20,8 @@ function DashboardButton() {
 const DashboardButtonStyle = styled.div`
     max-width: 553px;
     width:100%;
-    height:74%;
-    max-height: 154px;
+    padding:1rem 0px;
+    
     background: #DE3D6D;
     border-radius: 1.5em;
     display: flex;
@@ -31,8 +31,7 @@ const DashboardButtonStyle = styled.div`
     box-sizing:border-box;
 
     .btn-container{
-        height:70.19%;
-        max-height:106px;
+       
         max-width: 183px;
         width:33.092%;
         display: flex;
@@ -67,8 +66,8 @@ const DashboardButtonStyle = styled.div`
         max-height: 19px;
     }
     .btn-balance-h2{
-        height:43.83%;
-        max-height: 39px;
+       
+        
         font-family: 'Inter';
         font-style: normal;
         font-weight: 700;
@@ -81,8 +80,8 @@ const DashboardButtonStyle = styled.div`
     .btn-container-p{
        
         padding: 8px 10px 8px 8px;
-        height: 25%;
-        max-height: 28px;
+       
+       
         background: rgba(0, 0, 0, 0.05);
         opacity: 0.8;
         border: 1px solid rgba(0, 0, 0, 0.04);

@@ -3,15 +3,15 @@ import { NavBar } from '../../components';
 import styled from "styled-components"
 import {DashboardButton} from '../../components';
 import {Link} from "react-router-dom"
-import Hamburger from 'hamburger-react'
+import { FiChevronDown } from 'react-icons/fi';
+
 
 function Dashboard() {
   const [title,setTitle] = useState("Dashboard")
   const [clicked,setClicked] = useState([{"sell":false,"withdraw":false,"account":false,"history":false}])
   const [page,setPage] = useState("sellAirtime");
-  const [isopen, setOpen] = useState(true)
-
-  
+  const [isMobile, setIsMobile] = useState(false)
+ 
   const handleSellAirtime = ()=>{
     setTitle("Dashboard");
     const newArr = clicked.map((val)=>{
@@ -36,23 +36,26 @@ function Dashboard() {
       return {...val,sell:false,widthraw:false,account:true,history:false}
     })
     setPage("account")
+    
     setClicked(newArr)   
   }
     
 
   const handleHistroy = () =>{
-    setTitle("Managed Bank")
+    setTitle("Transactions")
     const newArr = clicked.map((val)=>{
       return {...val,sell:false,widthraw:false,account:false,history:true}
     })
     setPage("history")
     setClicked(newArr)   
   }
+  
   const renderPage = ()=>{
     if(page === "sellAirtime") return "SellAirtime"
     if(page === "withdraw") return "Withdraw"
-    if(page === "account") return "Account"
+    if(page === "account") return "account"
     if(page === "history") return "History"
+    
   }
   return (
     <DashboardStyle>  
@@ -62,23 +65,18 @@ function Dashboard() {
 
       </div>
       <div className='container'>
-        
-        
+                         
          <h1 className='dashboard-title'>{title}</h1>
 
          <div className='inner-container'>
-              {isopen && 
-                  <div className="hamburger">
-                    <Hamburger  />
-                  </div>
-              }
+         
             <div className='button-container'>
                 
                 {(page === "sellAirtime" || page === "withdraw") &&
-                  <DashboardButton />
+                  <DashboardButton /> 
                 }
                 
-                <div className='dashboard-navigation'>
+                <div className={isMobile ?'dashbord-mobil-nav':'dashboard-navigation'} onClick={()=>setIsMobile(false)}>
                     <p
                     className={`nav-link sell ${clicked[0]["sell"] && "selected"}`}   
                     onClick={handleSellAirtime}  
@@ -86,8 +84,12 @@ function Dashboard() {
                     <p className={`nav-link withdraw ${clicked[0]["widthraw"] && "selected"}`} onClick={handleWithdraw} > Withdraw balance </p>
                     <p className={`nav-link account ${clicked[0]["account"] && "selected"}`} onClick={handleAccount}> Manage bank account </p>
                     <p className={`nav-link history ${clicked[0]["history"] && "selected"}`} onClick={handleHistroy} > Transaction history </p>
+                   
                 </div>
+        
+                <FiChevronDown className='icon' onClick={()=>setIsMobile(!isMobile)} />
             </div>
+            
             {renderPage()}
          </div>
       </div>
@@ -141,22 +143,19 @@ const DashboardStyle = styled.div`
     flex-direction:column;
   }
   
-  .hamburger{
-    position:absolute;
-    right:10px;
-    top:160px;
-  }
+ 
 
   .button-container{
     max-width: 553px;
     width:100%;
-    height: 220px;
+    margin-bottom:2rem;
     display:flex;
     flex-direction:column;
     align-item:center;
+    position:relative;
   
   }
-
+  
   .dashboard-navigation{
     display: flex;
     flex-direction: row;
@@ -165,6 +164,7 @@ const DashboardStyle = styled.div`
     max-width: 553px;
     width:100%;
     margin-top:2em;
+    
   
     .nav-link{
       font-family: 'Inter';
@@ -200,10 +200,67 @@ const DashboardStyle = styled.div`
       flex: 1 1 127px;
     }
   }
-
-
-  
+  .bank-account-bar{
+    max-width: 553px;
+    width:100%;
+    display:flex;
+    align-items: center;
+    margin-top:2rem;
+    justify-content:space-between;
+  }
+  .bank-account-h1{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+    color: #012A4A;
+  }
+  .bank-account-p{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #DE3D6D;
+  }
+ .icon { 
     
-
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    display:none;
+    right:0px;
+    top:100%;
+    z-index:3;
+    color:black;
+  }
+.icon:hover{
+   color: red;
+  }
+    
+@media (max-width:1066px){
+    .dashboard-navigation{
+      display:none;
+    }
+    .icon{
+      display:block;
+    }
+    .dashbord-mobil-nav{
+      position:absolute;
+      display:flex;
+      flex-direction:column;
+      justify-content:center
+      width:100%;
+      background:#fff;
+      align-item:center;
+      top:100%;
+      right:0;
+      box-shadow: 5px 10px 8px 10px #888888;
+      padding:2rem;
+      cursor:pointer;
+      z-index:2;
+    }
+}
 `
 export default Dashboard

@@ -115,47 +115,8 @@ justify-content: center;
 /* MEDIA QUERIES */
 @media (max-width: 768px){
 
-    .dashboard_frame {
-        top: 5rem;
-        padding: 2.75rem;
-        width: 35rem;
-        height: 65.125rem;
-        margin-bottom: 8rem;
-      }
+  
 
-      .dashboard_frame .dashboard_frame_title {
-        width: 130px;
-        height: 39px;
-        font-family: "Inter";
-        font-style: normal;
-        font-weight: 600;
-        font-size: 28px;
-
-      }
-      .dashboard_frame .dashboard_frame_red {
-        padding: 10px;
-        width: 500px;
-        height: 150px;
-        height: max-content;
-        background: #de3d6d;
-        border-radius: 24px;
-        margin: -0.5rem 0rem;
-      }
-
-      .dashboard_frame_red .active h6 {
-        width: 70px;
-        height: 10px;
-        font-weight: 300;
-        font-size: 8px;
-      }
-      .dashboard_frame > .nav_container {
-        width: 500px;
-        margin: 1.5rem 0rem 2.5rem;
-      }
-
-      .dashboard_frame > .nav_container > .nav_list > .list_item {
-        font-size: 0.85rem;
-      }
 
       .dashboard_frame > .selected_title {
         margin: -2rem 0rem -1rem -1rem;
@@ -164,7 +125,7 @@ justify-content: center;
       }
 
       .dashboard_frame .form_container {
-        width: 31.5rem;
+        width: 30rem;
         box-sizing: border-box;
         margin: 2rem 0rem;
       }
@@ -175,35 +136,11 @@ justify-content: center;
 }
 @media (max-width: 570px){
     .dashboard_frame {
-        padding: 2.75rem;
-        width: 30rem;
+        /* padding: 2.2rem; */
+        width: 100%;
+  
       }
 
-      .dashboard_frame .dashboard_frame_title {
-        width: 120px;
-        height: 45px;
-        font-weight: 500;
-        font-size: 25px;
-
-      }
-      .dashboard_frame .dashboard_frame_red {
-        padding: 10px;
-        width: 420px;
-        background: #de3d6d;
-      }
-
-      .dashboard_frame_red .active h6 {
-        width: 60px;
-        height: 10px;
-      }
-      .dashboard_frame > .nav_container {
-        width: 420px;
-        margin: 1rem 0rem 2.5rem;
-      }
-
-      .dashboard_frame > .nav_container > .nav_list > .list_item {
-        font-size: 0.75rem;
-      }
 
       .dashboard_frame > .selected_title {
         margin: -2rem 0rem -1rem -1rem;
@@ -212,9 +149,9 @@ justify-content: center;
       }
 
       .dashboard_frame .form_container {
-        width: 26.5rem;
+        width: 20rem;
         box-sizing: border-box;
-        margin: 2rem 0rem;
+        margin: 1rem 0rem;
       }
       
       .dashboard_frame .form_container .form_group {
@@ -223,33 +160,7 @@ justify-content: center;
 }
 @media (max-width: 450px){
     .dashboard_frame {
-        padding: 2.5rem;
-        width: 20rem;
-      }
-
-      .dashboard_frame .dashboard_frame_title {
-        width: 100px;
-        height: 40px;
-        font-weight: 500;
-        font-size: 25px;
-      }
-      .dashboard_frame .dashboard_frame_red {
-        padding: 10px;
-        width: 300px;
-        background: #de3d6d;
-      }
-
-      .dashboard_frame_red .active h6 {
-        width: 50px;
-        height: 10px;
-      }
-      .dashboard_frame > .nav_container {
-        width: 300px;
-        margin: 1rem 0rem 2.5rem;
-      }
-
-      .dashboard_frame > .nav_container > .nav_list > .list_item {
-        font-size: 0.5rem;
+        width: 100%;
       }
 
       .dashboard_frame > .selected_title {
@@ -271,35 +182,8 @@ justify-content: center;
 
 @media (max-width: 280px){
     .dashboard_frame {
-        padding: 2rem;
-        width: 15rem;
+        width: 100%;
       }
-
-      .dashboard_frame .dashboard_frame_title {
-        width: 70px;
-        height: 25px;
-        font-weight: 500;
-        font-size: 20px;
-      }
-      .dashboard_frame .dashboard_frame_red {
-        padding: 8px;
-        width: 200px;
-        background: #de3d6d;
-      }
-
-      .dashboard_frame_red .active h6 {
-        width: 70px;
-        height: 10px;
-      }
-      .dashboard_frame > .nav_container {
-        width: 200px;
-        margin: 1rem 0rem 2.5rem;
-      }
-
-      .dashboard_frame > .nav_container > .nav_list > .list_item {
-        font-size: 0.5rem;
-      }
-
       .dashboard_frame > .selected_title {
         margin: -2.5rem 0rem -2rem -1rem;
         height: 1rem;
@@ -307,9 +191,9 @@ justify-content: center;
       }
 
       .dashboard_frame .form_container {
-        width: 14rem;
+        width: 10rem;
         box-sizing: border-box;
-        margin: 2rem 0rem;
+        margin: 1rem 0rem;
       }
       
       .dashboard_frame .form_container .form_group {

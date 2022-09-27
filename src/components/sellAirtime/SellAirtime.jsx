@@ -1,14 +1,20 @@
-import React from "react";
+import React,{useRef} from "react";
 import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { toast } from "react-toastify";
 
 
 import "./SellAirtime.css";
+import { useEffect } from "react";
 
 const SellAirtime = () => {
-   
     const networks = ["airtel", "mtn", "etisalat", "glo"];
+
+    const sellRef = useRef('');
+    useEffect(()=>{
+        console.log(sellRef.current.value);
+    },[])
+
 
     //YUP STUFF STARTS
     const validationSchema = Yup.object({
@@ -23,13 +29,11 @@ const SellAirtime = () => {
             .required("min-amount = N100, max-amount = N50000"),
         amount_to_receive: Yup.number()
             .min(100)
-            .max(50000)
-            .required("min-amount = N100, max-amount = N50000"),
-        ussd: Yup.string().required(),
+            .max(50000),
+        ussd: Yup.string(),
         destination_phone_number: Yup.string()
             .min(11)
-            .max(11)
-            .required("Recipient number can't be empty"),
+            .max(11).required("Phone number can't be empty"),
     });
 
     const initialValues = {
@@ -44,7 +48,7 @@ const SellAirtime = () => {
     const onSubmit = (values) => {
         console.log("DETAILS", values);
         toast.success(
-            `Transaction Details:- N${values.amount_to_receive} sent to ${values.destination_phone_number}`,
+            `Transaction Details:- N${values.amount_to_sell} sent to ${values.destination_phone_number}`,
             {
                 position: toast.POSITION.TOP_CENTER,
             }
@@ -143,6 +147,7 @@ const SellAirtime = () => {
                                         placeholder="NGN"
                                         id="amount_to_sell"
                                         name="amount_to_sell"
+                                        ref={sellRef}
                                         
                                     />
                                     <ErrorMessage name="amount_to_sell" render={renderError} />
@@ -163,6 +168,7 @@ const SellAirtime = () => {
                                         placeholder="*780*amount*09088765433*5000#"
                                         id="ussd"
                                         name="ussd"
+                                        disabled
                                     />
                                     <ErrorMessage name="ussd" render={renderError} />
                                 </div>
@@ -182,7 +188,7 @@ const SellAirtime = () => {
                                         placeholder="NGN"
                                         id="amount_to_receive"
                                         name="amount_to_receive"
-                                        // value={initialValues.amount_to_receive}
+                                        disabled
                                     />
                                     <ErrorMessage name="amount_to_receive" render={renderError} />
                                 </div>

@@ -124,7 +124,7 @@ const DashboardStyle = styled.div`
     position:absolute;
     top:11em;
     max-width: 679px;
-    width: unset;
+    width: auto;
     border: 1px solid #D9D9D9;
     background: #FFFFFF;
     display: flex;
@@ -136,8 +136,7 @@ const DashboardStyle = styled.div`
   }
   .inner-container{
     max-width: 559px;
-    width:78.53%;
-   
+    width:100%;
     position:relative;
     display:flex;
     flex-direction:column;

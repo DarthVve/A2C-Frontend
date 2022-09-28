@@ -1,27 +1,8 @@
-.withdraw-container {
-    width: 100%;
-    background: #F5F5F5;
-    overflow-y: hidden;
-}
+
 
 .warning {
     color: red;
-}
-
-.withdraw-body {
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 30px 120px;
-    margin-left: auto;
-    margin-right: auto;
-    gap: 60px;
-    width: 600px;
-    height: 931px;
-    background: #FFFFFF;
-    border: 1px solid #D9D9D9;
+    text-transform: lowercase;
 }
 
 .withdraw_h3 {
@@ -47,7 +28,6 @@
 .select {
     width: 100%;
     margin-bottom: 20px;
-    max-width: 599px;
     outline: none;
     font-family: 'Inter';
     font-weight: 400;
@@ -60,9 +40,17 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 400px;
+    /* gap: 400px; */
     height: 48px;
     background: rgba(0, 0, 0, 0.04);
+}
+option {
+    font-weight: normal;
+    display: block;
+    white-space: nowrap;
+    min-height: 10em;
+    padding: 0px 10px 1px 10px;
+    margin-top: 30px;
 }
 
 .withdraw_balance_input {
@@ -90,30 +78,16 @@
 
 
 @media screen and (max-width: 540px) {
-    .withdraw-body {
-        box-sizing: border-box;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 20px;
-        margin: 0px auto;
-        gap: 60px;
-        width: 310px;
-        height: 500px;
-        background: #FFFFFF;
-        border: 1px solid #D9D9D9;
-    }
 
     .withdraw_balance_input {
+        box-sizing: border-box;
         padding: 15px;
         margin: 5px auto;
         font-size: 16px;
         outline: none;
         background: rgba(0, 0, 0, 0.04);
         border: 1px solid #D9D9D9;
-        width: 80%;
-        
+        width: 100%;
     }
 
     .select_account_label {
@@ -123,13 +97,13 @@
         font-size: 14px;
         line-height: 17px;
         color: #012A4A;
-        margin: 5px;
+        /* margin: 5px; */
     }
 
     .select {
-        width: 94%;
+        width: 100%;
         max-width: 599px;
-        margin: 0px auto;
+        margin-bottom: 20px;
         outline: none;
         font-family: 'Inter';
         font-weight: 400;
@@ -137,7 +111,7 @@
         line-height: 17px;
         color: #C4C4C4;
         border: none;
-        padding: 10px 130px 10px 16px;
+        padding: 10px 130px 10px 0px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -153,81 +127,11 @@
         align-items: center;
         padding: 15px;
         margin: 5px auto;
-        width: 102%;
+        width: 100%;
         height: 48px;
         background: linear-gradient(92.1deg, #DE3D6D 55.67%, #F5844C 101.51%);
         border: none;
         color: #fff;
     }
 
-}
-
-
-@media screen and (max-width: 915px) {
-    .withdraw-body {
-        /* box-sizing: border-box; */
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 20px;
-        margin: 0px auto;
-        gap: 60px;
-        
-        height: 600px;
-        background: #FFFFFF;
-        border: 1px solid #D9D9D9;
-    }
-
-    .withdraw_balance_input {
-        padding: 15px;
-        margin: 5px auto;
-        font-size: 16px;
-        outline: none;
-        background: rgba(0, 0, 0, 0.04);
-        border: 1px solid #D9D9D9;
-        width: 94.5%;
-    }
-
-    .select_account_label {
-        font-family: 'Inter';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 14px;
-        line-height: 17px;
-        color: #012A4A;
-        margin: 5px;
-    }
-
-    .select {
-        width: 100%;
-        margin: 0px auto;
-        outline: none;
-        font-family: 'Inter';
-        font-weight: 400;
-        font-size: 14px;
-        line-height: 17px;
-        color: #C4C4C4;
-        border: none;
-        padding: 10px 130px 10px 16px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 400px;
-        height: 48px;
-        background: rgba(0, 0, 0, 0.04);
-    }
-
-    .withdrawBtn {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        padding: 15px;
-        margin: 0px auto;
-        width: 100%;
-        height: 48px;
-        background: linear-gradient(92.1deg, #DE3D6D 55.67%, #F5844C 101.51%);
-        border: none;
-    }
 }

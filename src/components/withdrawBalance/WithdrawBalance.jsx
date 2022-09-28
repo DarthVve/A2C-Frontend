@@ -42,39 +42,8 @@ const renderError = (message) => <p className='warning'>{ message }</p>
 
     return (
 
-
-        // <div className="withdraw-container">
-        //     <div className='withdraw-body'>
-        //         <form className='user-form' onSubmit=''>
-
-        //             <h3 className="withdraw_h3">Withdraw</h3>
-                        
-        //             <label className='select_account_label'> Select Account</label><br />
-        //             <select name="account" placeholder= 'Select' className='select_p' type='text' id=""><option className='select_account_dropdown' value={''}>Select</option>
-        //             {accountOPtions}</select>
-        //             {/* <ErrorMessage name='account' render={sendError}/> */}
-
-        //             <label className='select_account_label'>Account Name</label><br />
-        //             <input className='withdraw_balance_input' type='text' name='accountName' placeholder='BabtundeOla' value='' onChange='' /><br />
-
-        //             <label className='select_account_label'>Account Number</label><br />
-        //             <input className='withdraw_balance_input' type='text' name='accountNumber' placeholder='2987665533' value='' onChange='' /><br />
-
-        //             <label className='select_account_label'>Amount</label><br />
-        //             <input className='withdraw_balance_input' type='text' name='amount' placeholder='NGN' value='' onChange='' /><br />
-
-
-        //             <label className='select_account_label'>Password</label><br />
-        //             <input className='withdraw_balance_input' type='password' name='password' placeholder='Password' value='' onChange='' /><br />
-
-        //             <button id='' className='withdrawBtn' disabled='' type='submit'>Withdraw</button>
-        //             </form> 
-        //     </div>
-        // </div>
-
-        // <WithdrawTabStyle>
-         <div className='withdraw-container'>
-         <div className="withdraw-body">
+        <div className='withdraw-container'>
+        <div className="withdraw-body">
             {/* <h3 className="withdraw_h3">Withdraw</h3> */}
             <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={async (values, { resetForm }) => {
                 await onSubmit(values)
@@ -138,6 +107,6 @@ const renderError = (message) => <p className='warning'>{ message }</p>
             </Formik>
         </div>
     </div>
-    // </WithdrawTabStyle>
+    
 )
 }

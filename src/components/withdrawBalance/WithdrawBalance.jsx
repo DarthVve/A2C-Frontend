@@ -1,5 +1,4 @@
 import React from 'react'
-// import WithdrawTabStyle from './withdrawBalance.style'
 import * as Yup from 'yup'
 import {Formik, Form, Field, ErrorMessage} from 'formik'
 import './withdrawbalance.css'

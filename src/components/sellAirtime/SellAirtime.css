@@ -4,6 +4,7 @@
   display: flex;
 justify-content: center;
   align-items: center;
+  margin-top: -3rem;
 }
 .dashboard_frame .form_container  .selected_title {
   position: relative;

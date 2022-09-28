@@ -30,6 +30,7 @@ export default function WithdrawBalance() {
     }
 
     const onSubmit = (values) => {
+        alert(JSON.stringify(values, null, 2))
         toast.success('Withdrawal Successful')
     }
 
@@ -101,7 +102,7 @@ const renderError = (message) => <p className='warning'>{ message }</p>
                         name='password'
                     />
                     <ErrorMessage name='password' render={renderError}/>
-                <button className='withdrawBtn'>Withdraw</button> 
+                <button className='withdrawBtn' onClick>Withdraw</button> 
 
             </Form>
 

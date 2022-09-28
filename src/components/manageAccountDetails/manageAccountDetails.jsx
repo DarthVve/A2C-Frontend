@@ -17,10 +17,17 @@ function ManageAccountDetails() {
     number: ''
   });
 
-  const handleChange = (e) => {
-    const {name, value} = e.target;
-    setDetails({ ...details, [name]: value });
+  const displayModal = () => {
+    setShowModal(true)
   }
+  const closeModal = () => {
+    setShowModal(false)
+  }
+
+  // const handleChange = (e) => {
+  //   const {name, value} = e.target;
+  //   setDetails({ ...details, [name]: value });
+  // }
   
   const addAccount = async(e) => {
     e.preventDefault();
@@ -31,9 +38,9 @@ function ManageAccountDetails() {
         setTimeout(() => {
           setShowModal(false);
         }, 2000)
-      } else {
-        toast.error(res.data.msg);
-      }
+      }// else {
+      //   toast.error(res.data.msg);
+      // }
     }
     catch(err) {
         toast.error(err.response?.data?.msg || "Something went wrong");
@@ -46,7 +53,7 @@ function ManageAccountDetails() {
 
   return (
     <>
-    {showModal && <BankAccountModal />}
+      {showModal && <BankAccountModal closeModal={ closeModal} />}
     {show && (<div className="mgboardcontainer">
       <div className="mgboardheader">
         <div className="mgbordtitle">
@@ -61,7 +68,7 @@ function ManageAccountDetails() {
         <form onSubmit={addAccount}>
           <label>
             <p>Bank Name</p>
-            <select placeholder="Select Bank" value={details.bank} onSelect={handleChange}>
+            <select placeholder="Select Bank"  >
             <option value="" disabled selected>Select Bank</option>
               <option value="Access Bank Plc">Access Bank Plc</option>
               <option value="Citibank Nigeria Limited">Citibank Nigeria Limited</option>
@@ -89,13 +96,13 @@ function ManageAccountDetails() {
           </label>
           <label>
             <p>Account Name</p>
-            <input placeholder="Account Name" value={details.name} name="name" onChange={handleChange}></input>
+            <input placeholder="Account Name"  name="name" ></input>
           </label>
           <label>
             <p>Account Number</p>
-            <input placeholder="Account Number" value={details.number} name="number" onChange={handleChange} minLength={10} maxLength={10} /> 
+            <input placeholder="Account Number" name="number" minLength={10} maxLength={10} /> 
           </label>
-            <Dashboardbtn value="Add Bank"/>
+            <Dashboardbtn value="Add Bank" displayModal={ displayModal} />
         </form>
       </div>
     </div>)}

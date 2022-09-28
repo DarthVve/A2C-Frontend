@@ -1,9 +1,9 @@
 import React,{useState} from 'react'
 import { NavBar } from '../../components';
 import styled from "styled-components"
-import {DashboardButton, SellAirtime} from '../../components';
+import {DashboardButton, SellAirtime, WithdrawBalance, ManageAccountDetails} from '../../components';
 import { FiChevronDown } from 'react-icons/fi';
-import {WithdrawBalance} from '../../components/'
+
 
 
 function Dashboard() {
@@ -52,7 +52,7 @@ function Dashboard() {
   const renderPage = ()=>{
     if(page === "sellAirtime") return <SellAirtime/>
     if(page === "withdraw") return <WithdrawBalance/>
-    if(page === "account") return "account"
+    if(page === "account") return <ManageAccountDetails/ >
     if(page === "history") return "History"
   }
   return (

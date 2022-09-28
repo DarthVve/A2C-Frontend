@@ -3,6 +3,7 @@ import ProtectedRoute from "./ProtectedRoute";
 import { Routes, Route } from "react-router-dom";
 import { SignUp, Login, VerifyNotice, ForgotPasswordSL, ForgotPasswordCM, ForgotPasswordUP, NotFound, Userprofile, Dashboard, Landing } from '../pages';
 
+
 const BaseRoute = () => {
     return (
         <Routes>

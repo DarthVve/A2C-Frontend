@@ -11,7 +11,6 @@ function Landing() {
       <Rectangle />
       <Reviews />
       <Footer />
-      <ManageAccountDetails/>
     </div>
   )
 }

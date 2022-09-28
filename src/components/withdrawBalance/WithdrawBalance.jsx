@@ -2,6 +2,7 @@ import React from 'react'
 import * as Yup from 'yup'
 import {Formik, Form, Field, ErrorMessage} from 'formik'
 import './withdrawbalance.css'
+import { toast } from 'react-toastify'
 export default function WithdrawBalance() {
 
     const accounts = [
@@ -15,7 +16,7 @@ export default function WithdrawBalance() {
     const validationSchema = Yup.object({
         account: Yup.string().required('Please Select An Account').oneOf(accounts),
         accountName: Yup.string().required('Please Enter Account Name'),
-        accountNumber: Yup.number().min(11).max(11).required('Please Enter An Account Number'),
+        accountNumber: Yup.number().min(11).required('Please Enter An Account Number'),
         amount: Yup.number().required('Amount is required'),
         password: Yup.string().required('Password is required')
     })
@@ -29,8 +30,9 @@ export default function WithdrawBalance() {
     }
 
     const onSubmit = (values) => {
-        alert(JSON.stringify(values, null, 2))
+        toast.success('Withdrawal Successful')
     }
+
 
 
     const networkOPtions = accounts.map((account, key) => 

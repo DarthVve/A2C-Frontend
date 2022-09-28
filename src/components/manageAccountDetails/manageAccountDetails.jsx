@@ -1,6 +1,6 @@
 import Dashboardbtn from "../dashBoardAcctBtn/dashBoardBtnAcct";
-import "./ManageAccountDetails.css";
-import ViewAccountDetails from "../ViewAccountDetails/ViewAccountDetails";
+import "./manageAccountDetails.css";
+import { ViewAccountDetails } from "../../components";
 import { useState } from "react";
 import Showcase from "../landingPage/Showcase";
 
@@ -18,7 +18,7 @@ function ManageAccountDetails() {
     {show && (<div className="mgboardcontainer">
       <div className="mgboardheader">
         <div className="mgbordtitle">
-          <h1>Bank Account</h1>
+          <h3>Bank Account</h3>
         </div>
         <div className="mgboardsubtitle" onClick={()=>{setShow(false)}}>
           <p>View Bank accounts</p>

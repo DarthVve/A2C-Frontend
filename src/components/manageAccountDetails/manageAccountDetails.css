@@ -6,7 +6,7 @@
 } 
 
 .mgboardheader{
-  display: flex;
+    display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
@@ -67,9 +67,9 @@ select option{
     padding-left: 1rem;
 }
 .mgboardbtn{
-    width: 35.4%;
+    width: 100%;
     height: 3rem;
-    padding: 8px 16px;
+    padding: 8px 10px;
     background: linear-gradient(92.1deg, #DE3D6D 55.67%, #F5844C 101.51%);
     color: white;
     margin-top: 3rem;

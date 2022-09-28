@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import './ViewAccountDetails.css'
+import './viewAccountDetails.css'
 import Dashboardbtn from '../dashBoardAcctBtn/dashBoardBtnAcct'
 import {data} from './ViewAccountDetailJSON'
 

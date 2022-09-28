@@ -1,12 +1,10 @@
 import React,{useState} from 'react'
 import { NavBar } from '../../components';
 import styled from "styled-components"
-import {DashboardButton} from '../../components';
+import { DashboardButton, ManageAccountDetails } from '../../components';
 import {Link} from "react-router-dom"
 import { FiChevronDown } from 'react-icons/fi';
 import Hamburger from 'hamburger-react'
-import ManageAccountDetails from '../../components/ManageAccountDetails/ManageAccountDetails';
-
 
 
 function Dashboard() {

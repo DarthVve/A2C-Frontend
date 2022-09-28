@@ -1,12 +1,7 @@
 import React from "react";
 import ProtectedRoute from "./ProtectedRoute";
 import { Routes, Route } from "react-router-dom";
-import { SignUp, Login, VerifyNotice, ForgotPasswordSL, ForgotPasswordCM, ForgotPasswordUP, NotFound, Userprofile, Dashboard } from '../pages';
-
-import Landing from "../pages/landing/Landing";
-
-//TESTING THIS
-import SellAirtime from "../components/sellAirtime/SellAirtime";
+import { SignUp, Login, VerifyNotice, ForgotPasswordSL, ForgotPasswordCM, ForgotPasswordUP, NotFound, Userprofile, Dashboard, Landing } from '../pages';
 
 const BaseRoute = () => {
     return (
@@ -21,7 +16,8 @@ const BaseRoute = () => {
             <Route path="/login" element={<Login/>} />
             <Route path="/verify-notice/:id" element={<VerifyNotice/>}/>
             <Route path="/userprofile/:id" element={<Userprofile/>} />
-            <Route path="/testroute" element={<SellAirtime/>} />
+            <Route path="/userprofile/:id" element={<Userprofile />} />
+
             
             {/*Protected Routes*/}
             <Route element={<ProtectedRoute/>}>

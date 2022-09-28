@@ -7,3 +7,4 @@ export { default as NotFound } from './notFound/NotFound';
 export { default as SignUp } from './signUp/SignUp';
 export { default as Userprofile } from './userprofile/Userprofile';
 export { default as VerifyNotice } from './verifyNotice/VerifyNotice';
+export { default as Landing } from './landing/Landing';

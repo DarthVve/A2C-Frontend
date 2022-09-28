@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import styled from 'styled-components'
 
 function DashboardButton() {
-    const [balance,setBalance] = useState("21,350.00")
+    const [balance] = useState("21,350.00")
     
   return (
     <DashboardButtonStyle>

@@ -3,6 +3,7 @@ import { NavBar } from '../../components';
 import styled from "styled-components"
 import {DashboardButton, SellAirtime} from '../../components';
 import { FiChevronDown } from 'react-icons/fi';
+import {WithdrawBalance} from '../../components/'
 
 
 function Dashboard() {
@@ -50,10 +51,9 @@ function Dashboard() {
   
   const renderPage = ()=>{
     if(page === "sellAirtime") return <SellAirtime/>
-    if(page === "withdraw") return "Withdraw"
+    if(page === "withdraw") return <WithdrawBalance/>
     if(page === "account") return "account"
     if(page === "history") return "History"
-
   }
   return (
     <DashboardStyle>  
@@ -122,26 +122,22 @@ const DashboardStyle = styled.div`
     position:absolute;
     top:11em;
     max-width: 679px;
-    width: 47.152%;
+    width: auto;
     border: 1px solid #D9D9D9;
     background: #FFFFFF;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 3.75em;
-    height:1106px;
     
   }
   .inner-container{
     max-width: 559px;
-    width:78.53%;
-    height: 812px;
+    width:100%;
     position:relative;
     display:flex;
     flex-direction:column;
   }
-  
- 
 
   .button-container{
     max-width: 553px;
@@ -260,5 +256,7 @@ const DashboardStyle = styled.div`
       z-index:2;
     }
 }
+
+
 `
 export default Dashboard

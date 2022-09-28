@@ -16,3 +16,4 @@ export { default as Toastify } from './toastify/Toastify';
 export { default as UserAvatar } from './useravatar/UserAvatar';
 export { default as Transactions } from './transactions/Transactions';
 export { default as Pagination } from './pagination/Pagination'
+export {default as DashboardButton} from './dashboard/DashboardButton'

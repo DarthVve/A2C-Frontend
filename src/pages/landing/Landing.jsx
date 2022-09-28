@@ -1,5 +1,5 @@
 import React from 'react'
-import { Footer, NavBar, Rectangle, Reviews, Showcase, Surplus, ManageAccountDetails } from '../../components'
+import { Footer, NavBar, Rectangle, Reviews, Showcase, Surplus } from '../../components'
 import "./Landing.css"
 
 function Landing() {
@@ -11,7 +11,6 @@ function Landing() {
       <Rectangle />
       <Reviews />
       <Footer />
-      <ManageAccountDetails/>
     </div>
   )
 }

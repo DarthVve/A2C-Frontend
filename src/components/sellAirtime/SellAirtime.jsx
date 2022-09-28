@@ -168,7 +168,7 @@ const SellAirtime = () => {
                                         placeholder="*780*amount*09088765433*5000#"
                                         id="ussd"
                                         name="ussd"
-                                        disabled
+                                       
                                     />
                                     <ErrorMessage name="ussd" render={renderError} />
                                 </div>
@@ -188,7 +188,7 @@ const SellAirtime = () => {
                                         placeholder="NGN"
                                         id="amount_to_receive"
                                         name="amount_to_receive"
-                                        disabled
+                                        
                                     />
                                     <ErrorMessage name="amount_to_receive" render={renderError} />
                                 </div>

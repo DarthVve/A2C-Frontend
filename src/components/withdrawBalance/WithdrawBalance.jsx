@@ -2,6 +2,7 @@ import React from 'react'
 import * as Yup from 'yup'
 import {Formik, Form, Field, ErrorMessage} from 'formik'
 import './withdrawbalance.css'
+import { toast } from 'react-toastify'
 export default function WithdrawBalance() {
 
     const accounts = [
@@ -30,6 +31,7 @@ export default function WithdrawBalance() {
 
     const onSubmit = (values) => {
         alert(JSON.stringify(values, null, 2))
+        toast.success('Withdrawal Successful')
     }
 
 

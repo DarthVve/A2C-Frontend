@@ -101,7 +101,7 @@ const renderError = (message) => <p className='warning'>{ message }</p>
                         name='password'
                     />
                     <ErrorMessage name='password' render={renderError}/>
-                <button className='withdrawBtn'>Withdraw</button> 
+                <button className='withdrawBtn' onClick>Withdraw</button> 
 
             </Form>
 

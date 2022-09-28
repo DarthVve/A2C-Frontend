@@ -30,7 +30,7 @@ function Dashboard() {
 
   }
   const handleAccount = () =>{
-    setTitle("Managed Card")
+    setTitle("Manage Bank Accounts")
 
     const newArr = clicked.map((val)=>{
       return {...val,sell:false,widthraw:false,account:true,history:false}
@@ -120,15 +120,15 @@ const DashboardStyle = styled.div`
 
     position:absolute;
     top:11em;
-    max-width: 679px;
-    width: auto;
+    max-width: 90%;
+    width: 679px;
     border: 1px solid #D9D9D9;
     background: #FFFFFF;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 3.75em;
-    
+    padding: 1em;
+    box-sizing: border-box;
   }
   .inner-container{
     max-width: 559px;
@@ -255,7 +255,6 @@ const DashboardStyle = styled.div`
       z-index:2;
     }
 }
-
 
 `
 export default Dashboard

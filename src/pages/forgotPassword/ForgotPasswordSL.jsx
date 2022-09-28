@@ -1,10 +1,11 @@
-import { FPsendLink } from "../../components";
+import { FPsendLink, Transactions } from "../../components";
 import './ForgotPasswordSL.css'
 
 const ForgotPasswordSL = ()=>{
     return (
         <div className="fpsl-page">
-            <FPsendLink/>
+            {/*<FPsendLink/>*/}
+            <Transactions/>
         </div>
     )
 };

@@ -27,7 +27,7 @@ function Navbar({dashboard, Landing}) {
       <NavbarStyle>
           <div className='Navbar-container'> 
               <div className='Navbar-brand'>
-                  <img src={vector} alt='logo'/>
+                  <img src={vector} alt='logo' className='logo'/>
                   <NavLink to="/" className='subject'>Airtime<span>2Cash</span></NavLink> 
               </div>
               {  Landing  &&
@@ -131,10 +131,14 @@ function Navbar({dashboard, Landing}) {
       display: flex;
       align-items:center;
       justify-content:space-between;
+      .logo {
+        width: clamp(30px, 4vw, 60px)
+        height: clamp(30px, 4vw, 60px)
+      }
       .subject{
         font-style: normal;
         font-weight: 600;
-        font-size: 32px;
+        font-size: clamp(16px, 4vw, 30px);
         color: #DE3D6D;
         line-height: 39px;
         margin-left:16.39px;

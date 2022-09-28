@@ -132,20 +132,15 @@ const DashboardStyle = styled.div`
     flex-direction: column;
     align-items: center;
     padding: 3.75em;
-    // height:1000px;
-    
+
   }
   .inner-container{
     max-width: 559px;
     width:100%;
-    // height: 1000px;
     position:relative;
     display:flex;
     flex-direction:column;
   }
- 
- 
- 
 
   .button-container{
     max-width: 553px;

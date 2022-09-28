@@ -1,20 +1,23 @@
-.profile{
+ .profile{
     display: flex;
+    display: block;
     justify-content: center;
     align-items: center;
-    border-radius: 100%;
-    width: 120px;
-    height: 120px;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    /* padding: 10px; */
     background: #E5E5E5;
-    margin: 20px;
+    /* margin: 20px; */
     cursor: pointer;
 }
-.header-section {
+
+/* .header-section {
     height: 200px;
-    /* left: 0px; */
-    /* top: 96px; */
+    left: 0px;
+    top: 96px;
     background: rgba(222, 61, 109, 0.1);
-}
+} */
 
 .user-container{
     display: flex;
@@ -22,7 +25,7 @@
     justify-content: center;
     align-items: center;
     padding: 60px 40px;
-    margin-top: -170px;
+    margin-top: 100px;
     margin-left: auto;
     margin-right: auto;
     gap: 30px;
@@ -30,9 +33,11 @@
     height: 400px;
     background: #FFFFFF;
     border: 1px solid #D9D9D9;
+    border-radius: 50%;
 }
 
 .user-modal{
+    
     background: #E5E5E5;
     height: 100%;
     width: 100%;
@@ -42,6 +47,7 @@
     right: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
 }
 
 

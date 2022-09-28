@@ -15,24 +15,24 @@ export default function WithdrawBalance() {
 
     const validationSchema = Yup.object({
         account: Yup.string().required('Please Select An Account').oneOf(accounts),
-        accountName: Yup.string().required('Please Enter Account Name'),
-        accountNumber: Yup.number().min(11).max(11).required('Please Enter An Account Number'),
-        amount: Yup.number().required('Amount is required'),
+        account_Name: Yup.string().required('Please Enter Account Name'),
+        account_Number: Yup.string().min(10).max(10).required('Please Enter An Account Number'),
+        amount: Yup.string().required('Amount is required'),
         password: Yup.string().required('Password is required')
     })
 
     const initialValues = {
         account: '',
-        accountName: '',
-        accountNumber: '',
+        account_Name: '',
+        account_Number: '',
         amount: '',
         password:''
     }
 
     const onSubmit = (values) => {
-        alert(JSON.stringify(values, null, 2))
         toast.success('Withdrawal Successful')
     }
+
 
 
     const networkOPtions = accounts.map((account, key) => 
@@ -71,18 +71,18 @@ const renderError = (message) => <p className='warning'>{ message }</p>
                         type='text'
                         placeholder='BabtundeOla'
                         className='withdraw_balance_input'
-                        name='accountName'
+                        name='account_Name'
                     />
-                    <ErrorMessage name='accountName' render={renderError}/>
+                    <ErrorMessage name='account_Name' render={renderError}/>
 
                     <label className='select_account_label'>Account Number</label>
                     <Field
                         type='text'
-                        placeholder='223333453'
+                        placeholder='2233334531'
                         className='withdraw_balance_input'
-                        name='accountNumber'
+                        name='account_Number'
                     />
-                    <ErrorMessage name='accountNumber' render={renderError} />
+                    <ErrorMessage name='account_Number' render={renderError} />
                     
                     <label className='select_account_label'>Amount</label>
                     <Field

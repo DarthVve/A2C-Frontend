@@ -16,8 +16,8 @@ export default function WithdrawBalance() {
     const validationSchema = Yup.object({
         account: Yup.string().required('Please Select An Account').oneOf(accounts),
         accountName: Yup.string().required('Please Enter Account Name'),
-        accountNumber: Yup.number().min(11).required('Please Enter An Account Number'),
-        amount: Yup.number().required('Amount is required'),
+        accountNumber: Yup.string().min(10).max(10).required('Please Enter An Account Number'),
+        amount: Yup.string().required('Amount is required'),
         password: Yup.string().required('Password is required')
     })
 
@@ -78,7 +78,7 @@ const renderError = (message) => <p className='warning'>{ message }</p>
                     <label className='select_account_label'>Account Number</label>
                     <Field
                         type='text'
-                        placeholder='223333453'
+                        placeholder='2233334531'
                         className='withdraw_balance_input'
                         name='accountNumber'
                     />

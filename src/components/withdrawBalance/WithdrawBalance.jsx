@@ -30,7 +30,6 @@ export default function WithdrawBalance() {
     }
 
     const onSubmit = (values) => {
-        alert(JSON.stringify(values, null, 2))
         toast.success('Withdrawal Successful')
     }
 
@@ -72,7 +71,7 @@ const renderError = (message) => <p className='warning'>{ message }</p>
                         type='text'
                         placeholder='BabtundeOla'
                         className='withdraw_balance_input'
-                        name='accountName'
+                        name='account_Name'
                     />
                     <ErrorMessage name='account_Name' render={renderError}/>
 

@@ -36,11 +36,12 @@ function UserProfileNav({dashboard, setIsLogin}) {
     <Profile >
         <img onClick={setShowModal.bind(null, true)} style={{borderRadius:"50%", width:"40px",height:"40px"}} 
           src= {avatar}
-          alt='Profil Pic'
+        alt='Profil Pic'
+        className='profile-avatar-img'
         />
         <FiChevronDown onClick={()=>setShowDropdown(!showDropdown)}/>
         <Dropdown showDropdown={showDropdown}>
-        <Link to={`/userprofile/${id}`}><DropdownItem>  <img src={avatar} alt="" onClick={setShowModal.bind(null, true)}/> <span onClick={reRoute}>Account</span> </DropdownItem></Link>
+        <Link to={`/userprofile/${id}`}><DropdownItem>  <img className='dropdown-img' src={avatar} alt="" onClick={setShowModal.bind(null, true)}/> <span onClick={reRoute}>Account</span> </DropdownItem></Link>
           <DropdownItem>  <span>Settings</span> </DropdownItem>
           <DropdownItem>  <span>Help Center</span> </DropdownItem>
           <DropdownItem > <span onClick={handleLogout}>Logout</span> </DropdownItem>
@@ -54,7 +55,7 @@ const Profile = styled.div`
     align-items: center;
     gap:10px;
     cursor: pointer;
-    & img {
+    & .Profile-Avatar-img {
         width: 36px;
         border-radius: 50%;
     }
@@ -81,7 +82,7 @@ gap: 15px;
 color: #21334F;
 font-weight: lighter;
 margin: 15px 20px;
- & img {
+ & .dropdown-img {
         width: 24px;
  }
 `

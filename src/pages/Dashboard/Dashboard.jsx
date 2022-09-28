@@ -1,8 +1,8 @@
 import React,{useState} from 'react'
-import { NavBar } from '../../components';
 import styled from "styled-components"
-import {DashboardButton, SellAirtime, WithdrawBalance, ManageAccountDetails} from '../../components';
+import { NavBar, DashboardButton, SellAirtime, WithdrawBalance, ManageAccountDetails, Transactions } from '../../components';
 import { FiChevronDown } from 'react-icons/fi';
+import './Dashboard.css'
 
 
 
@@ -11,7 +11,7 @@ function Dashboard() {
   const [clicked,setClicked] = useState([{"sell":false,"withdraw":false,"account":false,"history":false}])
   const [page,setPage] = useState("sellAirtime");
   const [isMobile, setIsMobile] = useState(false)
- 
+
   const handleSellAirtime = ()=>{
     setTitle("Dashboard");
     const newArr = clicked.map((val)=>{
@@ -52,8 +52,9 @@ function Dashboard() {
   const renderPage = ()=>{
     if(page === "sellAirtime") return <SellAirtime/>
     if(page === "withdraw") return <WithdrawBalance/>
-    if(page === "account") return <ManageAccountDetails/ >
-    if(page === "history") return "History"
+    if(page === "account") return <ManageAccountDetails/>
+    if(page === "history") return <Transactions/>
+
   }
   return (
     <DashboardStyle>  
@@ -63,33 +64,31 @@ function Dashboard() {
 
       </div>
       <div className='container'>
-                         
-         <h1 className='dashboard-title'>{title}</h1>
+          <h1 className='dashboard-title'>{title}</h1>
 
-         <div className='inner-container'>
-         
-            <div className='button-container'>
-                
-                {(page === "sellAirtime" || page === "withdraw") &&
-                  <DashboardButton /> 
-                }
-                
-                <div className={isMobile ?'dashbord-mobil-nav':'dashboard-navigation'} onClick={()=>setIsMobile(false)}>
-                    <p
-                    className={`nav-link sell ${clicked[0]["sell"] && "selected"}`}   
-                    onClick={handleSellAirtime}  
-                    >Sell airtime </p>
-                    <p className={`nav-link withdraw ${clicked[0]["widthraw"] && "selected"}`} onClick={handleWithdraw} > Withdraw balance </p>
-                    <p className={`nav-link account ${clicked[0]["account"] && "selected"}`} onClick={handleAccount}> Manage bank account </p>
-                    <p className={`nav-link history ${clicked[0]["history"] && "selected"}`} onClick={handleHistroy} > Transaction history </p>
-                   
-                </div>
-        
-                <FiChevronDown className='icon' onClick={()=>setIsMobile(!isMobile)} />
-            </div>
-            
-            {renderPage()}
-         </div>
+          <div className='inner-container'>
+          
+              <div className='button-container'>
+                  
+                  {(page === "sellAirtime" || page === "withdraw") &&
+                    <DashboardButton /> 
+                  }
+                  
+                  <div className={isMobile ?'dashbord-mobil-nav':'dashboard-navigation'} onClick={()=>setIsMobile(false)}>
+                      <p
+                      className={`nav-link sell ${clicked[0]["sell"] && "selected"}`}   
+                      onClick={handleSellAirtime}  
+                      >Sell airtime </p>
+                      <p className={`nav-link withdraw ${clicked[0]["widthraw"] && "selected"}`} onClick={handleWithdraw} > Withdraw balance </p>
+                      <p className={`nav-link account ${clicked[0]["account"] && "selected"}`} onClick={handleAccount}> Manage bank account </p>
+                      <p className={`nav-link history ${clicked[0]["history"] && "selected"}`} onClick={handleHistroy} > Transaction history </p>
+                  </div>
+          
+                  <FiChevronDown className='icon' onClick={()=>setIsMobile(!isMobile)} />
+              </div>
+              
+              {renderPage()}
+          </div>
       </div>
     </DashboardStyle>
   )
@@ -218,7 +217,7 @@ const DashboardStyle = styled.div`
     line-height: 17px;
     color: #DE3D6D;
   }
- .icon { 
+  .icon { 
     
     width: 40px;
     height: 40px;
@@ -230,7 +229,7 @@ const DashboardStyle = styled.div`
     color:black;
   }
 .icon:hover{
-   color: red;
+    color: red;
   }
     
 @media (max-width:1066px){

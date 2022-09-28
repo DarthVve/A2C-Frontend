@@ -34,23 +34,14 @@
     line-height: 17px;
     color: #C4C4C4;
     border: none;
-    /* padding: 10px 407px 10px 16px; */
+    padding: 10px 407px 10px 16px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    /* gap: 400px; */
     height: 48px;
     background: rgba(0, 0, 0, 0.04);
 }
-/* option {
-    font-weight: normal;
-    display: block;
-    white-space: nowrap;
-    min-height: 10em;
-    padding: 0px 10px 1px 10px;
-    margin-top: 30px;
-} */
 
 .withdraw_balance_input {
     padding: 15px;

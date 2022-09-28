@@ -1,7 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap'); */
 
  *{
-    box-sizing: border-box;
     font-family: 'Inter', sans-serif;
 } 
 
@@ -27,24 +26,24 @@
     cursor: pointer;
 }
 
-label p{
+.mgboardform label p{
     font-size: 0.875rem;
     color: #012A4A;
 }
 
-label {
+.mgboardform label {
     width: 559px;
     height: 48px;
 }
 
-input {
+.mgboardform input {
     width: 100%;
     height: 48px;
     padding-left: 1rem;
    
 }
 
-select{
+.mgboardform select{
     width: 100%;
     height: 48px;
     color: #012A4A;

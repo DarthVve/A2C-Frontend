@@ -2,19 +2,19 @@ import React,{useState} from 'react'
 import styled from 'styled-components'
 
 function DashboardButton() {
-    const [balance,setBalance] = useState("21,350.00")
+    const [balance] = useState("21,350.00")
     
-  return (
-    <DashboardButtonStyle>
-        <div className='btn-container'>
-            <div className='btn-balance'>
-                <h6 className='btn-balance-h6'>wallet balance</h6>
-                <h2 className='btn-balance-h2'>{`N${balance}`}</h2>
+    return (
+        <DashboardButtonStyle>
+            <div className='btn-container'>
+                <div className='btn-balance'>
+                    <h6 className='btn-balance-h6'>wallet balance</h6>
+                    <h2 className='btn-balance-h2'>{`N${balance}`}</h2>
+                </div>
+                <p className='btn-container-p'>Account is active</p>
             </div>
-            <p className='btn-container-p'>Account is active</p>
-        </div>
-    </DashboardButtonStyle>
-  )
+        </DashboardButtonStyle>
+    )
 }
 
 const DashboardButtonStyle = styled.div`
@@ -31,7 +31,6 @@ const DashboardButtonStyle = styled.div`
     box-sizing:border-box;
 
     .btn-container{
-       
         max-width: 183px;
         width:33.092%;
         display: flex;
@@ -66,8 +65,6 @@ const DashboardButtonStyle = styled.div`
         max-height: 19px;
     }
     .btn-balance-h2{
-       
-        
         font-family: 'Inter';
         font-style: normal;
         font-weight: 700;
@@ -78,10 +75,7 @@ const DashboardButtonStyle = styled.div`
         margin:0px;
     }
     .btn-container-p{
-       
         padding: 8px 10px 8px 8px;
-       
-       
         background: rgba(0, 0, 0, 0.05);
         opacity: 0.8;
         border: 1px solid rgba(0, 0, 0, 0.04);
@@ -89,7 +83,6 @@ const DashboardButtonStyle = styled.div`
         padding: 0.5em;
         margin:0.3em 0px 0px 0px;
         font-family: 'Inter';
-       
         font-style: normal;
         font-weight: 400;
         font-size: 10px;

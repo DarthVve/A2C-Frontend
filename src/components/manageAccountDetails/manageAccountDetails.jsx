@@ -11,7 +11,7 @@ function ManageAccountDetails() {
 
   const [show, setShow] = useState(true)
   const [showModal, setShowModal] = useState(false);
-  const [details, setDetails] = useState({
+  const [details] = useState({
     name: '',
     bank: '',
     number: ''

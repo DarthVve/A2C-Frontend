@@ -26,7 +26,7 @@ const FPsendLink = () => {
             <div className='fpsl-main'>
                 <form className='fpsl-form' onSubmit={ submitHandler }>
                     <div className='fpsl-heading'>
-                        <h1>Forget Password</h1>
+                        <h1>Forgot Password</h1>
                         <p>Enter the email associated with your account and we’ll send an email with instruction to reset your password</p>
                     </div>
                         <div className='fpsl-form-field'>

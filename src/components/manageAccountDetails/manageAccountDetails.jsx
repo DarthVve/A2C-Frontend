@@ -1,16 +1,27 @@
-import Dashboardbtn from "../dashboardbtn/dashboardbtn";
-import "./manageAccountDetails.css";
+import Dashboardbtn from "../dashBoardAcctBtn/dashBoardBtnAcct";
+import "./ManageAccountDetails.css";
+import ViewAccountDetails from "../ViewAccountDetails/ViewAccountDetails";
+import { useState } from "react";
+import Showcase from "../landingPage/Showcase";
 
 
 function ManageAccountDetails() {
+
+  const [show, setShow] = useState(true)
+
+  const handleTrue = () =>{
+    setShow(true)
+  }
+
   return (
-    <div className="mgboardcontainer">
+    <>
+    {show && (<div className="mgboardcontainer">
       <div className="mgboardheader">
         <div className="mgbordtitle">
           <h1>Bank Account</h1>
         </div>
-        <div className="mgboardsubtitle">
-          <a href="/">View Bank accounts</a>
+        <div className="mgboardsubtitle" onClick={()=>{setShow(false)}}>
+          <p>View Bank accounts</p>
         </div>
       </div>
 
@@ -50,12 +61,17 @@ function ManageAccountDetails() {
           </label>
           <label>
             <p>Account Number</p>
-            <input placeholder="Account Number"></input>
+            <input placeholder="Account Number" minLength={10} maxLength={10} /> 
           </label>
          <Dashboardbtn value="Add Bank"/>
         </form>
       </div>
-    </div>
+    </div>)}
+
+   {!show && (<div>
+      <ViewAccountDetails makeTrue={handleTrue}/>
+    </div>)}
+    </>
   );
 }
 

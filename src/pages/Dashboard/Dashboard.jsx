@@ -4,6 +4,9 @@ import styled from "styled-components"
 import {DashboardButton} from '../../components';
 import {Link} from "react-router-dom"
 import { FiChevronDown } from 'react-icons/fi';
+import Hamburger from 'hamburger-react'
+import ManageAccountDetails from '../../components/ManageAccountDetails/ManageAccountDetails';
+
 
 
 function Dashboard() {
@@ -53,7 +56,7 @@ function Dashboard() {
   const renderPage = ()=>{
     if(page === "sellAirtime") return "SellAirtime"
     if(page === "withdraw") return "Withdraw"
-    if(page === "account") return "account"
+    if(page === "account") return <ManageAccountDetails/ >
     if(page === "history") return "History"
     
   }

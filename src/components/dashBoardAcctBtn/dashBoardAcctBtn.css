@@ -5,7 +5,13 @@
     background: linear-gradient(92.1deg, #DE3D6D 55.67%, #F5844C 101.51%);
     color: white;
     margin-top: 3rem;
-
+    cursor: pointer;
+    opacity: 0.75;
+    
+}
+.mgboardbtn:hover{
+    opacity: 1;
+    
 }
 .mgboardbtn :active{
 animation-timing-function: ease-out;

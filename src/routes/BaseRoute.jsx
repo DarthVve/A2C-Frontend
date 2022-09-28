@@ -5,6 +5,7 @@ import { SignUp, Login, VerifyNotice, ForgotPasswordSL, ForgotPasswordCM, Forgot
 
 import Landing from "../pages/landing/Landing";
 
+
 const BaseRoute = () => {
     return (
         <Routes>

@@ -11,18 +11,18 @@
       align-items: center;
       justify-content: space-between;
     padding-bottom: 3rem;
+    
       
   }
     
   .mgboardcontainer{
-      width: 679px;
+      width: 100%;
       margin-left: auto;
       margin-right: auto;
       height: 700px;
-      padding: 4% 4%;
   }
   
-  .mgboardsubtitle a{
+  .mgboardsubtitle p{
       color: red;
   }
   

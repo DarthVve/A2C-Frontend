@@ -14,4 +14,4 @@ export { default as LogoWithTypeface } from './logoWithTypeface/LogoWithTypeface
 export { default as Modal } from './modal/Modal';
 export { default as Toastify } from './toastify/Toastify';
 export { default as UserAvatar } from './useravatar/UserAvatar';
-export {default as DashboardButton} from './dashboard/DashboardButton'
+export {default as DashboardButton} from './dashBoard/DashboardButton'

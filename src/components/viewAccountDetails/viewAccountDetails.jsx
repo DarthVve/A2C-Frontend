@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import './viewAccountDetails.css'
 import Dashboardbtn from '../dashBoardAcctBtn/dashBoardBtnAcct'
 import {data} from './ViewAccountDetailJSON'

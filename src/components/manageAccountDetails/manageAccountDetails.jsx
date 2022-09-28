@@ -2,7 +2,6 @@ import Dashboardbtn from "../dashBoardAcctBtn/dashBoardBtnAcct";
 import "./manageAccountDetails.css";
 import { ViewAccountDetails } from "../../components";
 import { useState } from "react";
-import Showcase from "../landingPage/Showcase";
 
 
 function ManageAccountDetails() {

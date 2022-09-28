@@ -1,11 +1,9 @@
 import React,{useState} from 'react'
 import { NavBar } from '../../components';
 import styled from "styled-components"
-import {DashboardButton} from '../../components';
-import {Link} from "react-router-dom"
+import {DashboardButton, SellAirtime} from '../../components';
 import { FiChevronDown } from 'react-icons/fi';
 
-import SellAirtime from '../../components/sellAirtime/SellAirtime';
 
 function Dashboard() {
   const [title,setTitle] = useState("Dashboard")
@@ -37,7 +35,6 @@ function Dashboard() {
       return {...val,sell:false,widthraw:false,account:true,history:false}
     })
     setPage("account")
-    
     setClicked(newArr)   
   }
     
@@ -56,7 +53,7 @@ function Dashboard() {
     if(page === "withdraw") return "Withdraw"
     if(page === "account") return "account"
     if(page === "history") return "History"
-    
+
   }
   return (
     <DashboardStyle>  

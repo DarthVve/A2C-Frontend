@@ -14,10 +14,6 @@ function UserProfileNav({dashboard, setIsLogin}) {
   const { logout } = useAuth();
   const navigate = useNavigate();
 
-  const reRoute = () => {
-    navigate(`/userprofile/${id}`)
-  }
-
   const handleLogout = async () => {
     try {
       const res = await axios.get('/user/logout')
@@ -32,6 +28,10 @@ function UserProfileNav({dashboard, setIsLogin}) {
     }
   }
 
+  const route = () => {
+    navigate(`/userprofile/${id}`)
+  };
+
   return (
     <Profile >
         <img onClick={setShowModal.bind(null, true)} style={{borderRadius:"50%", width:"40px",height:"40px"}} 
@@ -41,25 +41,28 @@ function UserProfileNav({dashboard, setIsLogin}) {
         />
         <FiChevronDown onClick={()=>setShowDropdown(!showDropdown)}/>
         <Dropdown showDropdown={showDropdown}>
-        <Link to={`/userprofile/${id}`}><DropdownItem>  <img className='dropdown-img' src={avatar} alt="" onClick={setShowModal.bind(null, true)}/> <span onClick={reRoute}>Account</span> </DropdownItem></Link>
-          <DropdownItem>  <span>Settings</span> </DropdownItem>
-          <DropdownItem>  <span>Help Center</span> </DropdownItem>
-          <DropdownItem > <span onClick={handleLogout}>Logout</span> </DropdownItem>
+          <Link to={`/dashboard/${id}`}><DropdownItem><img className='dropdown-img' src={avatar} alt="" onClick={setShowModal.bind(null, true)}/><span>Account</span></DropdownItem></Link>
+          <DropdownItem><span onClick={route}>Settings</span></DropdownItem>
+          <DropdownItem><span>Help Center</span></DropdownItem>
+          <DropdownItem><span onClick={handleLogout}>Logout</span></DropdownItem>
       </Dropdown>
       {showModal && <UserAvatar close={setShowModal.bind(null, false)}/>}
     </Profile>
   )
-}
+};
+
 const Profile = styled.div`
-    display: flex;
-    align-items: center;
-    gap:10px;
-    cursor: pointer;
-    & .Profile-Avatar-img {
-        width: 36px;
-        border-radius: 50%;
-    }
+  display: flex;
+  align-items: center;
+  gap:10px;
+  cursor: pointer;
+
+  &.Profile-Avatar-img {
+      width: 36px;
+      border-radius: 50%;
+  }
 `
+
 const Dropdown = styled.div`
     position: absolute;
     top: 100%;
@@ -69,21 +72,24 @@ const Dropdown = styled.div`
     height: 180px;
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
     z-index: 100;
-    display: ${({showDropdown})=>(showDropdown ? 'block' : 'none')};
+    display: ${({ showDropdown }) => (showDropdown ? 'block' : 'none')};
     transition: all 0.3s ease-in-out;  
+    
     &.active {
         display: block;
     }
 `
+
 const DropdownItem = styled.div`
-display: flex;
-align-items: center;
-gap: 15px;
-color: #21334F;
-font-weight: lighter;
-margin: 15px 20px;
- & .dropdown-img {
-        width: 24px;
- }
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: #21334F;
+  font-weight: lighter;
+  margin: 15px 20px;
+
+  & .dropdown-img {
+    width: 24px;
+  }
 `
-export default UserProfileNav
+export default UserProfileNav;

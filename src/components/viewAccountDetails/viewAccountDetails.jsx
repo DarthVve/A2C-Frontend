@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './viewAccountDetails.css'
-import Dashboardbtn from '../dashBoardAcctBtn/dashBoardBtnAcct'
+import { Dashboardbtn } from '../'
 import axios from '../../axios'
 import { toast } from 'react-toastify'
 
@@ -50,27 +50,23 @@ return (
       </div>
       
       {accounts.map(item=>{
-        return  (   <div className='veiwAccContainer' key={item.id}>
-        <div className="veiwAccText">
-            <p>{item.bank}</p>
-            <p>{item.number}</p>
-            <p>{item.name}</p>
-        </div>
-        <div className="viewAccBtn">
-            <button onClick={removeItem.bind(null, item.id)}>Remove</button>
-        </div>
-            </div>)  
-
+        return (
+          <div className='veiwAccContainer' key={item.id}>
+            <div className="veiwAccText">
+                <p>{item.bank}</p>
+                <p>{item.number}</p>
+                <p>{item.name}</p>
+            </div>
+            <div className="viewAccBtn">
+                <button onClick={removeItem.bind(null, item.id)}>Remove</button>
+            </div>
+          </div>
+        )  
       })}
-
-
-
     
-      <div onClick = {makeTrue}>
-        <Dashboardbtn value="Add New Bank"/>
-      </div>
+      <div onClick = {makeTrue}><Dashboardbtn value="Add New Bank"/></div>
     </div>
   )
-}
+};
 
-export default ViewAccountDetails
+export default ViewAccountDetails;

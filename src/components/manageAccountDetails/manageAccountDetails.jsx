@@ -1,11 +1,8 @@
-import Dashboardbtn from "../dashBoardAcctBtn/dashBoardBtnAcct";
 import "./manageAccountDetails.css";
-import { ViewAccountDetails } from "../../components";
+import { ViewAccountDetails, Dashboardbtn, BankAccountModal } from "../";
 import { useState } from "react";
 import axios from '../../axios';
 import { toast } from "react-toastify";
-import BankAccountModal from "../BankAccountModal/BankAccountModal";
-
 
 function ManageAccountDetails() {
 
@@ -26,7 +23,6 @@ function ManageAccountDetails() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log(details)
     setDetails({ ...details, [name]: value });
   }
   
@@ -51,7 +47,7 @@ function ManageAccountDetails() {
 
   return (
     <>
-      {showModal && <BankAccountModal closeModal={ closeModal} />}
+    {showModal && <BankAccountModal closeModal={ closeModal} />}
     {show && (<div className="mgboardcontainer">
       <div className="mgboardheader">
         <div className="mgbordtitle">
@@ -105,9 +101,7 @@ function ManageAccountDetails() {
       </div>
     </div>)}
 
-   {!show && (<div>
-      <ViewAccountDetails makeTrue={handleTrue}/>
-    </div>)}
+    {!show && (<div><ViewAccountDetails makeTrue={handleTrue}/></div>)}
     </>
   );
 }

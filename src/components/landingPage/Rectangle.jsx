@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 function Rectangle() {
     const navigate = useNavigate();  
-  return (
+    return (
         <div className='rect-container'>
             <div className='rect-colors'>
                 <div className='ellipse23'></div>
@@ -25,7 +25,7 @@ function Rectangle() {
                 </div>             
             </div> 
         </div>
-  )
+    )
 }
 
 export default Rectangle

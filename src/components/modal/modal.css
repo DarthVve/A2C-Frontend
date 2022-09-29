@@ -3,12 +3,12 @@
 }
 
 .modal-container {
-width: 100%;
-background: #E5E5E5;
-position: absolute;
-top: 0;
-left: 0;
-z-index: 3;
+    width: 100%;
+    background: #E5E5E5;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
 } 
 
 .close-modal-btn {

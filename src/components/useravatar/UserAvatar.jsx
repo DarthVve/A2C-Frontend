@@ -6,7 +6,6 @@ import { Button } from '../';
 
 
 export default function UserAvatar({ close }) {
- 
     const [user] = useState(JSON.parse(localStorage.getItem('userInfo')))
     const [image, setImage] = useState(user.avatar);
     const fileupload = useRef();
@@ -16,7 +15,7 @@ export default function UserAvatar({ close }) {
     const hide = () => {
         console.log("closing");
         close();
-    }
+    };
 
     const handleUpdate = (e) => {
         e.preventDefault()
@@ -29,9 +28,9 @@ export default function UserAvatar({ close }) {
                 setImage(result);
             })
             .catch(() => toast.error("File upload failed!"))
-    }
+    };
 
-    const handleSubmit = async(e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
         e.stopPropagation()
 
@@ -39,7 +38,7 @@ export default function UserAvatar({ close }) {
             if (!image) {
                 await uploadPromise;
             }
-            const response = await axios.patch( `/user/update/${id}`, { avatar: image })
+            const response = await axios.patch(`/user/update/${id}`, { avatar: image })
             if (response.status === 200) {
                 toast.success("Update Successful")
                 const avatar = response.data.avatar;
@@ -47,11 +46,11 @@ export default function UserAvatar({ close }) {
                 const localUser = JSON.parse(localStorage.getItem('userInfo'))
                 localUser.avatar = avatar;
                 localStorage.setItem('userInfo', JSON.stringify(localUser));
-                }
+            }
         } catch (err) {
             toast.error("Update Failed")
         }
-    }
+    };
     
     const convertBase64 = (file) => {
         return new Promise((resolve, reject) => {
@@ -75,15 +74,15 @@ export default function UserAvatar({ close }) {
     return (
         <div className='user-modal' onClick={hide}>
             <div className='user-container' onClick={handleContainerClick}>
-            <img className='profile' onClick={() => {fileupload.current.click()}} src={image} alt="" />
-            <h1>User Profile</h1>
-            <form onSubmit={handleSubmit}>
-            <label className='user-label fileupload' htmlFor="avatar">
-                <input className='formInput form-input' name='avatar' id='avatar' ref={fileupload} type='file' onChange={handleUpdate} />
-            </label><br />
-            <Button className='saveBtn' disabled={false} type='submit'>Save</Button>
-            </form>
-        </div>
+                <img className='profile' onClick={() => {fileupload.current.click()}} src={image} alt="" />
+                <h1>{user.firstname} {user.lastname}</h1>
+                <form onSubmit={handleSubmit}>
+                    <label className='user-label fileupload' htmlFor="avatar">
+                        <input className='formInput form-input' name='avatar' id='avatar' ref={fileupload} type='file' onChange={handleUpdate} />
+                    </label><br />
+                    <Button className='saveBtn' disabled={false} type='submit'>Save</Button>
+                </form>
+            </div>
         </div>
     )
-}
+};

@@ -4,7 +4,7 @@ import showcaseImage  from "../../assets/showcaseImage.png"
 import {NavLink} from "react-router-dom"
 
 function Showcase() {
-  return (
+    return (
         <div className='showcase-container'>
             <div className='showcase-hero'>
                 <section className='showcase-pitch'>
@@ -19,7 +19,7 @@ function Showcase() {
                 </section>
             </div>
         </div>
-  )
+    )
 }
 
 export default Showcase

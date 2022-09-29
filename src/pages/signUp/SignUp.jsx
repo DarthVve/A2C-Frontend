@@ -8,6 +8,8 @@ import axios from '../../axios';
 import { LogoWithTypeface, FormInput, Button } from "../../components";
 
 const SignUp = () => {
+  const navigate = useNavigate();
+  const [valid, setValid] = useState(false);
   const [form, setForm] = useState({
     firstname: "",
     lastname: "",
@@ -17,7 +19,7 @@ const SignUp = () => {
     password: "",
     confirm_password: "",
   });
-  const [valid, setValid] = useState(false);
+
   const [validities, setValidity] = useState({
     firstname: false,
     lastname: false,
@@ -27,7 +29,6 @@ const SignUp = () => {
     password: false,
     confirm_password: false,
   });
-  const navigate = useNavigate();
 
   const validate = useCallback(() => {
     for (const key in validities) {
@@ -44,25 +45,25 @@ const SignUp = () => {
   }, [validities, validate]);
 
   const handleChange = (e) => {
-    const {name, value} = e.target;
-    setForm({...form, [name]: value})
-  }
+    const { name, value } = e.target;
+    setForm({ ...form, [name]: value })
+  };
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-        const res = await axios.post("/user/register", {...form})
-        if (res.status === 201) {
-            toast.success(res.data.msg);
-            navigate(`/verify-notice/${res.data.id}`)
-        } else {
-            toast.error(res.data.msg);
-        }
+      const res = await axios.post("/user/register", { ...form })
+      if (res.status === 201) {
+        toast.success(res.data.msg);
+        navigate(`/verify-notice/${res.data.id}`)
+      } else {
+        toast.error(res.data.msg);
+      }
     }
-    catch(err) {
-        toast.error(err.response?.data?.msg || "Something went wrong");
+    catch (err) {
+      toast.error(err.response?.data?.msg || "Something went wrong");
     }
-  }
+  };
 
   return (
     <div className="signup">
@@ -70,9 +71,7 @@ const SignUp = () => {
         <main className="signup_main">
           <LogoWithTypeface />
           <Link to="/" style={{ textDecoration: 'none' }}>
-            <button className="back_btn">
-              <IoMdArrowBack /> Go back
-            </button>
+            <button className="back_btn"><IoMdArrowBack/>Go back</button>
           </Link>
           <section className="signup_section">
             <h1 className="signup_title">Create an account</h1> 

@@ -17,13 +17,13 @@ const Button = ({ children, type = "button", handleClick, disabled = false, clas
         setDisable(false);
       }, 3000);
     }
-  }
+  };
   
   return (
-    <button className={"buttonComponent "+className} type={type} onClick={preHandleClick} disabled={disable}>
+    <button className={"buttonComponent " + className} type={type} onClick={preHandleClick} disabled={disable}>
       {children}
     </button>
-  );
-}
+  )
+};
 
 export default Button;

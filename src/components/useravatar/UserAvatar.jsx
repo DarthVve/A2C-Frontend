@@ -74,7 +74,6 @@ export default function UserAvatar({ close }) {
 
     return (
         <div className='user-modal' onClick={hide}>
-        {/* <div className='header-section'></div>  */}
             <div className='user-container' onClick={handleContainerClick}>
             <img className='profile' onClick={() => {fileupload.current.click()}} src={image} alt="" />
             <h1>User Profile</h1>

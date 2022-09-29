@@ -45,7 +45,6 @@ const renderError = (message) => <p className='warning'>{ message }</p>
 
         <div className='withdraw-container'>
         <div className="withdraw-body">
-            {/* <h3 className="withdraw_h3">Withdraw</h3> */}
             <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={async (values, { resetForm }) => {
                 await onSubmit(values)
                 resetForm()

@@ -15,8 +15,6 @@ const SellAirtime = () => {
         console.log(sellRef.current.value);
     },[])
 
-
-    //YUP STUFF STARTS
     const validationSchema = Yup.object({
         network: Yup.string().required("Please select a network").oneOf(networks),
         phone_number: Yup.string()
@@ -62,7 +60,6 @@ const SellAirtime = () => {
     ));
 
     const renderError = (message) => <p className="notification">{message}</p>;
-    //YUP STUFF ENDS
  
 
     return (

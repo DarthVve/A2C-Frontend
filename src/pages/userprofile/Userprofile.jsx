@@ -81,7 +81,6 @@ export default function Userprofile() {
         <>
             <NavBar />
             <div className='profile-container'>
-                {/* <div className='userNav'><img src={convertBase64} alt="avatar" /></div> */}
                 <div className='header-section'></div> 
                 <div action="" className='user-setting'>
                     <div className='form-title'><img src={logo}  alt="logo" /></div>  

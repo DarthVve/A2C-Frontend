@@ -6,28 +6,23 @@ import axios from "../../axios";
 
 const VerifyNotice = () => {
   const { id } = useParams();
-
   const navigate = useNavigate();
 
   const resendVerification = () => {
     if (!id) return;
 
     axios.get(`/user/verify/${id}`)
-    .then((res) => {
-      if (res.status === 200) {
-        toast.success(res.data.msg);
-      } else {
-        toast.error(res.data.msg);
-      }
-    })
-    .catch(err => {
-      toast.error(err.message);
-    })
-  }
+      .then((res) => {
+        res.status === 200 ? toast.success(res.data.msg) : toast.error(res.data.msg);
+      })
+      .catch(err => {
+        toast.error(err.message);
+      })
+  };
 
   const goToLogin = () => {
-    navigate('/login');
-  }
+    navigate('/login')
+  };
 
   return (
   <div className="verify-notice">
@@ -42,7 +37,7 @@ const VerifyNotice = () => {
           <div className="verify-notice_content">
             <h1 className="verify-notice_title">Check your mail</h1> 
             <p className="verify-notice_message">We've sent a link to your email to verify your account. This is to prevent others from signing up with your info. Please check your mail and click the link.</p>
-            <p className="verify-notice_resend-prompt">Didn't receive the email? <span onClick={resendVerification} className="resend-verification">Click to Resend link</span></p>
+            <p className="verify-notice_resend-prompt">Didn't receive the email?<span onClick={resendVerification} className="resend-verification">Click to Resend link</span></p>
             <Button handleClick={goToLogin} type="button" disabled={false}>Continue to Login</Button>
           </div>
         </section>

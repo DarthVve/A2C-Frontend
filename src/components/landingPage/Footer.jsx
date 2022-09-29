@@ -21,7 +21,7 @@ function Footer() {
             <div className='bottom'>
                 <div className='divider'></div>
                 <div className='down'>
-                    <p> &copy; 2022 Airtime2Cash, All right reserve</p>
+                    <p> &copy; 2022 Airtime2Cash, All rights reserved</p>
                     <div className='social'>
                         <img src={Instagram} alt="Instagram" />
                         <img src={Twitter} alt="Twitter" />
@@ -36,17 +36,23 @@ function Footer() {
 
 const FooterStyle = styled.div`
     width:100%;
+    max-width: 100%;
     margin-top:80px;
+    overflow:hidden;
+    display: flex;
+    align-items: flex-start;
 
     .footer-container{
         display: flex;
+        box-sizing: border-box;
         flex-direction: column;
         align-items: center;
-        padding: 40px 180px 32px 190px;
         gap: 34px;
-        height: 284px;
         max-width: 100%;
-        margin: 0 auto;
+        min-width: 100%;
+        margin: 0;
+        padding: 5%;
+        padding-top: 40px;
         background: #21334F;
         
         .logo{
@@ -59,19 +65,15 @@ const FooterStyle = styled.div`
             height: 70px;
         }
         .footer-menu{
-            min-width: max-content;
-            max-width: 100%;
             display: flex;
             flex-direction: row;
-            flex-wrap: wrap;
-            justify-content: space-between;
             align-items: center;
-            padding: 0px;
-            gap: 1em;
-            
+            gap: 40px;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+
             a{
                 text-decoration:none;
-                width: 45px;
                 height: 26px;
                 font-family: 'Inter';
                 font-style: normal;
@@ -87,13 +89,14 @@ const FooterStyle = styled.div`
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 0px;
         gap: 23px;
-        height: 48px;
-        
+        min-height: max-content;
+        padding-left: 5%;
+        padding-right: 5%;
+        padding-bottom: 30px;
         
         .divider{
-            width: 1100px;
+            width: 100%;
             height: 1px;
             background: #FFFFFF;
             opacity: 0.2;
@@ -102,10 +105,11 @@ const FooterStyle = styled.div`
             display: flex;
             flex-direction: row;
             align-items: center;
-            padding: 0px;
-            gap:735px;
-            width: 1100px;
-            height: 24px;
+            justify-content: space-between;
+            gap: 30px;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+
             p{
                 height: 24px;
                 font-style: normal;
@@ -113,7 +117,6 @@ const FooterStyle = styled.div`
                 font-size: 14px;
                 line-height: 24px;
                 color: #FFFFFF;
-                  
             }
             .social{
                 display: flex;
@@ -124,11 +127,6 @@ const FooterStyle = styled.div`
                 width: 104px;
                 height: 24px;
               
-            
-                // img{
-                //     width: 24px;
-                //     height: 24px;
-                // }
             }
         }
     }

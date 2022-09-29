@@ -1,7 +1,7 @@
 import './Transaction.scss'
 import React, { useState, useEffect } from 'react';
 import TRANS from './transactions-sample'
-import { Pagination } from '../../components'
+import { Pagination } from '../'
 
 const Transactions = () => {
     const [trans, setTrans] = useState([]);

@@ -21,3 +21,5 @@ export { default as SellAirtime } from './sellAirtime/SellAirtime';
 export { default as WithdrawBalance} from './withdrawBalance/WithdrawBalance';
 export { default as ManageAccountDetails } from './manageAccountDetails/manageAccountDetails';
 export { default as ViewAccountDetails } from './viewAccountDetails/viewAccountDetails';
+export { default as BankAccountModal } from './BankAccountModal/BankAccountModal';
+export { default as Dashboardbtn } from "./dashBoardAcctBtn/dashBoardBtnAcct";

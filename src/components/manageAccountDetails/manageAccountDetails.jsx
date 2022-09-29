@@ -1,11 +1,8 @@
-import Dashboardbtn from "../dashBoardAcctBtn/dashBoardBtnAcct";
 import "./manageAccountDetails.css";
-import { ViewAccountDetails } from "../../components";
+import { ViewAccountDetails, Dashboardbtn, BankAccountModal } from "../";
 import { useState } from "react";
 import axios from '../../axios';
 import { toast } from "react-toastify";
-import BankAccountModal from "../BankAccountModal/BankAccountModal";
-
 
 function ManageAccountDetails() {
 
@@ -24,23 +21,20 @@ function ManageAccountDetails() {
     setShowModal(false)
   }
 
-  // const handleChange = (e) => {
-  //   const {name, value} = e.target;
-  //   setDetails({ ...details, [name]: value });
-  // }
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setDetails({ ...details, [name]: value });
+  }
   
   const addAccount = async(e) => {
     e.preventDefault();
     try {
       const res = await axios.post('/account/add', {...details})
       if (res.status === 201) {
-        setShowModal(true);
-        setTimeout(() => {
-          setShowModal(false);
-        }, 2000)
-      }// else {
-      //   toast.error(res.data.msg);
-      // }
+        displayModal();
+      } else {
+        toast.error(res.data.msg);
+      }
     }
     catch(err) {
         toast.error(err.response?.data?.msg || "Something went wrong");
@@ -53,7 +47,7 @@ function ManageAccountDetails() {
 
   return (
     <>
-      {showModal && <BankAccountModal closeModal={ closeModal} />}
+    {showModal && <BankAccountModal closeModal={ closeModal} />}
     {show && (<div className="mgboardcontainer">
       <div className="mgboardheader">
         <div className="mgbordtitle">
@@ -68,8 +62,8 @@ function ManageAccountDetails() {
         <form onSubmit={addAccount}>
           <label>
             <p>Bank Name</p>
-            <select placeholder="Select Bank"  >
-            <option value="" disabled selected>Select Bank</option>
+            <select placeholder="Select Bank" name="bank" defaultValue='' onInput={handleChange}>
+              <option value="" disabled>Select Bank</option>
               <option value="Access Bank Plc">Access Bank Plc</option>
               <option value="Citibank Nigeria Limited">Citibank Nigeria Limited</option>
               <option value="Ecobank Nigeria Plc">Ecobank Nigeria Plc</option>
@@ -96,20 +90,18 @@ function ManageAccountDetails() {
           </label>
           <label>
             <p>Account Name</p>
-            <input placeholder="Account Name"  name="name" ></input>
+            <input placeholder="Account Name" onChange={handleChange} name="name" ></input>
           </label>
           <label>
             <p>Account Number</p>
-            <input placeholder="Account Number" name="number" minLength={10} maxLength={10} /> 
+            <input placeholder="Account Number" name="number" onChange={handleChange} minLength={10} maxLength={10} /> 
           </label>
-            <Dashboardbtn value="Add Bank" displayModal={ displayModal} />
+            <Dashboardbtn value="Add Bank"/>
         </form>
       </div>
     </div>)}
 
-   {!show && (<div>
-      <ViewAccountDetails makeTrue={handleTrue}/>
-    </div>)}
+    {!show && (<div><ViewAccountDetails makeTrue={handleTrue}/></div>)}
     </>
   );
 }

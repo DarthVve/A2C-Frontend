@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import styled from 'styled-components'
 
 function DashboardButton() {
-    const [balance] = useState("21,350.00")
+    const [balance] = useState("21,350.00");
     
     return (
         <DashboardButtonStyle>
@@ -15,7 +15,7 @@ function DashboardButton() {
             </div>
         </DashboardButtonStyle>
     )
-}
+};
 
 const DashboardButtonStyle = styled.div`
     max-width: 553px;
@@ -117,4 +117,4 @@ const DashboardButtonStyle = styled.div`
     
 `
 
-export default DashboardButton
+export default DashboardButton;

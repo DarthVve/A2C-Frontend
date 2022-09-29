@@ -9,12 +9,12 @@
     opacity: 0.75;
     
 }
+
 .mgboardbtn:hover{
     opacity: 1;
-    
 }
-.mgboardbtn :active{
-animation-timing-function: ease-out;
-animation-duration: 300ms;
 
+.mgboardbtn :active{
+    animation-timing-function: ease-out;
+    animation-duration: 300ms;
 }

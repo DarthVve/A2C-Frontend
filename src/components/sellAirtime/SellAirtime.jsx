@@ -9,7 +9,6 @@ const SellAirtime = () => {
     const networks = ["airtel", "mtn", "etisalat", "glo"];
     const sellRef = useRef('');
 
-
     const formatter = new Intl.NumberFormat('en-NG', {
         style: 'currency',
         currency: 'NGN',
@@ -17,7 +16,6 @@ const SellAirtime = () => {
         maximumFractionDigits: 0, 
       });
       
-    //YUP STUFF STARTS
     const validationSchema = Yup.object({
         network: 
             Yup.string().required("Please select a network").oneOf(networks),
@@ -68,7 +66,6 @@ const SellAirtime = () => {
     ));
 
     const renderError = (message) => <p className="notification">{message}</p>;
-    //YUP STUFF ENDS
 
     return (
             <div className="dashboard_frame">

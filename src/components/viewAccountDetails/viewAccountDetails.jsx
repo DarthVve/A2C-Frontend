@@ -1,18 +1,42 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './viewAccountDetails.css'
 import { Dashboardbtn } from '../'
-import { data } from './ViewAccountDetailJSON'
+import axios from '../../axios'
+import { toast } from 'react-toastify'
 
 function ViewAccountDetails({makeTrue}) {
-  const [accounts, setAccounts] = useState(data);
+  const [accounts, setAccounts] = useState([])
 
-  const removeItem = (id) => {
-    setAccounts(prev =>
-      prev.filter(account => {
-        return account.id !== id
-      })
-    )
-  };
+  const getAccounts = async () => {
+    try {
+      const res = await axios.get('/account')
+      if (res.status === 200) {
+        setAccounts(res.data.accounts)
+      }
+    } catch (err) {
+      toast.error(err.response?.data?.msg || "Something went wrong");
+    }
+  }
+
+  useEffect(() => {
+    getAccounts()
+  }, [])
+
+  const removeItem = async(id) => {
+    try {
+      const res = await axios.delete(`/account/delete/${id}`)
+      if (res.status === 200) {
+        toast.success("Account deleted successfully")
+        setAccounts(prev =>
+          prev.filter(account => {
+            return account.id !== id
+          })
+        );
+      }
+    } catch (err) {
+      toast.error(err.response?.data?.msg || "Something went wrong");
+    }
+  }
 
 return (
     <div className="mgboardcontainer">
@@ -29,14 +53,15 @@ return (
         return (
           <div className='veiwAccContainer' key={item.id}>
             <div className="veiwAccText">
-                <p>{item.bankname}</p>
-                <p>{item.accountnumber}</p>
-                <p>{item.accountname}</p>
+                <p>{item.bank}</p>
+                <p>{item.number}</p>
+                <p>{item.name}</p>
             </div>
             <div className="viewAccBtn">
                 <button onClick={removeItem.bind(null, item.id)}>Remove</button>
             </div>
-          </div>)  
+          </div>
+        )  
       })}
     
       <div onClick = {makeTrue}><Dashboardbtn value="Add New Bank"/></div>

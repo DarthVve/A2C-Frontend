@@ -116,7 +116,6 @@ const DashboardStyle = styled.div`
     align-items: center;
     padding: 1em;
     box-sizing: border-box;
-    // z-index: -11;
   }
 
   .inner-container{

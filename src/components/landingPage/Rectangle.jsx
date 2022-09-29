@@ -2,8 +2,10 @@ import React from 'react'
 import iphone from '../../assets/iphone.png'
 import Frame from '../../assets/Frame.png'
 import './rectangle.scss';
+import { useNavigate } from 'react-router-dom';
 
 function Rectangle() {
+    const navigate = useNavigate();  
     return (
         <div className='rect-container'>
             <div className='rect-colors'>
@@ -14,7 +16,7 @@ function Rectangle() {
             <div className='rect-text'>
                 <h1 className='rect-title'>The best Platform for your convenient airtime exchange</h1>
                 <p className='rect-description'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusantium assumenda totam consequatur vitae perferendis quidem!</p>
-                <button className='rect-cta'>Get Started</button>
+                <button className='rect-cta' onClick={() => { navigate('/register')}}>Get Started</button>
             </div>
             <div className='rect-graphic'>
                 <div className='mock-frame'>

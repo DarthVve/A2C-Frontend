@@ -16,7 +16,7 @@ export default function WithdrawBalance() {
     const validationSchema = Yup.object({
         account: Yup.string().required('Please Select An Account').oneOf(accounts),
         account_Name: Yup.string().required('Please Enter Account Name'),
-        account_Number: Yup.string().min(10).max(10).required('Please Enter An Account Number'),
+        account_Number: Yup.string().min(10, 'Account number must be 10 digits').max(10,'Account number must be 10 digits').required('Please Enter An Account Number'),
         amount: Yup.string().required('Amount is required'),
         password: Yup.string().required('Password is required')
     });

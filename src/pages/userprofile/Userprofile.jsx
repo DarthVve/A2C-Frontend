@@ -11,9 +11,9 @@ export default function Userprofile() {
     const [image, setImage] = useState();
     const fileupload = useRef();
     const { id } = useParams();
+    const navigate = useNavigate();
     let uploadPromise;
 
-    const navigate = useNavigate()
 
     const handleUpdate = (e) => {
         e.preventDefault()
@@ -32,14 +32,14 @@ export default function Userprofile() {
                 })
                 .catch(() => toast.error("File upload failed!"))
         }
-    }
+    };
 
-    const handleSubmit = async(e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
         e.stopPropagation()
         try {
             if (user.avatar) {
-                await uploadPromise; 
+                await uploadPromise;
             }
             const response = await axios.patch(`/user/update/${id}`, {
                 firstname: user.firstname,
@@ -47,7 +47,7 @@ export default function Userprofile() {
                 phonenumber: user.phonenumber,
                 avatar: image
             })
-            const { firstname, lastname, phonenumber, avatar} = response.data;
+            const { firstname, lastname, phonenumber, avatar } = response.data;
             let localUser = JSON.parse(localStorage.getItem('userInfo'))
             localUser = { ...localUser, firstname, lastname, phonenumber, avatar };
             console.log("Local user: ", localUser)
@@ -56,24 +56,20 @@ export default function Userprofile() {
             if (response.status === 200) {
                 toast.success("Update Successful")
                 navigate(`/dashboard/${id}`)
-                }
+            }
         } catch (err) {
             toast.error("Update Failed")
         }
-    }
+    };
     
     const convertBase64 = (file) => {
         return new Promise((resolve, reject) => {
             const fileReader = new FileReader();
             fileReader.readAsDataURL(file);
 
-            fileReader.onload = () => {
-                resolve(fileReader.result);
-            };
+            fileReader.onload = () => { resolve(fileReader.result) };
 
-            fileReader.onerror = (error) => {
-                reject(error);
-            };
+            fileReader.onerror = (error) => { reject(error) };
         });
     };
 
@@ -81,7 +77,6 @@ export default function Userprofile() {
         <>
             <NavBar />
             <div className='profile-container'>
-                {/* <div className='userNav'><img src={convertBase64} alt="avatar" /></div> */}
                 <div className='header-section'></div> 
                 <div action="" className='user-setting'>
                     <div className='form-title'><img src={logo}  alt="logo" /></div>  
@@ -109,4 +104,4 @@ export default function Userprofile() {
             </div>
         </>
     )
-}
+};

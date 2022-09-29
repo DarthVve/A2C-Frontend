@@ -1,21 +1,20 @@
-import Dashboardbtn from "../dashBoardAcctBtn/dashBoardBtnAcct";
 import "./manageAccountDetails.css";
-import { ViewAccountDetails } from "../../components";
+import { ViewAccountDetails, Dashboardbtn, BankAccountModal } from "../";
 import { useState } from "react";
-import axios from '../../axios';
-import { toast } from "react-toastify";
-import BankAccountModal from "../BankAccountModal/BankAccountModal";
+// import axios from '../../axios';
+// import { toast } from "react-toastify";
+
 
 
 function ManageAccountDetails() {
 
   const [show, setShow] = useState(true)
   const [showModal, setShowModal] = useState(false);
-  const [details] = useState({
-    name: '',
-    bank: '',
-    number: ''
-  });
+  // const [details] = useState({
+  //   name: '',
+  //   bank: '',
+  //   number: ''
+  // });
 
   const displayModal = () => {
     setShowModal(true)
@@ -23,28 +22,23 @@ function ManageAccountDetails() {
   const closeModal = () => {
     setShowModal(false)
   }
-
-  // const handleChange = (e) => {
-  //   const {name, value} = e.target;
-  //   setDetails({ ...details, [name]: value });
-  // }
   
   const addAccount = async(e) => {
     e.preventDefault();
-    try {
-      const res = await axios.post('/account/add', {...details})
-      if (res.status === 201) {
-        setShowModal(true);
-        setTimeout(() => {
-          setShowModal(false);
-        }, 2000)
-      }// else {
-      //   toast.error(res.data.msg);
-      // }
-    }
-    catch(err) {
-        toast.error(err.response?.data?.msg || "Something went wrong");
-    }
+    // try {
+    //   const res = await axios.post('/account/add', {...details})
+    //   if (res.status === 201) {
+    //     setShowModal(true);
+    //     setTimeout(() => {
+    //       setShowModal(false);
+    //     }, 2000)
+    //   } else {
+    //       toast.error(res.data.msg);
+    //   }
+    // }
+    // catch(err) {
+    //     toast.error(err.response?.data?.msg || "Something went wrong");
+    // }
   }
 
   const handleTrue = () =>{
@@ -102,14 +96,12 @@ function ManageAccountDetails() {
             <p>Account Number</p>
             <input placeholder="Account Number" name="number" minLength={10} maxLength={10} /> 
           </label>
-            <Dashboardbtn value="Add Bank" displayModal={ displayModal} />
+          <Dashboardbtn value="Add Bank" displayModal={displayModal} />
         </form>
       </div>
     </div>)}
 
-   {!show && (<div>
-      <ViewAccountDetails makeTrue={handleTrue}/>
-    </div>)}
+    {!show && (<div><ViewAccountDetails makeTrue={handleTrue}/></div>)}
     </>
   );
 }

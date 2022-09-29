@@ -26,7 +26,7 @@ function Reviews() {
                             </p>
                         </div>
                         <div className='review-box'>
-                        <h1 className='review-title'>Adekola Johnson</h1>
+                            <h1 className='review-title'>Adekola Johnson</h1>
                             <p className='review-text'>
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. 
                                 Cumque aliquam magnam explicabo consectetur adipisci, 
@@ -34,7 +34,7 @@ function Reviews() {
                             </p>
                         </div>
                         <div className='review-box'>
-                        <h1 className='review-title'>Adekola Johnson</h1>
+                            <h1 className='review-title'>Adekola Johnson</h1>
                             <p className='review-text'>
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. 
                                 Cumque aliquam magnam explicabo consectetur adipisci, 

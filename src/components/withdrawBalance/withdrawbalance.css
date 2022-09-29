@@ -1,4 +1,3 @@
-
 .warning {
     background-color: transparent;
     width: max-content;
@@ -7,6 +6,7 @@
     animation: shake 0.5s ease-in-out 0s 5;
     box-shadow: 0 0.1em 0.2em 0em red;
 }
+
 @keyframes shake {
     0% {
         margin-left: 0rem;
@@ -33,7 +33,6 @@
     line-height: 17px;
     width: 66px;
     height: 17px;
-
 }
 
 .select_account_label {
@@ -86,11 +85,11 @@
     background: linear-gradient(92.1deg, #DE3D6D 55.67%, #F5844C 101.51%);
     border: none;
     color: #fff;
+    font-weight: 600;
 }
 
 
 @media screen and (max-width: 540px) {
-
     .withdraw_balance_input {
         box-sizing: border-box;
         padding: 15px;
@@ -109,7 +108,6 @@
         font-size: 14px;
         line-height: 17px;
         color: #012A4A;
-        /* margin: 5px; */
     }
 
     .select {
@@ -145,5 +143,4 @@
         border: none;
         color: #fff;
     }
-
 }

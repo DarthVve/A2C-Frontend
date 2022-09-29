@@ -2,8 +2,6 @@ import React,{useState} from 'react'
 import styled from "styled-components"
 import { NavBar, DashboardButton, SellAirtime, WithdrawBalance, ManageAccountDetails, Transactions } from '../../components';
 import { FiChevronDown } from 'react-icons/fi';
-import './Dashboard.css'
-
 
 
 function Dashboard() {
@@ -12,64 +10,58 @@ function Dashboard() {
   const [page,setPage] = useState("sellAirtime");
   const [isMobile, setIsMobile] = useState(false)
 
-  const handleSellAirtime = ()=>{
+  const handleSellAirtime = () => {
     setTitle("Dashboard");
-    const newArr = clicked.map((val)=>{
-      return {...val,sell:true,widthraw:false,account:false,history:false}
+    const newArr = clicked.map((val) => {
+      return { ...val, sell: true, widthraw: false, account: false, history: false }
     })
     setPage("sellAirtime")
-    setClicked(newArr)   
+    setClicked(newArr)
   };
-  const handleWithdraw =()=>{
+
+  const handleWithdraw = () => {
     setTitle("Dashboard")
-    const newArr = clicked.map((val)=>{
-      return {...val,sell:false,widthraw:true,account:false,history:false}
+    const newArr = clicked.map((val) => {
+      return { ...val, sell: false, widthraw: true, account: false, history: false }
     })
     setPage("withdraw")
-    setClicked(newArr)   
+    setClicked(newArr)
+  };
 
-  }
-  const handleAccount = () =>{
+  const handleAccount = () => {
     setTitle("Manage Bank Accounts")
-
-    const newArr = clicked.map((val)=>{
-      return {...val,sell:false,widthraw:false,account:true,history:false}
+    const newArr = clicked.map((val) => {
+      return { ...val, sell: false, widthraw: false, account: true, history: false }
     })
     setPage("account")
-    setClicked(newArr)   
-  }
-    
+    setClicked(newArr)
+  };
 
-  const handleHistroy = () =>{
+  const handleHistroy = () => {
     setTitle("Transactions")
-    const newArr = clicked.map((val)=>{
-      return {...val,sell:false,widthraw:false,account:false,history:true}
+    const newArr = clicked.map((val) => {
+      return { ...val, sell: false, widthraw: false, account: false, history: true }
     })
     setPage("history")
-    setClicked(newArr)   
-  }
+    setClicked(newArr)
+  };
   
-  const renderPage = ()=>{
-    if(page === "sellAirtime") return <SellAirtime/>
-    if(page === "withdraw") return <WithdrawBalance/>
-    if(page === "account") return <ManageAccountDetails/>
-    if(page === "history") return <Transactions/>
+  const renderPage = () => {
+    if (page === "sellAirtime") return <SellAirtime/>
+    if (page === "withdraw") return <WithdrawBalance/>
+    if (page === "account") return <ManageAccountDetails/>
+    if (page === "history") return <Transactions/>
+  };
 
-  }
   return (
     <DashboardStyle>  
       <NavBar dashboard/>
-      
-      <div className='dashboard-bar'>
-
-      </div>
+      <div className='dashboard-bar'></div>
       <div className='container'>
           <h1 className='dashboard-title'>{title}</h1>
 
           <div className='inner-container'>
-          
               <div className='button-container'>
-                  
                   {(page === "sellAirtime" || page === "withdraw") &&
                     <DashboardButton /> 
                   }
@@ -78,21 +70,20 @@ function Dashboard() {
                       <p
                       className={`nav-link sell ${clicked[0]["sell"] && "selected"}`}   
                       onClick={handleSellAirtime}  
-                      >Sell airtime </p>
-                      <p className={`nav-link withdraw ${clicked[0]["widthraw"] && "selected"}`} onClick={handleWithdraw} > Withdraw balance </p>
-                      <p className={`nav-link account ${clicked[0]["account"] && "selected"}`} onClick={handleAccount}> Manage bank account </p>
-                      <p className={`nav-link history ${clicked[0]["history"] && "selected"}`} onClick={handleHistroy} > Transaction history </p>
+                      >Sell airtim </p>
+                      <p className={`nav-link withdraw ${clicked[0]["widthraw"] && "selected"}`} onClick={handleWithdraw}>Withdraw balance</p>
+                      <p className={`nav-link account ${clicked[0]["account"] && "selected"}`} onClick={handleAccount}>Manage bank account</p>
+                      <p className={`nav-link history ${clicked[0]["history"] && "selected"}`} onClick={handleHistroy}>Transaction history</p>
                   </div>
           
                   <FiChevronDown className='icon' onClick={()=>setIsMobile(!isMobile)} />
               </div>
-              
               {renderPage()}
           </div>
       </div>
     </DashboardStyle>
   )
-}
+};
 
 const DashboardStyle = styled.div`
   max-width: 1440px;
@@ -131,6 +122,7 @@ const DashboardStyle = styled.div`
     box-sizing: border-box;
     // z-index: -11;
   }
+
   .inner-container{
     max-width: 559px;
     width:100%;
@@ -159,7 +151,6 @@ const DashboardStyle = styled.div`
     width:100%;
     margin-top:2em;
     
-  
     .nav-link{
       font-family: 'Inter';
       font-style: normal;
@@ -170,30 +161,33 @@ const DashboardStyle = styled.div`
       text-decoration:none;
       max-width:25%;
       cursor: pointer;
-    
     }
+    
     .nav-link::hover{
       cursor:pointer;
-
     }
+
     .selected{
       border-bottom:2px solid #DE3D6D;
-      
     }
 
     .sell{
       flex: 0 0 74px;
     }
+
     .withdraw{
       flex: 1 1 127px;
     }
+
     .account{
       flex: 1 1 150px;
     }
+
     .history{
       flex: 1 1 127px;
     }
   }
+
   .bank-account-bar{
     max-width: 553px;
     width:100%;
@@ -202,6 +196,7 @@ const DashboardStyle = styled.div`
     margin-top:2rem;
     justify-content:space-between;
   }
+
   .bank-account-h1{
     font-family: 'Inter';
     font-style: normal;
@@ -210,6 +205,7 @@ const DashboardStyle = styled.div`
     line-height: 29px;
     color: #012A4A;
   }
+
   .bank-account-p{
     font-family: 'Inter';
     font-style: normal;
@@ -218,8 +214,8 @@ const DashboardStyle = styled.div`
     line-height: 17px;
     color: #DE3D6D;
   }
+
   .icon { 
-    
     width: 40px;
     height: 40px;
     position: absolute;
@@ -229,17 +225,20 @@ const DashboardStyle = styled.div`
     z-index:3;
     color:black;
   }
-.icon:hover{
+
+  .icon:hover{
     color: red;
   }
-    
-@media (max-width:1066px){
+
+  @media (max-width:1066px){
     .dashboard-navigation{
       display:none;
     }
+
     .icon{
       display:block;
     }
+
     .dashbord-mobil-nav{
       position:absolute;
       display:flex;
@@ -255,7 +254,6 @@ const DashboardStyle = styled.div`
       cursor:pointer;
       z-index:2;
     }
-}
-
+  }
 `
 export default Dashboard

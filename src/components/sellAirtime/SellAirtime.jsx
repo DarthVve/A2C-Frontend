@@ -1,39 +1,23 @@
-import React,{useRef} from "react";
+import React, { useRef } from "react";
 import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { toast } from "react-toastify";
-
-
 import "./SellAirtime.css";
-import { useEffect } from "react";
+
 
 const SellAirtime = () => {
     const networks = ["airtel", "mtn", "etisalat", "glo"];
-
     const sellRef = useRef('');
-    useEffect(()=>{
-        console.log(sellRef.current.value);
-    },[])
 
 
     //YUP STUFF STARTS
     const validationSchema = Yup.object({
         network: Yup.string().required("Please select a network").oneOf(networks),
-        phone_number: Yup.string()
-            .min(11)
-            .max(11)
-            .required("Phone number can't be empty"),
-        amount_to_sell: Yup.number()
-            .min(100)
-            .max(50000)
-            .required("min-amount = N100, max-amount = N50000"),
-        amount_to_receive: Yup.number()
-            .min(100)
-            .max(50000),
+        phone_number: Yup.string().min(11).max(11).required("Phone number can't be empty"),
+        amount_to_sell: Yup.number().min(100).max(50000).required("min-amount = N100, max-amount = N50000"),
+        amount_to_receive: Yup.number().min(100).max(50000),
         ussd: Yup.string(),
-        destination_phone_number: Yup.string()
-            .min(11)
-            .max(11).required("Phone number can't be empty"),
+        destination_phone_number: Yup.string().min(11).max(11).required("Phone number can't be empty"),
     });
 
     const initialValues = {
@@ -46,9 +30,8 @@ const SellAirtime = () => {
     };
 
     const onSubmit = (values) => {
-        console.log("DETAILS", values);
         toast.success(
-            `Transaction Details:- N${values.amount_to_sell} sent to ${values.destination_phone_number}`,
+            `Transaction Details: N${values.amount_to_sell} sent to ${values.destination_phone_number}`,
             {
                 position: toast.POSITION.TOP_CENTER,
             }
@@ -63,29 +46,22 @@ const SellAirtime = () => {
 
     const renderError = (message) => <p className="notification">{message}</p>;
     //YUP STUFF ENDS
- 
 
     return (
             <div className="dashboard_frame">
                 <Formik
                     initialValues={initialValues}
                     validationSchema={validationSchema}
-                    onSubmit={async (values, { resetForm }) => {
-                        await onSubmit(values);
+                    onSubmit={(values, { resetForm }) => {
+                        onSubmit(values);
                         resetForm();
                     }}
                 >
-                   
                     <Form className="form_container">
-                        <div
-                         
-                            style={{
-                                width: "100%",
-                            }}
-                        >
-                             <h3 className="selected_title">sell airtime</h3>
-                            {/* NETWORK */}
+                        <div style={{width: "100%"}}>
+                            <h3 className="selected_title">sell airtime</h3>
 
+                            {/* NETWORK */}
                             <div className="form_group">
                                 <div className="label_container">
                                     <label className="form_label" htmlFor="network">
@@ -112,7 +88,6 @@ const SellAirtime = () => {
                             </div>
 
                             {/* PHONE NUMBER */}
-
                             <div className="form_group">
                                 <div className="label_container">
                                     <label className="form_label" htmlFor="phone_number">
@@ -133,7 +108,6 @@ const SellAirtime = () => {
                             </div>
 
                             {/* AMOUNT TO SELL */}
-                            
                             <div className="form_group">
                                 <div className="label_container">
                                     <label className="form_label" htmlFor="amount_to_sell">
@@ -168,7 +142,6 @@ const SellAirtime = () => {
                                         placeholder="*780*amount*09088765433*5000#"
                                         id="ussd"
                                         name="ussd"
-                                       
                                     />
                                     <ErrorMessage name="ussd" render={renderError} />
                                 </div>
@@ -219,14 +192,12 @@ const SellAirtime = () => {
                                     />
                                 </div>
                             </div>
-
                             <button type="submit" className="sell_btn" name="sellBtn">
                                 sell airtime
                             </button>
                         </div>
                     </Form>
                 </Formik>
-
             </div>
     );
 };

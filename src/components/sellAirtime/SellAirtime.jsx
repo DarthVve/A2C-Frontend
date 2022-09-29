@@ -10,15 +10,38 @@ const SellAirtime = () => {
     const sellRef = useRef('');
 
 
+    const formatter = new Intl.NumberFormat('en-NG', {
+        style: 'currency',
+        currency: 'NGN',
+        minimumFractionDigits: 0, 
+        maximumFractionDigits: 0, 
+      });
+      
     //YUP STUFF STARTS
     const validationSchema = Yup.object({
-        network: Yup.string().required("Please select a network").oneOf(networks),
-        phone_number: Yup.string().min(11).max(11).required("Phone number can't be empty"),
-        amount_to_sell: Yup.number().min(100).max(50000).required("min-amount = N100, max-amount = N50000"),
-        amount_to_receive: Yup.number().min(100).max(50000),
-        ussd: Yup.string(),
-        destination_phone_number: Yup.string().min(11).max(11).required("Phone number can't be empty"),
+        network: 
+            Yup.string().required("Please select a network").oneOf(networks),
+        phone_number: 
+            Yup.string().min(11, "Phone number can't be less than 11 characters")
+            .max(11, "Phone number can't be more than 11 characters")
+            .required("Phone number can't be empty"),
+        amount_to_sell: 
+            Yup.number()
+            .min(50, `Minimum amount is ${formatter.format(50)}`)
+            .max(5000,`exceeded maximum amount(${formatter.format(5000)})`)
+            .required(`min-amount = ${formatter.format(50)}, max-amount = ${formatter.format(5000)}`),
+        amount_to_receive: 
+            Yup.number()
+            .min(50, `Minimum amount is ${formatter.format(50)}`)
+            .max(5000, `exceeded maximum amount(${formatter.format(5000)})`),
+        ussd: 
+            Yup.string(),
+        destination_phone_number: 
+            Yup.string()
+            .min(11, "Phone number can't be less than 11 characters")
+            .max(11, "Phone number can't be more than 11 characters")
     });
+
 
     const initialValues = {
         network: "",
@@ -142,6 +165,7 @@ const SellAirtime = () => {
                                         placeholder="*780*amount*09088765433*5000#"
                                         id="ussd"
                                         name="ussd"
+                                        disabled
                                     />
                                     <ErrorMessage name="ussd" render={renderError} />
                                 </div>
@@ -161,6 +185,7 @@ const SellAirtime = () => {
                                         placeholder="NGN"
                                         id="amount_to_receive"
                                         name="amount_to_receive"
+                                        disabled
                                         
                                     />
                                     <ErrorMessage name="amount_to_receive" render={renderError} />
@@ -185,6 +210,7 @@ const SellAirtime = () => {
                                         id="destination_phone_number"
                                         name="destination_phone_number"
                                         data-testid="recipient-number-input"
+                                        disabled
                                     />
                                     <ErrorMessage
                                         name="destination_phone_number"

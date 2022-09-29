@@ -104,7 +104,6 @@ const DashboardStyle = styled.div`
   }
 
   .container{
-
     position:absolute;
     top:11em;
     max-width: 90%;

@@ -35,6 +35,7 @@
 }
 
 .mgboardform input {
+    box-sizing: border-box;
     width: 100%;
     height: 48px;
     padding-left: 1rem;

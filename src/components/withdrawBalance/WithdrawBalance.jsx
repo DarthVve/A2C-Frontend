@@ -41,67 +41,68 @@ export default function WithdrawBalance() {
 
     return (
         <div className='withdraw-container'>
-        <div className="withdraw-body">
-            <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={(values, { resetForm }) => {
-                onSubmit(values)
-                resetForm()
-            }}>
-            <Form className='user-form'>
-                <label className='select_account_label'> Select Account</label>
-                <Field
-                    name='account'
-                    as='select'
-                    className='select'
-                    type='text'
-                    placeholder='Select'
-                    id='dropdown'       
-                >
-                <option className='select_account_dropdown' value={''}>Select</option>
-                    {networkOPtions}
-                </Field>
+            <div className="withdraw-body">
+                <h3 className="withdraw_h3">Withdraw</h3>
+                <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={(values, { resetForm }) => {
+                    onSubmit(values)
+                    resetForm()
+                }}>
+                    <Form className='user-form'>
+                        <label className='select_account_label'> Select Account</label>
+                        <Field
+                            name='account'
+                            as='select'
+                            className='select'
+                            type='text'
+                            placeholder='Select'
+                            id='dropdown'       
+                        >
+                        <option className='select_account_dropdown' value={''}>Select</option>
+                            {networkOPtions}
+                        </Field>
 
-                <ErrorMessage name='account' render={renderError}/>
+                        <ErrorMessage name='account' render={renderError}/>
 
-                <label className='select_account_label'>Account Name</label>
-                <Field
-                    type='text'
-                    placeholder='Babtunde Ola'
-                    className='withdraw_balance_input'
-                    name='account_Name'
-                />
-                <ErrorMessage name='account_Name' render={renderError}/>
+                        <label className='select_account_label'>Account Name</label>
+                        <Field
+                            type='text'
+                            placeholder='Babtunde Ola'
+                            className='withdraw_balance_input'
+                            name='account_Name'
+                        />
+                        <ErrorMessage name='account_Name' render={renderError}/>
 
-                <label className='select_account_label'>Account Number</label>
-                <Field
-                    type='text'
-                    placeholder='0134567890'
-                    className='withdraw_balance_input'
-                    name='account_Number'
-                />
-                <ErrorMessage name='account_Number' render={renderError} />
-                
-                <label className='select_account_label'>Amount</label>
-                <Field
-                    type='text'
-                    placeholder='NGN'
-                    className='withdraw_balance_input'
-                    name='amount'
-                />
-                <ErrorMessage name='amount' render={renderError} />
-                
-                <label className='select_account_label'>Password</label>
-                <Field
-                    type='password'
-                    placeholder='Password'
-                    className='withdraw_balance_input'
-                    name='password'
-                />
-                <ErrorMessage name='password' render={renderError}/>
-                <button className='withdrawBtn' onClick>Withdraw</button> 
-            </Form>
-            </Formik>
+                        <label className='select_account_label'>Account Number</label>
+                        <Field
+                            type='text'
+                            placeholder='0134567890'
+                            className='withdraw_balance_input'
+                            name='account_Number'
+                        />
+                        <ErrorMessage name='account_Number' render={renderError} />
+                        
+                        <label className='select_account_label'>Amount</label>
+                        <Field
+                            type='text'
+                            placeholder='NGN'
+                            className='withdraw_balance_input'
+                            name='amount'
+                        />
+                        <ErrorMessage name='amount' render={renderError} />
+                        
+                        <label className='select_account_label'>Password</label>
+                        <Field
+                            type='password'
+                            placeholder='Password'
+                            className='withdraw_balance_input'
+                            name='password'
+                        />
+                        <ErrorMessage name='password' render={renderError}/>
+                        <button className='withdrawBtn' onClick>Withdraw</button> 
+                    </Form>
+                </Formik>
+            </div>
         </div>
-    </div>
     
     )
 };

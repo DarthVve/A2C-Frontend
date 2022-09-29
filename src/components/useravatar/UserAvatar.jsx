@@ -75,7 +75,7 @@ export default function UserAvatar({ close }) {
         <div className='user-modal' onClick={hide}>
             <div className='user-container' onClick={handleContainerClick}>
                 <img className='profile' onClick={() => {fileupload.current.click()}} src={image} alt="" />
-                <h1>User Profile</h1>
+                <h1>{user.firstname} {user.lastname}</h1>
                 <form onSubmit={handleSubmit}>
                     <label className='user-label fileupload' htmlFor="avatar">
                         <input className='formInput form-input' name='avatar' id='avatar' ref={fileupload} type='file' onChange={handleUpdate} />

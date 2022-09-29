@@ -126,6 +126,7 @@
     background: linear-gradient(92.1deg, #DE3D6D 55.67%, #F5844C 101.51%);
     color: #FFFFFF;
     border: none;
+    border-radius: 4px;
 }
 
 input[type="file"] {

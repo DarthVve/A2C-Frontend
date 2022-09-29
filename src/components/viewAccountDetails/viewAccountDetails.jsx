@@ -1,20 +1,18 @@
 import React, { useState } from 'react'
 import './viewAccountDetails.css'
-import Dashboardbtn from '../dashBoardAcctBtn/dashBoardBtnAcct'
-import {data} from './ViewAccountDetailJSON'
+import { Dashboardbtn } from '../'
+import { data } from './ViewAccountDetailJSON'
 
 function ViewAccountDetails({makeTrue}) {
-  const [accounts, setAccounts] = useState(data)
+  const [accounts, setAccounts] = useState(data);
 
-
-
-  const removeItem = (id) =>{
+  const removeItem = (id) => {
     setAccounts(prev =>
       prev.filter(account => {
         return account.id !== id
-      }),
-    );
-  }
+      })
+    )
+  };
 
 return (
     <div className="mgboardcontainer">
@@ -28,27 +26,22 @@ return (
       </div>
       
       {accounts.map(item=>{
-        return  (   <div className='veiwAccContainer' key={item.id}>
-        <div className="veiwAccText">
-            <p>{item.bankname}</p>
-            <p>{item.accountnumber}</p>
-            <p>{item.accountname}</p>
-        </div>
-        <div className="viewAccBtn">
-            <button onClick={removeItem.bind(null, item.id)}>Remove</button>
-        </div>
-            </div>)  
-
+        return (
+          <div className='veiwAccContainer' key={item.id}>
+            <div className="veiwAccText">
+                <p>{item.bankname}</p>
+                <p>{item.accountnumber}</p>
+                <p>{item.accountname}</p>
+            </div>
+            <div className="viewAccBtn">
+                <button onClick={removeItem.bind(null, item.id)}>Remove</button>
+            </div>
+          </div>)  
       })}
-
-
-
     
-      <div onClick = {makeTrue}>
-        <Dashboardbtn value="Add New Bank"/>
-      </div>
+      <div onClick = {makeTrue}><Dashboardbtn value="Add New Bank"/></div>
     </div>
   )
-}
+};
 
-export default ViewAccountDetails
+export default ViewAccountDetails;

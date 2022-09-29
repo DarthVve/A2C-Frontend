@@ -125,10 +125,10 @@ const FooterStyle = styled.div`
                 height: 24px;
               
             
-                img{
-                    width: 24px;
-                    height: 24px;
-                }
+                // img{
+                //     width: 24px;
+                //     height: 24px;
+                // }
             }
         }
     }

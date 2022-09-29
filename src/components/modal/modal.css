@@ -3,7 +3,12 @@
 }
 
 .modal-container {
-background: #E5E5E5;
+    width: 100%;
+    background: #E5E5E5;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
 } 
 
 .close-modal-btn {
@@ -17,7 +22,3 @@ background: #E5E5E5;
     color: rgba(222, 61, 109, 0.1);
     cursor: pointer;
 } 
-
-/* .user-modal{
-    background: #E5E5E5;
-} */

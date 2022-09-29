@@ -13,6 +13,6 @@ function Landing() {
       <Footer />
     </div>
   )
-}
+};
 
-export default Landing
+export default Landing;

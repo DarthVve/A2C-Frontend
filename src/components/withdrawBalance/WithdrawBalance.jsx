@@ -1,30 +1,45 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import * as Yup from 'yup';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import './withdrawbalance.css';
 import { toast } from 'react-toastify';
+import axios from '../../axios';
 
 export default function WithdrawBalance() {
-    const accounts = [
-        'Current',
-        'Corporate',
-        'Domiciliary',
-        'Fixed Deposit',
-        'Non Resident'
-    ]
+    const [accounts, setAccounts] = useState([])
+    const [selectedAccount, setSelectedAccount] = useState({
+        id: '',
+        bank: '',
+        name: '',
+        number: ''
+    })
+
+    const getAccounts = async () => {
+        try {
+            const res = await axios.get('/account')
+            if (res.status === 200) {
+                setAccounts(res.data.accounts)
+            }
+        } catch (err) {
+            toast.error(err.response?.data?.msg || "Something went wrong");
+        }
+    }
+
+    useEffect(() => {
+        getAccounts()
+    }, [])
+
+    const fillAccountDetails = (e) => {
+        const account = accounts.find(account => account.id === e.target.value)
+        setSelectedAccount(account)
+    }
 
     const validationSchema = Yup.object({
-        account: Yup.string().required('Please Select An Account').oneOf(accounts),
-        account_Name: Yup.string().required('Please Enter Account Name'),
-        account_Number: Yup.string().min(10, 'Account number must be 10 digits').max(10,'Account number must be 10 digits').required('Please Enter An Account Number'),
         amount: Yup.string().required('Amount is required'),
         password: Yup.string().required('Password is required')
     });
 
     const initialValues = {
-        account: '',
-        account_Name: '',
-        account_Number: '',
         amount: '',
         password: ''
     };
@@ -33,8 +48,8 @@ export default function WithdrawBalance() {
         toast.success('Withdrawal Successful')
     };
 
-    const networkOPtions = accounts.map((account, key) =>
-        <option value={account} key={key} > {account} </option>
+    const accountOptions = accounts.map((account) =>
+        <option value={account.id} key={account.id}>{account.bank} - {account.number} - {account.name}</option>
     );
 
     const renderError = (message) => <p className='warning'>{ message }</p>
@@ -55,10 +70,12 @@ export default function WithdrawBalance() {
                             className='select'
                             type='text'
                             placeholder='Select'
-                            id='dropdown'       
+                            id='dropdown'    
+                            onInput={fillAccountDetails}
+                            value={selectedAccount.id}
                         >
                         <option className='select_account_dropdown' value={''}>Select</option>
-                            {networkOPtions}
+                            {accountOptions}
                         </Field>
 
                         <ErrorMessage name='account' render={renderError}/>
@@ -66,21 +83,30 @@ export default function WithdrawBalance() {
                         <label className='select_account_label'>Account Name</label>
                         <Field
                             type='text'
-                            placeholder='Babtunde Ola'
                             className='withdraw_balance_input'
-                            name='account_Name'
+                            name='name'
+                            value={selectedAccount.name}
                         />
-                        <ErrorMessage name='account_Name' render={renderError}/>
+                        <ErrorMessage name='name' render={renderError}/>
 
                         <label className='select_account_label'>Account Number</label>
                         <Field
                             type='text'
-                            placeholder='0134567890'
                             className='withdraw_balance_input'
-                            name='account_Number'
+                            name='number'
+                            value={selectedAccount.number}
                         />
-                        <ErrorMessage name='account_Number' render={renderError} />
+                        <ErrorMessage name='number' render={renderError} />
                         
+                        <label className='select_account_label'>Bank</label>
+                        <Field
+                            type='text'
+                            className='withdraw_balance_input'
+                            name='bank'
+                            value={selectedAccount.bank}
+                        />
+                        <ErrorMessage name='bank' render={renderError}/>
+
                         <label className='select_account_label'>Amount</label>
                         <Field
                             type='text'

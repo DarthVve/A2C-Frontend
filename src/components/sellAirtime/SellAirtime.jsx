@@ -1,13 +1,29 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { toast } from "react-toastify";
 import "./SellAirtime.css";
+import axios from "../../axios";
 
 
 const SellAirtime = () => {
     const networks = ["airtel", "mtn", "etisalat", "glo"];
-    const sellRef = useRef('');
+
+    const adminNUmbers = ["number1", "number2", "number3", "number4"];
+    
+    const initialValues = {
+        network: "",
+        phone_number: "",
+        amount_to_sell: "",
+        ussd: "",
+        amount_to_receive: "",
+        destination_phone_number: "",
+    };
+
+
+
+    const [formValues, setFormValues] = useState(initialValues);
+
 
     const formatter = new Intl.NumberFormat('en-NG', {
         style: 'currency',
@@ -15,6 +31,7 @@ const SellAirtime = () => {
         minimumFractionDigits: 0, 
         maximumFractionDigits: 0, 
       });
+      
       
     const validationSchema = Yup.object({
         network: 
@@ -40,23 +57,33 @@ const SellAirtime = () => {
             .max(11, "Phone number can't be more than 11 characters")
     });
 
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormValues({ ...formValues, [name]: value });
+        console.log(formValues);
+      };
 
-    const initialValues = {
-        network: "",
-        phone_number: "",
-        amount_to_sell: "",
-        ussd: "",
-        amount_to_receive: "",
-        destination_phone_number: "",
-    };
+    const onSubmit = async(values) => {
+        console.log('my values',values);
 
-    const onSubmit = (values) => {
-        toast.success(
-            `Transaction Details: N${values.amount_to_sell} sent to ${values.destination_phone_number}`,
-            {
-                position: toast.POSITION.TOP_CENTER,
-            }
-        );
+        // try {
+        //     const res = await axios.post("/transaction", values)
+        //     if (res.status === 200) {
+        //         toast.success(
+        //             `Transaction Details: N${values.amount_to_sell} sent to ${values.destination_phone_number}`,
+        //             {position: toast.POSITION.TOP_CENTER,
+        //             }
+        //         );
+        //         localStorage.setItem("transactionDetails", JSON.stringify(res.data));
+        //   
+        //     } else {
+        //         toast.error(res.data.msg);
+        //     }
+        // }
+        // catch (err) {
+        //     toast.error(err.response?.data?.msg || "Something went wrong");
+        // }
+        
     };
 
     const networkOptions = networks.map((network, key) => (
@@ -97,6 +124,8 @@ const SellAirtime = () => {
                                         data-testid="network-input"
                                         title="field-input"
                                         type="text"
+                                        value={formValues.network}
+                                        onChange={handleChange}
                                     >
                                         <option value={""} disabled>
                                             Select network
@@ -122,6 +151,8 @@ const SellAirtime = () => {
                                         id="phone_number"
                                         name="phone_number"
                                         data-testid="number-input"
+                                        value={formValues.phone_number}
+                                        onChange={handleChange}
                                     />
                                     <ErrorMessage data-testid="error-msg" name="phone_number" render={renderError} />
                                 </div>
@@ -141,7 +172,8 @@ const SellAirtime = () => {
                                         placeholder="NGN"
                                         id="amount_to_sell"
                                         name="amount_to_sell"
-                                        ref={sellRef}
+                                        value={formValues.amount_to_sell}
+                                        onChange={handleChange}
                                         
                                     />
                                     <ErrorMessage name="amount_to_sell" render={renderError} />
@@ -163,6 +195,8 @@ const SellAirtime = () => {
                                         id="ussd"
                                         name="ussd"
                                         disabled
+                                        value={formValues.ussd}
+                                        onChange={handleChange}
                                     />
                                     <ErrorMessage name="ussd" render={renderError} />
                                 </div>
@@ -183,6 +217,8 @@ const SellAirtime = () => {
                                         id="amount_to_receive"
                                         name="amount_to_receive"
                                         disabled
+                                        value={`${Number(formValues.amount_to_sell)*0.7}`}
+                                        onChange={handleChange}
                                         
                                     />
                                     <ErrorMessage name="amount_to_receive" render={renderError} />
@@ -207,7 +243,9 @@ const SellAirtime = () => {
                                         id="destination_phone_number"
                                         name="destination_phone_number"
                                         data-testid="recipient-number-input"
-                                        disabled
+                                        // disabled
+                                        value={formValues.destination_phone_number}
+                                            onChange={handleChange}
                                     />
                                     <ErrorMessage
                                         name="destination_phone_number"
@@ -215,8 +253,9 @@ const SellAirtime = () => {
                                     />
                                 </div>
                             </div>
+                            <p className="text">After transferring the airtime, click on the "Send" button below</p>
                             <button type="submit" className="sell_btn" name="sellBtn">
-                                sell airtime
+                                send
                             </button>
                         </div>
                     </Form>

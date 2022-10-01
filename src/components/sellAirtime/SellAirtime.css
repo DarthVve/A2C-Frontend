@@ -85,10 +85,20 @@ justify-content: center;
   border: none;
   margin-top: 2.2rem;
   cursor: pointer;
-  opacity: 0.85;
+  opacity: 0.9;
 }
 .dashboard_frame .form_container .sell_btn:hover {
   opacity: 1;
+}
+.text{
+  width: 100%;
+height: 17px;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 17px;
+color: #4285F4;
 }
 .notification {
   background-color: transparent;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef,useCallback } from "react";
 import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { toast } from "react-toastify";
@@ -71,59 +71,83 @@ const SellAirtime = () => {
   const destinationNumberRef = useRef(null);
 
   //ADMIN NUMBERS
-  const airtelNumber = "airtel-number";
-  const mtnNumber = "mtn-number";
-  const gloNumber = "glo-number";
-  const etisalatNumber = "etisalat-number";
+  const airtelNumber = "AIRTEL-NUMBER";
+  const mtnNumber = "MTN-NUMBER";
+  const gloNumber = "GLO-NUMBER";
+  const etisalatNumber = "ETISALAT-NUMBER";
   const [networkCode, setNetworkCode] = useState("network-code");
   const [recipientNumber, setRecipientNumber] = useState("recipient-number");
 
-  
-
-  useEffect(() => {
+  const changeNetwork = useCallback(() => {
+    /* do something */
     if (networkRef.current.value === "AIRTEL") {
-      setNetworkCode("airtelCode");
-      setRecipientNumber("AIRTEL-NUMBER");
-    }
-    if (networkRef.current.value === "MTN") {
-      setNetworkCode("mtnCode");
-      setRecipientNumber("MTN-NUMBER");
-    }
-    if (networkRef.current.value === "GLO") {
-      setNetworkCode("gloCode");
-      setRecipientNumber("GLO-NUMBER");
-    }
-    if (networkRef.current.value === "ETISALAT") {
-      setNetworkCode("etisalatCode");
-      setRecipientNumber("ETISALAT-NUMBER");
-    }
-  }, [networks]);
+        setNetworkCode("airtelCode");
+        setRecipientNumber(airtelNumber);
+      }
+      if (networkRef.current.value === "MTN") {
+        setNetworkCode("mtnCode");
+        setRecipientNumber(mtnNumber);
+      }
+      if (networkRef.current.value === "GLO") {
+        setNetworkCode("gloCode");
+        setRecipientNumber(gloNumber);
+      }
+      if (networkRef.current.value === "ETISALAT") {
+        setNetworkCode("etisalatCode");
+        setRecipientNumber(etisalatNumber);
+      }
+  }, []);
 
-  const onSubmit = async (values) => {
+//   const changeNetwork =()=>{
+//     if (networkRef.current.value === "AIRTEL") {
+//         setNetworkCode("airtelCode");
+//         setRecipientNumber(airtelNumber);
+//       }
+//       if (networkRef.current.value === "MTN") {
+//         setNetworkCode("mtnCode");
+//         setRecipientNumber(mtnNumber);
+//       }
+//       if (networkRef.current.value === "GLO") {
+//         setNetworkCode("gloCode");
+//         setRecipientNumber(gloNumber);
+//       }
+//       if (networkRef.current.value === "ETISALAT") {
+//         setNetworkCode("etisalatCode");
+//         setRecipientNumber(etisalatNumber);
+//       }
+//   }
+
+//   useEffect(() => {
+//     changeNetwork()
+//   }, [networks]);
+
+  const handleSubmit = async (values) => {
     const creditedAmount = creditRef.current.value;
     const soldAirtime = sellRef.current.value;
-    let ussdAdminNum = ussdRef.current.value;
+    let ussdTransferCode = ussdRef.current.value;
     let adminNumber = destinationNumberRef.current.value;
 
 
+    console.log("my values", {
+        ...values,
+        amountToReceive: creditedAmount,
+        ussdTransferCode: ussdTransferCode,
+      });
+
     if (networkRef.current.value === "AIRTEL") {
-      ussdAdminNum = `*111*${soldAirtime}*${airtelNumber}#`;
+      ussdTransferCode = `*111*${soldAirtime}*${airtelNumber}#`;
     }
     if (networkRef.current.value === "MTN") {
-      ussdAdminNum = `*222*${soldAirtime}*${mtnNumber}#`;
+      ussdTransferCode = `*222*${soldAirtime}*${mtnNumber}#`;
     }
     if (networkRef.current.value === "ETISALAT") {
-      ussdAdminNum = `*333*${soldAirtime}*${etisalatNumber}#`;
+      ussdTransferCode = `*333*${soldAirtime}*${etisalatNumber}#`;
     }
     if (networkRef.current.value === "GLO") {
-      ussdAdminNum = `*444*${soldAirtime}*${gloNumber}#`;
+      ussdTransferCode = `*444*${soldAirtime}*${gloNumber}#`;
     }
-    console.log("my values", {
-      ...values,
-      amountToReceive: creditedAmount,
-      ussdAdminNum: ussdAdminNum,
-    });
-
+   
+    //send to API
     // try {
     //     const res = await axios.post("/transaction", values)
     //     if (res.status === 200) {
@@ -141,6 +165,7 @@ const SellAirtime = () => {
     // catch (err) {
     //     toast.error(err.response?.data?.msg || "Something went wrong");
     // }
+    console.log("On submit function")
   };
 
   const networkOptions = networks.map((network, key) => (
@@ -155,7 +180,7 @@ const SellAirtime = () => {
       <Formik
         initialValues={initialValues}
         validate={validate}
-        onSubmit={onSubmit}
+        onSubmit={handleSubmit}
       >
         {(formik) => {
           const {
@@ -195,8 +220,8 @@ const SellAirtime = () => {
                         title="input-input"
                         type="text"
                         ref={networkRef}
-                        value={values.network}
-                        onChange={handleChange}
+                        // value={values.network}
+                        onChange={changeNetwork}
                       >
                         <option value={""} disabled>
                           Select network

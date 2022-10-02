@@ -1,6 +1,10 @@
-import React,{useState} from 'react'
-import styled from 'styled-components'
+import React,{useState} from 'react';
+import styled from 'styled-components';
 import { FiChevronDown } from 'react-icons/fi';
+import account from '../../assets/account.svg';
+import helpCenter from '../../assets/helpCenter.svg';
+import settings from '../../assets/settings.svg';
+import logoutIcon from '../../assets/logoutIcon.svg';
 import { Link, useNavigate } from "react-router-dom";
 import axios from "../../axios";
 import { useAuth } from "../../hooks/useAuth";
@@ -10,7 +14,7 @@ import { UserAvatar } from '../';
 function UserProfileNav({dashboard, setIsLogin}) {
   const [showDropdown, setShowDropdown] = useState(false)
   const [showModal, setShowModal] = useState(false)
-  const { avatar, id } = JSON.parse(localStorage.getItem('userInfo'))
+  const { avatar, id,username } = JSON.parse(localStorage.getItem('userInfo'))
   const { logout } = useAuth();
   const navigate = useNavigate();
 
@@ -39,14 +43,20 @@ function UserProfileNav({dashboard, setIsLogin}) {
         alt='Profil Pic'
         className='profile-avatar-img'
         />
-        <FiChevronDown onClick={()=>setShowDropdown(!showDropdown)}/>
-        <Dropdown showDropdown={showDropdown}>
-          <Link to={`/dashboard/${id}`}><DropdownItem><img className='dropdown-img' src={avatar} alt="" onClick={setShowModal.bind(null, true)}/><span>Account</span></DropdownItem></Link>
-          <DropdownItem><span onClick={route}>Settings</span></DropdownItem>
-          <DropdownItem><span>Help Center</span></DropdownItem>
-          <DropdownItem><span onClick={handleLogout}>Logout</span></DropdownItem>
-      </Dropdown>
-      {showModal && <UserAvatar close={setShowModal.bind(null, false)}/>}
+        <span>{username}</span>
+        { dashboard &&
+          <>
+            <FiChevronDown onClick={()=>setShowDropdown(!showDropdown)}/>
+            <Dropdown showDropdown={showDropdown}>
+              <Link to={`/dashboard/${id}`}><DropdownItem><img className='dropdown-img' src={account} alt="" onClick={setShowModal.bind(null, true)}/><span>Account</span></DropdownItem></Link>
+              <DropdownItem><img src={settings} alt='settings' /><span onClick={route}>Settings</span></DropdownItem>
+              <DropdownItem><img src={helpCenter} alt='help center' /><span>Help Center</span></DropdownItem>
+              <DropdownItem><img src={logoutIcon} alt='logout'/><span onClick={handleLogout}>Logout</span></DropdownItem>
+            </Dropdown>
+           
+          </>
+      }
+       {showModal && <UserAvatar close={setShowModal.bind(null, false)}/>}
     </Profile>
   )
 };
@@ -66,7 +76,7 @@ const Profile = styled.div`
 const Dropdown = styled.div`
     position: absolute;
     top: 100%;
-    right: 10%;
+    right: 7%;
     background-color: #fff;
     width: 226px;
     height: 180px;

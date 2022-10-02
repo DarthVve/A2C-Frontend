@@ -47,61 +47,29 @@ function Navbar({dashboard, Landing}) {
                     </div>         
                   
               }
-                { (isOpen && Landing)  &&
-                          <NavMenuLinkStyle isOpen >
-                            <Link className='mobile-menu' to="/">Home </Link>
-                            <Link className='mobile-menu' to="/about">About us </Link>
-                            <Link className='mobile-menu' to="/products">Products </Link>
-                            <Link className='mobile-menu' to="/contact">Contact Us </Link>
-                          </NavMenuLinkStyle>
-                }
-              <div className='Navbar-menu' >
+            
+              <div className={isOpen? "mobile-nav":'Navbar-menu'}  onClick={()=>setOpen(false)}>
                     {        
                       Landing  &&
                       <>  
-                        <NavLink to="/" className='selected'>Home</NavLink>
-                        <NavLink to="/about" >About Us</NavLink>
-                        <NavLink to="/products" >Products</NavLink>
-                        <NavLink to="/contact" className='last' >Contact Us</NavLink>
+                        <NavLink to="/" className='selected menu-link'>Home</NavLink>
+                        <NavLink to="/about" className='menu-link' >About Us</NavLink>
+                        <NavLink to="/products" className='menu-link'>Products</NavLink>
+                        <NavLink to="/contact" className='last menu-link' >Contact Us</NavLink>
                       </>
                     }
-                    {isLogin ? <UserProfileNav dashboard={dashboard} loginStatus={setIsLogin} /> : 
-                      <NavLink to="/Login" className='btnLogin'>Login</NavLink>
+                    {(isLogin && Landing && !dashboard) && <UserProfileNav dashboard={dashboard} loginStatus={setIsLogin} />  
+                     
                     }
+                    {!isLogin &&<NavLink to="/Login" className='btnLogin'>Login</NavLink> }
               </div> 
+              {(isLogin && dashboard) &&<UserProfileNav dashboard={dashboard} loginStatus={setIsLogin} />}
           </div>
       </NavbarStyle>
     )
   }
   
 
-
-  const NavMenuLinkStyle = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background: rgba(245, 132, 76, 0.05);
-  width:20%;
-  text-align: left;
-  position: absolute;
-  top: 0;
-  left: 0;
-  transition: transform 0.3s ease-in-out;
-  max-width:150px;
-  z-index:3;
-  
-  .mobile-menu{
-    font-size: 0.5rem;
-    text-transform: uppercase;
-    padding: 0.5rem 5px;
-    font-weigth:bold;
-    text-decoration:none;
-    color:#03435F;
-  }
-
-  }
-
-  `
   const NavbarStyle = styled.div`
     width: 100%;
     max-width: 1440px;
@@ -111,6 +79,8 @@ function Navbar({dashboard, Landing}) {
     top:0;
     left:0;
     right:0;
+    z-index:3;
+ 
     .Navbar-container{
       display: flex;
       justify-content:space-between;
@@ -204,7 +174,42 @@ function Navbar({dashboard, Landing}) {
           display:block;
         }
       }
+
+      .mobile-nav{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: absolute;
+        align-items: center;
+        width: 100%;
+        top:96px;
+        background:#fff;
+        over-flow:none;
+        padding-bottom:2rem;
+        box-shadow: 5px 5px 5px 5px #888888;
+        padding:2rem;
+
+      }
+      .menu-link{
+        text-decoration:none;
+        color: #012A4A;
+        margin-bottom:1rem;
+      }
       
+    }
+
+    @media (max-width:378px){
+      .Navbar-brand .subject{
+        margin-left:0.2rem;
+        font-size:0.8rem;
+      }
+      .Navbar-brand .logo{
+        width:20px;
+      }
+      .Navbar-container{
+        width:100%;
+        
+      }
     }
     
   `

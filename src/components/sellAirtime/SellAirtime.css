@@ -46,6 +46,17 @@ justify-content: center;
   text-transform: capitalize;
 }
 
+.dashboard_frame .form_container .form_group .input_container.ussd{
+  background: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #d9d9d9;
+  padding-right: 1rem;
+}
+.dashboard_frame .form_container .form_group .input_container.ussd .form_input{
+  border: none;
+}
 .dashboard_frame .form_container .form_group .input_container .form_input {
   width: 100%;
   box-sizing: border-box;

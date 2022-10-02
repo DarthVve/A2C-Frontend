@@ -1,9 +1,13 @@
 import React, { useState, useEffect, useRef,useCallback } from "react";
-import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { toast } from "react-toastify";
 import "./SellAirtime.css";
-import axios from "../../axios";
+import { CopyToClipboard } from "react-copy-to-clipboard";
+import { FaRegCopy } from 'react-icons/fa';
+
+
+// import * as Yup from "yup";
+// import { toast } from "react-toastify";
+// import axios from "../../axios";
 
 const SellAirtime = () => {
   const allNetworks = ["AIRTEL", "MTN", "ETISALAT", "GLO"];
@@ -41,11 +45,6 @@ const SellAirtime = () => {
   //Input field validator
   const validate = (values) => {
     let errors = {};
-    if (!values.network) {
-      errors.network = "Kindly select a network";
-    } else if (!networks.includes(values.network)) {
-      errors.network = "Invalid network";
-    }
     if (!values.phoneNumber) {
       errors.phoneNumber = "phone number is required";
     } else if (values.phoneNumber.length < 11) {
@@ -131,10 +130,11 @@ const SellAirtime = () => {
     console.log("my values", {
         ...values,
         amountToReceive: creditedAmount,
-        ussdTransferCode: ussdTransferCode,
+        ussd: ussdTransferCode
       });
 
     if (networkRef.current.value === "AIRTEL") {
+        networkRef.current.value = "AIRTEL"
       ussdTransferCode = `*111*${soldAirtime}*${airtelNumber}#`;
     }
     if (networkRef.current.value === "MTN") {
@@ -165,15 +165,30 @@ const SellAirtime = () => {
     // catch (err) {
     //     toast.error(err.response?.data?.msg || "Something went wrong");
     // }
-    console.log("On submit function")
+
   };
 
   const networkOptions = networks.map((network, key) => (
-    <option value={network} key={key}>
+    <option defaultvalue={network} key={key}>
       {network}
     </option>
   ));
 
+
+  const [copySuccess, setCopySuccess] = useState("");
+  const textAreaRef = useRef(null);
+
+  function copyToClipboard(e) {
+    textAreaRef.current.select();
+    document.execCommand("copy");
+    e.target.focus();
+    setCopySuccess("Copied!");
+    if (copySuccess != "") {
+      // copySuccess.style.color = "red";
+      console.log("snazzyyooo");
+    }
+    setTimeout(setCopySuccess, 1500);
+  }
 
   return (
     <div className="dashboard_frame">
@@ -188,10 +203,7 @@ const SellAirtime = () => {
             handleChange,
             handleSubmit,
             errors,
-            touched,
-            handleBlur,
-            isValid,
-            dirty,
+            touched
           } = formik;
           return (
             <>
@@ -220,8 +232,9 @@ const SellAirtime = () => {
                         title="input-input"
                         type="text"
                         ref={networkRef}
-                        // value={values.network}
+                        defaultvalue={values.network}
                         onChange={changeNetwork}
+                        //onChange={event => setMyNetwork(event.target.value)}
                       >
                         <option value={""} disabled>
                           Select network
@@ -297,7 +310,7 @@ const SellAirtime = () => {
                         USSD
                       </label>
                     </div>
-                    <div className="input_container">
+                    <div className="input_container ussd">
                       <input
                         type="text"
                         className={
@@ -313,6 +326,11 @@ const SellAirtime = () => {
                         value={`*${networkCode}*${values.amountToSell}*${recipientNumber}#`}
                         onChange={handleChange}
                       />
+                                <CopyToClipboard
+     text={`*${networkCode}*${values.amountToSell}*${recipientNumber}#`}
+     onCopy={() => alert("Copied")}>
+       <span><FaRegCopy/></span>
+     </CopyToClipboard>
                       {errors.ussd && touched.ussd && (
                         <span className="error">{errors.ussd}</span>
                       )}

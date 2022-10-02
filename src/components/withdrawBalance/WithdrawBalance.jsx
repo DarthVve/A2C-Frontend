@@ -1,18 +1,25 @@
 import React, { useState, useEffect } from 'react';
-import * as Yup from 'yup';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import './withdrawbalance.css';
 import { toast } from 'react-toastify';
 import axios from '../../axios';
 
 export default function WithdrawBalance() {
-    const [accounts, setAccounts] = useState([])
+    const [accounts, setAccounts] = useState([]);
+    const [password, setPassword] = useState('');
     const [selectedAccount, setSelectedAccount] = useState({
         id: '',
         bank: '',
         name: '',
         number: ''
-    })
+    });
+
+    const [withdrawal, setWithdrawal] = useState({
+        name: '',
+        number: '',
+        bank: '',
+        amount: ''
+    });
 
     const getAccounts = async () => {
         try {
@@ -23,29 +30,45 @@ export default function WithdrawBalance() {
         } catch (err) {
             toast.error(err.response?.data?.msg || "Something went wrong");
         }
-    }
+    };
 
     useEffect(() => {
         getAccounts()
-    }, [])
+    }, []);
 
     const fillAccountDetails = (e) => {
         const account = accounts.find(account => account.id === e.target.value)
         setSelectedAccount(account)
-    }
+        setWithdrawal({
+            name: account.name,
+            number: account.number,
+            bank: account.bank,
+            amount: ''
+        })
+    };
 
-    const validationSchema = Yup.object({
-        amount: Yup.string().required('Amount is required'),
-        password: Yup.string().required('Password is required')
-    });
+    const amounHandler = (e) => {
+        const { name, value } = e.target;
+        setWithdrawal({ ...withdrawal, [name]: value })
+    };
+    
+    const passwordHandler = (e) => {
+        setPassword(e.target.value)
+    };
+
+    const onSubmit = async () => {
+        const body = { ...withdrawal, password };
+        try {
+            const res = await axios.post('/withdrawal', body);
+            if (res.status === 201) {
+                toast.success(res.data.msg);
+            }
+        } catch (err) { toast.error(err.response?.data?.msg || "Something went wrong") }
+    };
 
     const initialValues = {
         amount: '',
         password: ''
-    };
-
-    const onSubmit = (values) => {
-        toast.success('Withdrawal Successful')
     };
 
     const accountOptions = accounts.map((account) =>
@@ -58,10 +81,7 @@ export default function WithdrawBalance() {
         <div className='withdraw-container'>
             <div className="withdraw-body">
                 <h3 className="withdraw_h3">Withdraw</h3>
-                <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={(values, { resetForm }) => {
-                    onSubmit(values)
-                    resetForm()
-                }}>
+                <Formik initialValues={initialValues} onSubmit={onSubmit}>
                     <Form className='user-form'>
                         <label className='select_account_label'> Select Account</label>
                         <Field
@@ -113,6 +133,8 @@ export default function WithdrawBalance() {
                             placeholder='NGN'
                             className='withdraw_balance_input'
                             name='amount'
+                            value={withdrawal.amount}
+                            onChange={amounHandler}
                         />
                         <ErrorMessage name='amount' render={renderError} />
                         
@@ -122,9 +144,11 @@ export default function WithdrawBalance() {
                             placeholder='Password'
                             className='withdraw_balance_input'
                             name='password'
+                            value={password}
+                            onChange={passwordHandler}
                         />
                         <ErrorMessage name='password' render={renderError}/>
-                        <button className='withdrawBtn' onClick>Withdraw</button> 
+                        <button type='submit' className='withdrawBtn'>Withdraw</button> 
                     </Form>
                 </Formik>
             </div>

@@ -1,19 +1,26 @@
-import React, { useState, useEffect, useRef,useCallback } from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import React, { useState, useRef,useCallback } from "react";
+import { Formik} from "formik";
 import "./SellAirtime.css";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { FaRegCopy } from 'react-icons/fa';
+import { NotifyAdminModal } from "../";
 
 
 // import * as Yup from "yup";
-// import { toast } from "react-toastify";
+import { toast } from "react-toastify";
 // import axios from "../../axios";
 
 const SellAirtime = () => {
-  const allNetworks = ["AIRTEL", "MTN", "ETISALAT", "GLO"];
-  const [networks, setNetworks] = useState(allNetworks);
+  const allNetworks = ["Select Network","AIRTEL", "MTN", "ETISALAT", "GLO"];
+  const [networks] = useState(allNetworks);
+  const [showModal, setShowModal] = useState(false);
 
-  const adminNUmbers = ["number1", "number2", "number3", "number4"];
+  const displayModal = () => {
+    setShowModal(true)
+  }
+  const closeModal = () => {
+    setShowModal(false)
+  }
 
   const initialValues = {
     network: "",
@@ -24,23 +31,23 @@ const SellAirtime = () => {
     destinationPhoneNumber: "",
   };
 
-  const [formValues, setFormValues] = useState(initialValues);
-
+  
   //currency formater
   const formatter = new Intl.NumberFormat("en-NG", {
-    style: "currency",
-    currency: "NGN",
+      style: "currency",
+      currency: "NGN",
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
-  });
+});
 
 
+//   const [formValues, setFormValues] = useState(initialValues);
   //handles event change
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormValues({ ...formValues, [name]: value });
-    console.log(formValues);
-  };
+//   const handleChange = (e) => {
+//     const { name, value } = e.target;
+//     setFormValues({ ...formValues, [name]: value });
+//     console.log(formValues);
+//   };
 
   //Input field validator
   const validate = (values) => {
@@ -124,7 +131,7 @@ const SellAirtime = () => {
     const creditedAmount = creditRef.current.value;
     const soldAirtime = sellRef.current.value;
     let ussdTransferCode = ussdRef.current.value;
-    let adminNumber = destinationNumberRef.current.value;
+
 
 
     console.log("my values", {
@@ -174,24 +181,9 @@ const SellAirtime = () => {
     </option>
   ));
 
-
-  const [copySuccess, setCopySuccess] = useState("");
-  const textAreaRef = useRef(null);
-
-  function copyToClipboard(e) {
-    textAreaRef.current.select();
-    document.execCommand("copy");
-    e.target.focus();
-    setCopySuccess("Copied!");
-    if (copySuccess != "") {
-      // copySuccess.style.color = "red";
-      console.log("snazzyyooo");
-    }
-    setTimeout(setCopySuccess, 1500);
-  }
-
   return (
     <div className="dashboard_frame">
+            {showModal && <NotifyAdminModal closeModal={ closeModal} />}
       <Formik
         initialValues={initialValues}
         validate={validate}
@@ -328,8 +320,9 @@ const SellAirtime = () => {
                       />
                                 <CopyToClipboard
      text={`*${networkCode}*${values.amountToSell}*${recipientNumber}#`}
-     onCopy={() => alert("Copied")}>
-       <span><FaRegCopy/></span>
+     onCopy={() => toast.success("ussd code copied to clipboard",{position: toast.POSITION.TOP_CENTER,
+        })}>
+       <span className="copy_icon"><FaRegCopy/></span>
      </CopyToClipboard>
                       {errors.ussd && touched.ussd && (
                         <span className="error">{errors.ussd}</span>
@@ -408,7 +401,7 @@ const SellAirtime = () => {
                     After transferring the airtime, click on the "Send" button
                     below
                   </p>
-                  <button type="submit" className="sell_btn" name="sellBtn">
+                  <button type="submit" className="sell_btn" name="sellBtn" onClick={displayModal}>
                     send
                   </button>
                 </div>

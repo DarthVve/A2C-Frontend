@@ -64,4 +64,4 @@
   { id: 1731, code: '103', name: 'Globus Bank' }
  ];
 
- export default banks.sort((a, b) => a.name.localeCompare(b.name));
+ export default banks;

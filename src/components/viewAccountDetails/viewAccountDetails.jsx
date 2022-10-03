@@ -14,7 +14,11 @@ function ViewAccountDetails({makeTrue}) {
         setAccounts(res.data.accounts)
       }
     } catch (err) {
-      toast.error(err.response?.data?.msg || "Something went wrong");
+      if (err.response?.status === 404) {
+        toast.info("Add a Bank Account to view details")
+      } else {
+        toast.error(err.response?.data?.msg || "Something went wrong");
+      }
     }
   }
 

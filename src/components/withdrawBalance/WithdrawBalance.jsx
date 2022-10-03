@@ -11,13 +11,15 @@ export default function WithdrawBalance() {
         id: '',
         bank: '',
         name: '',
-        number: ''
+        number: '',
+        bankCode: '',
     });
 
     const [withdrawal, setWithdrawal] = useState({
         name: '',
         number: '',
         bank: '',
+        code: '',
         amount: ''
     });
 
@@ -43,6 +45,7 @@ export default function WithdrawBalance() {
             name: account.name,
             number: account.number,
             bank: account.bank,
+            code: account.bankCode,
             amount: ''
         })
     };

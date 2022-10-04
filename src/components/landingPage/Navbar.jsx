@@ -1,82 +1,94 @@
-import React, { useState,useEffect } from 'react'
-import vector from "../../assets/vector.png"
-import { NavLink, Link } from "react-router-dom"
-import styled from "styled-components"
-import UserProfileNav from './UserProfileNav'
-import Hamburger from 'hamburger-react'
+import React, { useState, useEffect } from "react";
+import vector from "../../assets/Vector.png";
+import { NavLink, Link } from "react-router-dom";
+import styled from "styled-components";
+import UserProfileNav from "./UserProfileNav";
+import Hamburger from "hamburger-react";
 
+function Navbar({ dashboard, Landing }) {
+  const [isLogin, setIsLogin] = useState(false);
+  // eslint-disable-next-line no-unused-vars
+  const [name, setName] = useState(undefined);
+  const [isOpen, setOpen] = useState(false);
 
-function Navbar({dashboard, Landing}) {
-    const [isLogin, setIsLogin] = useState(false);
-    // eslint-disable-next-line no-unused-vars
-    const [name, setName ] = useState(undefined);
-    const [isOpen, setOpen] = useState(false) 
+  const userDetails = localStorage.getItem("userInfo");
+  const data = JSON.parse(userDetails);
 
-    const userDetails = localStorage.getItem('userInfo');
-    const data = JSON.parse(userDetails);
-
-      useEffect(()=>{
-        if(userDetails){
-          setIsLogin(true);  
-          setName(data.username);
-        }
+  useEffect(() => {
+    if (userDetails) {
+      setIsLogin(true);
+      setName(data.username);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[]);
+  }, []);
 
-    return (
-      <NavbarStyle>
-          <div className='Navbar-container'> 
-              <div className='Navbar-brand'>
-                  <img src={vector} alt='logo' className='logo'/>
-                  <NavLink to="/" className='subject'>Airtime<span>2Cash</span></NavLink> 
-              </div>
-              {  Landing  &&
-                    <div className="hmg">
-                      <Hamburger
-                      
-                      onToggle={toggled => {
-                        if (toggled) {
-                           // open a menu
-                            setOpen(true)
-                        } else {
-                           // close a menu
-                            setOpen(false)
-                        }
-                      }}
-                        />
-                    </div>         
-                  
-              }
-                { (isOpen && Landing)  &&
-                          <NavMenuLinkStyle isOpen >
-                            <Link className='mobile-menu' to="/">Home </Link>
-                            <Link className='mobile-menu' to="/about">About us </Link>
-                            <Link className='mobile-menu' to="/products">Products </Link>
-                            <Link className='mobile-menu' to="/contact">Contact Us </Link>
-                          </NavMenuLinkStyle>
+  return (
+    <NavbarStyle>
+      <div className="Navbar-container">
+        <div className="Navbar-brand">
+          <img src={vector} alt="logo" className="logo" />
+          <NavLink to="/" className="subject">
+            Airtime<span>2Cash</span>
+          </NavLink>
+        </div>
+        {Landing && (
+          <div className="hmg">
+            <Hamburger
+              onToggle={(toggled) => {
+                if (toggled) {
+                  // open a menu
+                  setOpen(true);
+                } else {
+                  // close a menu
+                  setOpen(false);
                 }
-              <div className='Navbar-menu' >
-                    {        
-                      Landing  &&
-                      <>  
-                        <NavLink to="/" className='selected'>Home</NavLink>
-                        <NavLink to="/about" >About Us</NavLink>
-                        <NavLink to="/products" >Products</NavLink>
-                        <NavLink to="/contact" className='last' >Contact Us</NavLink>
-                      </>
-                    }
-                    {isLogin ? <UserProfileNav dashboard={dashboard} loginStatus={setIsLogin} /> : 
-                      <NavLink to="/Login" className='btnLogin'>Login</NavLink>
-                    }
-              </div> 
+              }}
+            />
           </div>
-      </NavbarStyle>
-    )
-  }
-  
+        )}
+        {isOpen && Landing && (
+          <NavMenuLinkStyle isOpen>
+            <Link className="mobile-menu" to="/">
+              Home{" "}
+            </Link>
+            <Link className="mobile-menu" to="/about">
+              About us{" "}
+            </Link>
+            <Link className="mobile-menu" to="/products">
+              Products{" "}
+            </Link>
+            <Link className="mobile-menu" to="/contact">
+              Contact Us{" "}
+            </Link>
+          </NavMenuLinkStyle>
+        )}
+        <div className="Navbar-menu">
+          {Landing && (
+            <>
+              <NavLink to="/" className="selected">
+                Home
+              </NavLink>
+              <NavLink to="/about">About Us</NavLink>
+              <NavLink to="/products">Products</NavLink>
+              <NavLink to="/contact" className="last">
+                Contact Us
+              </NavLink>
+            </>
+          )}
+          {isLogin ? (
+            <UserProfileNav dashboard={dashboard} loginStatus={setIsLogin} />
+          ) : (
+            <NavLink to="/Login" className="btnLogin">
+              Login
+            </NavLink>
+          )}
+        </div>
+      </div>
+    </NavbarStyle>
+  );
+}
 
-
-  const NavMenuLinkStyle = styled.div`
+const NavMenuLinkStyle = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -101,8 +113,8 @@ function Navbar({dashboard, Landing}) {
 
   }
 
-  `
-  const NavbarStyle = styled.div`
+  `;
+const NavbarStyle = styled.div`
     width: 100%;
     max-width: 1440px;
     height: 96px;
@@ -207,6 +219,6 @@ function Navbar({dashboard, Landing}) {
       
     }
     
-  `
+  `;
 
-export default Navbar
+export default Navbar;

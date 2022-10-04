@@ -48,14 +48,14 @@ function Navbar({dashboard, Landing}) {
                   
               }
             
-              <div className={isOpen? "mobile-nav":'Navbar-menu'}  onClick={()=>setOpen(false)}>
+              <div className={isOpen? "mobile-nav":'Navbar-menu'} >
                     {        
                       Landing  &&
                       <>  
-                        <NavLink to="/" className='selected menu-link'>Home</NavLink>
-                        <NavLink to="/about" className='menu-link' >About Us</NavLink>
-                        <NavLink to="/products" className='menu-link'>Products</NavLink>
-                        <NavLink to="/contact" className='last menu-link' >Contact Us</NavLink>
+                        <NavLink to="/" className='selected menu-link'  onClick={()=>setOpen(false)}>Home</NavLink>
+                        <NavLink to="/about" className='menu-link'  onClick={()=>setOpen(false)}>About Us</NavLink>
+                        <NavLink to="/products" className='menu-link' onClick={()=>setOpen(false)}>Products</NavLink>
+                        <NavLink to="/contact" className='last menu-link'  onClick={()=>setOpen(false)}>Contact Us</NavLink>
                       </>
                     }
                     {(isLogin && Landing && !dashboard) && <UserProfileNav dashboard={dashboard} loginStatus={setIsLogin} />  
@@ -200,12 +200,10 @@ function Navbar({dashboard, Landing}) {
 
     @media (max-width:378px){
       .Navbar-brand .subject{
-        margin-left:0.2rem;
+        margin-left:0.1rem;
         font-size:0.8rem;
       }
-      .Navbar-brand .logo{
-        width:20px;
-      }
+     
       .Navbar-container{
         width:100%;
         

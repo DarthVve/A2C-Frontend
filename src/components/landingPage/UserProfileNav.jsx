@@ -44,7 +44,7 @@ function UserProfileNav({dashboard, setIsLogin}) {
         className='profile-avatar-img'
         />
         <span>{username}</span>
-        { dashboard &&
+        {/* { dashboard && */}
           <>
             <FiChevronDown onClick={()=>setShowDropdown(!showDropdown)}/>
             <Dropdown showDropdown={showDropdown}>
@@ -55,7 +55,7 @@ function UserProfileNav({dashboard, setIsLogin}) {
             </Dropdown>
            
           </>
-      }
+      {/* } */}
        {showModal && <UserAvatar close={setShowModal.bind(null, false)}/>}
     </Profile>
   )

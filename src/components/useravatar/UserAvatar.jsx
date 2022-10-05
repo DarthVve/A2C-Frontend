@@ -13,7 +13,6 @@ export default function UserAvatar({ close }) {
     let uploadPromise;
 
     const hide = () => {
-        console.log("closing");
         close();
     };
 

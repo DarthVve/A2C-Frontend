@@ -44,7 +44,11 @@ const Login = () => {
                 localStorage.setItem("userInfo", JSON.stringify(res.data.userInfo));
                 const id = res.data.userInfo.id;
                 login(id);
-                navigate(`/dashboard/${id}`, { replace: true });
+                if (res.data.userInfo.role === "admin" || res.data.userInfo.role === "superadmin") {
+                    navigate("/admin/dashboard");
+                } else {
+                    navigate(`/dashboard/${id}`, { replace: true });
+                }
             } else {
                 toast.error(res.data.msg);
             }

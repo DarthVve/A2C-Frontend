@@ -23,3 +23,4 @@ export { default as ManageAccountDetails } from './manageAccountDetails/manageAc
 export { default as ViewAccountDetails } from './viewAccountDetails/viewAccountDetails';
 export { default as BankAccountModal } from './BankAccountModal/BankAccountModal';
 export { default as Dashboardbtn } from "./dashBoardAcctBtn/dashBoardBtnAcct";
+export { default as NotifyAdminModal } from "./NotifyAdminModal/NotifyAdminModal";

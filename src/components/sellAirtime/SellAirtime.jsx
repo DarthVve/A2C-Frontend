@@ -101,7 +101,6 @@ const SellAirtime = () => {
 
     const userData = JSON.parse(localStorage.getItem("userInfo"));
     const ID = userData.id
-    console.log("userID", ID);
 
     const handleSubmit = async (values, { resetForm }) => {
         const creditedAmount = creditRef.current.value;
@@ -121,7 +120,6 @@ const SellAirtime = () => {
                 setIsLoading(false)
                 setShowModal(true);
                 resetForm({ values: "" })
-                console.log("yeahhh!!!");
             }
             else {
                 toast.error("Error 403: Incorrect input values");

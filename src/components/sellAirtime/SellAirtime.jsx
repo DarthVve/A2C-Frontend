@@ -68,7 +68,7 @@ const SellAirtime = () => {
     const destinationNumberRef = useRef(null);
 
     //ADMIN NUMBERS
-    const airtelNumber = "AIRTEL-NUMBER";
+    const airtelNumber = "08121449020";
     const mtnNumber = "MTN-NUMBER";
     const gloNumber = "GLO-NUMBER";
     const etisalatNumber = "9MOBILE-NUMBER";
@@ -152,8 +152,8 @@ const SellAirtime = () => {
                     return (
                         <>
                             {isLoading && (
-                            <div className="spinner_loader">
-                            <InfinitySpin
+                            <div className="loader_overlay">
+                            <InfinitySpin className="loader"
                                 width='200'
                                 color="#4fa94d"
                             />

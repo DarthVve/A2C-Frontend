@@ -5,12 +5,15 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 import { FaRegCopy } from "react-icons/fa";
 import { NotifyAdminModal } from "../";
 import { toast } from "react-toastify";
-// import axios from "../../axios";
+import axios from "../../axios";
+import { InfinitySpin } from 'react-loader-spinner'
+
 
 const SellAirtime = () => {
     const allNetworks = ["Select Network", "AIRTEL", "MTN", "9MOBILE", "GLO"];
     const [networks] = useState(allNetworks);
     const [showModal, setShowModal] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
     //CLOSE POP-UP
     const closeModal = () => {
@@ -61,6 +64,7 @@ const SellAirtime = () => {
     const sellRef = useRef(null);
     const networkRef = useRef(null);
     const ussdRef = useRef(null);
+    const phoneNumRef = useRef(null);
     const destinationNumberRef = useRef(null);
 
     //ADMIN NUMBERS
@@ -95,39 +99,37 @@ const SellAirtime = () => {
         }
     }, []);
 
+    const userData = JSON.parse(localStorage.getItem("userInfo"));
+    const ID = userData.id
+    console.log("userID", ID);
+
     const handleSubmit = async (values, { resetForm }) => {
         const creditedAmount = creditRef.current.value;
-        let ussdTransferCode = ussdRef.current.value;
+        let phoneNumber = phoneNumRef.current.value;
+        let amountToSell = sellRef.current.value;
 
-        console.log("data", {
-            ...values,
-            amountToReceive: creditedAmount,
-            ussd: ussdTransferCode,
-            destinationPhoneNumber: recipientNumber,
+        const data = {
             network: networkName,
-        });
-
-        setShowModal(true);
-        resetForm({ values: "" });
-
-        //send to API
-        // try {
-        //     const res = await axios.post("/transaction", values)
-        //     if (res.status === 200) {
-        //         toast.success(
-        //             `Transaction Details: N${values.amountToSell} sent to ${values.destinationPhoneNumber}`,
-        //             {position: toast.POSITION.TOP_CENTER,
-        //             }
-        //         );
-        //         localStorage.setItem("transactionDetails", JSON.stringify(res.data));
-        //     } else {
-        //         toast.error("Error 400: Wrong input");
-        //         toast.error(res.data.msg);
-        //     }
-        // }
-        // catch (err) {
-        //     toast.error("Error 500 : Server dowm");
-        // }
+            phoneNumber,
+            amountToSell,
+            amountToReceive: creditedAmount
+        }
+        try {
+            setIsLoading(true)
+            const res = await axios.post(`/transfer/${ID}`, data)
+            if (res.status === 201) {
+                setIsLoading(false)
+                setShowModal(true);
+                resetForm({ values: "" })
+                console.log("yeahhh!!!");
+            }
+            else {
+                toast.error("Error 403: Incorrect input values");
+            }
+        }
+        catch (err) {
+            toast.error("Error 500 : Transaction unsuccessful, server down");
+        }
     };
 
     const networkOptions = networks.map((network, key) => (
@@ -149,10 +151,17 @@ const SellAirtime = () => {
                         formik;
                     return (
                         <>
+                            {isLoading && (
+                            <div className="spinner_loader">
+                            <InfinitySpin
+                                width='200'
+                                color="#4fa94d"
+                            />
+                             </div>)}
                             <form className="form_container" onSubmit={handleSubmit}>
                                 <div style={{ width: "100%" }}>
-                                    <h3 className="selected_title">sell airtime</h3>
 
+                                    <h3 className="selected_title">sell airtime</h3>
                                     {/* NETWORK */}
                                     <div className="form_group">
                                         <div className="label_container">
@@ -206,6 +215,7 @@ const SellAirtime = () => {
                                                 placeholder="phone number"
                                                 id="phoneNumber"
                                                 name="phoneNumber"
+                                                ref={phoneNumRef}
                                                 data-testid="number-input"
                                                 value={values.phoneNumber}
                                                 onChange={handleChange}

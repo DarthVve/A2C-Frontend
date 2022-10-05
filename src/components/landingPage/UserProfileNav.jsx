@@ -48,7 +48,7 @@ function UserProfileNav({dashboard, setIsLogin}) {
           <>
             <FiChevronDown onClick={()=>setShowDropdown(!showDropdown)}/>
             <Dropdown showDropdown={showDropdown}>
-              <Link to={`/dashboard/${id}`}><DropdownItem><img className='dropdown-img' src={account} alt="" onClick={setShowModal.bind(null, true)}/><span>Account</span></DropdownItem></Link>
+              <Link to={`/dashboard/${id}`}><DropdownItem><img className='dropdown-img' src={avatar} alt="" onClick={setShowModal.bind(null, true)}/><span>Account</span></DropdownItem></Link>
               <DropdownItem><img src={settings} alt='settings' /><span onClick={route}>Settings</span></DropdownItem>
               <DropdownItem><img src={helpCenter} alt='help center' /><span>Help Center</span></DropdownItem>
               <DropdownItem><img src={logoutIcon} alt='logout'/><span onClick={handleLogout}>Logout</span></DropdownItem>

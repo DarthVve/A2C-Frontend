@@ -21,17 +21,18 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-   
 }
 
 .modal_overlay .modal_content .icon_container img{
     width: 96px;
     height: 96px;
 }
+
 .modal_overlay .modal_content .success_header{
     text-transform: uppercase;
     font-size: 1.3rem;
 }
+
 .modal_overlay .modal_content .success_details{
     width: 230px;
     height: 40px;
@@ -81,8 +82,8 @@
         width: 20rem;
         height: 20rem;
     }
-
 }
+
 @media screen and (max-width: 280px) {
     .modal_overlay .modal_content {
         position: relative;
@@ -90,5 +91,4 @@
         width: 15rem;
         height: 20rem;
     }
-
 }

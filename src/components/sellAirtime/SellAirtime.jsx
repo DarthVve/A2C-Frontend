@@ -1,12 +1,12 @@
 import React, { useState, useRef, useCallback } from "react";
 import { Formik } from "formik";
-import "./SellAirtime.css";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { FaRegCopy } from "react-icons/fa";
 import { NotifyAdminModal } from "../";
 import { toast } from "react-toastify";
 import axios from "../../axios";
 import { InfinitySpin } from 'react-loader-spinner'
+import "./SellAirtime.css";
 
 
 const SellAirtime = () => {
@@ -100,8 +100,7 @@ const SellAirtime = () => {
     }, []);
 
     const userData = JSON.parse(localStorage.getItem("userInfo"));
-    const ID = userData.id
-    console.log("userID", ID);
+    const ID = userData.id;
 
     const handleSubmit = async (values, { resetForm }) => {
         const creditedAmount = creditRef.current.value;
@@ -153,11 +152,11 @@ const SellAirtime = () => {
                         <>
                             {isLoading && (
                             <div className="loader_overlay">
-                            <InfinitySpin className="loader"
-                                width='200'
-                                color="#4fa94d"
-                            />
-                             </div>)}
+                                <InfinitySpin className="loader"
+                                    width='200'
+                                    color="#4fa94d"
+                                />
+                            </div>)}
                             <form className="form_container" onSubmit={handleSubmit}>
                                 <div style={{ width: "100%" }}>
 

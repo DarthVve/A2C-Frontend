@@ -7,12 +7,16 @@ import { NotifyAdminModal } from "../";
 import { toast } from "react-toastify";
 import axios from "../../axios";
 import { InfinitySpin } from 'react-loader-spinner'
+<<<<<<< HEAD
 import "./SellAirtime.css";
 
 
 // import * as Yup from "yup";
 // import { toast } from "react-toastify";
 // import axios from "../../axios";
+=======
+
+>>>>>>> 091a12f (SellAirtime:connected frontend to backend, added loader animation while form is being sent to the endpoint)
 
 const SellAirtime = () => {
     const allNetworks = ["Select Network", "AIRTEL", "MTN", "9MOBILE", "GLO"];
@@ -111,6 +115,10 @@ const SellAirtime = () => {
 
     const userData = JSON.parse(localStorage.getItem("userInfo"));
     const ID = userData.id
+<<<<<<< HEAD
+=======
+    console.log("userID", ID);
+>>>>>>> 091a12f (SellAirtime:connected frontend to backend, added loader animation while form is being sent to the endpoint)
 
     const handleSubmit = async (values, { resetForm }) => {
         const creditedAmount = creditRef.current.value;
@@ -130,6 +138,10 @@ const SellAirtime = () => {
                 setIsLoading(false)
                 setShowModal(true);
                 resetForm({ values: "" })
+<<<<<<< HEAD
+=======
+                console.log("yeahhh!!!");
+>>>>>>> 091a12f (SellAirtime:connected frontend to backend, added loader animation while form is being sent to the endpoint)
             }
             else {
                 toast.error("Error 403: Incorrect input values");
@@ -160,12 +172,21 @@ const SellAirtime = () => {
                     return (
                         <>
                             {isLoading && (
+<<<<<<< HEAD
                             <div className="loader_overlay">
                                 <InfinitySpin className="loader"
                                     width='200'
                                     color="#4fa94d"
                                 />
                             </div>)}
+=======
+                            <div className="spinner_loader">
+                            <InfinitySpin
+                                width='200'
+                                color="#4fa94d"
+                            />
+                             </div>)}
+>>>>>>> 091a12f (SellAirtime:connected frontend to backend, added loader animation while form is being sent to the endpoint)
                             <form className="form_container" onSubmit={handleSubmit}>
                                 <div style={{ width: "100%" }}>
 

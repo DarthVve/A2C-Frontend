@@ -69,9 +69,9 @@ const SellAirtime = () => {
 
     //ADMIN NUMBERS
     const airtelNumber = "08121449020";
-    const mtnNumber = "MTN-NUMBER";
-    const gloNumber = "GLO-NUMBER";
-    const etisalatNumber = "9MOBILE-NUMBER";
+    const mtnNumber = "08135520498";
+    const gloNumber = "08113792805";
+    const etisalatNumber = "08186152364";
     const [networkCode, setNetworkCode] = useState("network-code");
     const [networkName, setNetworkName] = useState("network-code");
     const [recipientNumber, setRecipientNumber] = useState("recipient-number");

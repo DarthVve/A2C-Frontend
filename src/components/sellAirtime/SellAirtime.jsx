@@ -351,7 +351,7 @@ const SellAirtime = () => {
                                                 data-testid="recipient-number-input"
                                                 disabled
                                                 ref={destinationNumberRef}
-                                                value={values.destinationPhoneNumber}
+                                                value={recipientNumber}
                                                 onChange={handleChange}
                                             />
                                             {errors.destinationPhoneNumber &&

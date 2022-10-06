@@ -7,12 +7,8 @@ const Transactions = () => {
     const [trans, setTrans] = useState([]);
     const [curPage, setCurPage] = useState(1);
     const [itemsPerPage] = useState(3);
-    
-    useEffect(() => {
-        setTrans(TRANS);
-    }, []);
 
-    const idxOfLastItem = curPage * itemsPerPage;
+     const idxOfLastItem = curPage * itemsPerPage;
     const idxOfFirstItem = idxOfLastItem - itemsPerPage;
     const itemsToShow = trans.slice(idxOfFirstItem, idxOfLastItem);
 
@@ -25,7 +21,7 @@ const Transactions = () => {
                     <div className='trans' key={trans.id}>
                         <div className='trans-details'>
                             <p className='td1'>{trans.day + ', ' + trans.time}</p>
-                            <p className='td2'>Withdraw fund</p>
+                            <p className='td2'>{trans.network}</p>
                             <p className='td3'>{trans.date}</p>
                         </div>
                         <div className='trans-status'>

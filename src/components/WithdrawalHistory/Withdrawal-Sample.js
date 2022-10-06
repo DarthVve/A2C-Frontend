@@ -5,7 +5,8 @@ const transactions = [
         date: new Date().toLocaleDateString(),
         day: new Date().toDateString().slice(0,3),
         time: new Date().toLocaleTimeString(),
-        network:"MTN"
+        bankName: 'Access',
+        Status:true
     },
     {
         id: 2,
@@ -13,8 +14,8 @@ const transactions = [
         date: new Date().toLocaleDateString(),
         day: new Date().toDateString().slice(0,3),
         time: new Date().toLocaleTimeString(),
-        network:"Airtel"
-
+        bankName: 'GTB',
+        Status:false
     },
     {
         id: 3,
@@ -22,7 +23,8 @@ const transactions = [
         date: new Date().toLocaleDateString(),
         day: new Date().toDateString().slice(0,3),
         time: new Date().toLocaleTimeString(),
-        network:"Etisalat"
+        bankName: 'Fidelity',
+        Status:true
     },
     {
         id: 4,
@@ -30,7 +32,8 @@ const transactions = [
         date: new Date().toLocaleDateString(),
         day: new Date().toDateString().slice(0,3),
         time: new Date().toLocaleTimeString(),
-        network:"GLO"
+        bankName: 'Sterling',
+        Status:false
     },
     {
         id: 5,
@@ -38,7 +41,8 @@ const transactions = [
         date: new Date().toLocaleDateString(),
         day: new Date().toDateString().slice(0,3),
         time: new Date().toLocaleTimeString(),
-        network:"MTN"
+        bankName: 'UBA',
+        Status:false
     },
     {
         id: 6,
@@ -46,15 +50,18 @@ const transactions = [
         date: new Date().toLocaleDateString(),
         day: new Date().toDateString().slice(0,3),
         time: new Date().toLocaleTimeString(),
-        network:"MTN"
+        bankName: 'keystone',
+        Status:true
     },
     {
         id: 7,
-        amount: '350000',
+        amount: '3000',
         date: new Date().toLocaleDateString(),
         day: new Date().toDateString().slice(0,3),
         time: new Date().toLocaleTimeString(),
-        network:"Airtel"
+        bankName: 'FirstBank',
+        Status:true
+
     }
 ];
 

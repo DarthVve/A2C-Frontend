@@ -2,14 +2,15 @@ import React,{useState} from 'react'
 import styled from 'styled-components'
 
 function DashboardButton() {
-    const [balance] = useState("21,350.00");
+    const { wallet } = JSON.parse(localStorage.getItem('userInfo'))
+    const [balance] = useState(wallet);
     
     return (
         <DashboardButtonStyle>
             <div className='btn-container'>
                 <div className='btn-balance'>
                     <h6 className='btn-balance-h6'>wallet balance</h6>
-                    <h2 className='btn-balance-h2'>{`N${balance}`}</h2>
+                    <h2 className='btn-balance-h2'>{`₦${balance}`}</h2>
                 </div>
                 <p className='btn-container-p'>Account is active</p>
             </div>

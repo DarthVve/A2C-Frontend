@@ -3,6 +3,7 @@ import { ViewAccountDetails, Dashboardbtn, BankAccountModal } from "../";
 import { useState } from "react";
 import axios from '../../axios';
 import { toast } from "react-toastify";
+import bankObjs from './banks';
 
 function ManageAccountDetails() {
 
@@ -13,6 +14,7 @@ function ManageAccountDetails() {
     bank: '',
     number: ''
   });
+  const [banks] = useState(bankObjs.map(bank => bank.name));
 
   const displayModal = () => {
     setShowModal(true)
@@ -64,28 +66,7 @@ function ManageAccountDetails() {
             <p>Bank Name</p>
             <select placeholder="Select Bank" name="bank" defaultValue='' onInput={handleChange}>
               <option value="" disabled>Select Bank</option>
-              <option value="Access Bank Plc">Access Bank Plc</option>
-              <option value="Citibank Nigeria Limited">Citibank Nigeria Limited</option>
-              <option value="Ecobank Nigeria Plc">Ecobank Nigeria Plc</option>
-              <option value="Fidelity Bank Plc">Fidelity Bank Plc</option>
-              <option value="First Bank Nigeria Limited">First Bank Nigeria Limited</option>
-              <option value="First City Monument Bank Plc">First City Monument Bank Plc</option>
-              <option value="Globus Bank Limited">Globus Bank Limited</option>
-              <option value="Guaranty Trust Bank Plc">Guaranty Trust Bank Plc</option>
-              <option value="Heritage Banking Company Ltd.">Heritage Banking Company Ltd.</option>
-              <option value="Key Stone Bank">Key Stone Bank</option>
-              <option value="Polaris Bank">Polaris Bank</option>
-              <option value="Providus Bank">Providus Bank</option>
-              <option value="Stanbic IBTC Bank Ltd.">Stanbic IBTC Bank Ltd.</option>
-              <option value="Standard Chartered Bank Nigeria Ltd.">Standard Chartered Bank Nigeria Ltd.</option>
-              <option value="Sterling Bank Plc">Sterling Bank Plc</option>
-              <option value="SunTrust Bank Nigeria Limited">SunTrust Bank Nigeria Limited</option>
-              <option value="Titan Trust Bank Ltd">Titan Trust Bank Ltd</option>
-              <option value="Union Bank of Nigeria Plc">Union Bank of Nigeria Plc</option>
-              <option value="United Bank For Africa Plc">United Bank For Africa Plc</option>
-              <option value="Unity Bank Plc">Unity Bank Plc</option>
-              <option value="Wema Bank Plc">Wema Bank Plc</option>
-              <option value="Zenith Bank Plc">Zenith Bank Plc</option>
+              {banks.map(bank => <option key={bank} value={bank}>{bank}</option>)}
             </select>
           </label>
           <label>

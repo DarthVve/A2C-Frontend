@@ -29,6 +29,7 @@
     background: #FFFFFF;
     border: 1px solid #D9D9D9;
     height: 48px;
+    color: #012A4A;
 
     &::placeholder {
       font-family: 'Inter';
@@ -46,6 +47,7 @@
 
     &:disabled {
       opacity: 0.4;
+      background: rgba(0, 0, 0, 0.05);
       cursor: not-allowed;
     }
 

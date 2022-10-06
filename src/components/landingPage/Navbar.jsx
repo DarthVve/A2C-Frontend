@@ -149,6 +149,7 @@ const NavbarStyle = styled.div`
     }
 
     .btnLogin{
+      text-decoration:none;
       display: flex;
       flex-direction: row;
       justify-content: center;
@@ -193,6 +194,11 @@ const NavbarStyle = styled.div`
       padding-bottom:2rem;
       box-shadow: 5px 5px 5px 5px #888888;
       padding:2rem;
+
+      a.btnLogin {
+        text-decoration:none;
+        color: #de3d6d;
+      }
     }
 
     .menu-link{

@@ -29,7 +29,8 @@ const OptionModal = ({ transaction, close }) => {
         transaction.status = "confirmed";
         axios.patch(`/admin/wallet`, {
           email: transaction.customer.email,
-          amount: amtSent,
+          amountToSell: amtSent,
+          amountToReceive: amtToReceive,
           transactionId: transaction.id
         }).then(res => {
           if (res.status === 200) {

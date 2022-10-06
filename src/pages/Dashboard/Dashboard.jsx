@@ -67,7 +67,7 @@ function Dashboard() {
                   }
                   
                   <div className={isMobile ? 'dashbord-mobil-nav' : 'dashboard-navigation'} onClick={()=>setIsMobile(false)}>
-                      <p className={`nav-link sell ${clicked[0]["sell"] && "selected"}`} onClick={handleSellAirtime}>Sell Airtime</p>
+                      <p className={`nav-link sell ${clicked[0]["sell"] && "selected"}`} onClick={handleSellAirtime}>Transfer Airtime</p>
                       <p className={`nav-link withdraw ${clicked[0]["widthraw"] && "selected"}`} onClick={handleWithdraw}>Withdraw Balance</p>
                       <p className={`nav-link account ${clicked[0]["account"] && "selected"}`} onClick={handleAccount}>Manage Bank Account</p>
                       <p className={`nav-link history ${clicked[0]["history"] && "selected"}`} onClick={handleHistroy}>Transaction History</p>

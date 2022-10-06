@@ -8,12 +8,12 @@ const WithdrawalHistory = () => {
     const [withdraw, setWithdraw] = useState([]);
     const [curPage, setCurPage] = useState(1);
     const [itemsPerPage] = useState(3);
+    // const data = 
 
     const token= localStorage.getItem("token")
     const getWithdraw = async()=> {
-       
         try{
-           axios.get("/withdrawal/all", {
+            axios.get("localhost:3500/withdrawal/all", {
                 headers: { Authorization : `Bearer ${token}`},
                 }).then(response => console.log(response) )
         }catch (error){
@@ -22,10 +22,12 @@ const WithdrawalHistory = () => {
 getWithdraw()
     }
 
-  useEffect(() => {
+
+
+
+    useEffect(() => {
         setWithdraw(withdrawal);
     }, []);
-    
 
     const idxOfLastItem = curPage * itemsPerPage;
     const idxOfFirstItem = idxOfLastItem - itemsPerPage;

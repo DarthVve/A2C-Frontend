@@ -55,7 +55,7 @@ const transactions = [
     },
     {
         id: 7,
-        amount: '3000',
+        airtime_amount: '350000',
         date: new Date().toLocaleDateString(),
         day: new Date().toDateString().slice(0,3),
         time: new Date().toLocaleTimeString(),

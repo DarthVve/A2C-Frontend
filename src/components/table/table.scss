@@ -40,13 +40,14 @@
     .tbody_row {
 
       .tbody_cell {
-        padding: 16px 0;
+        padding: 16px 2px;
         font-family: 'Inter';
         font-style: normal;
         font-weight: 400;
         font-size: 14px;
         line-height: 17px;
         color: #012A4A;
+        overflow-wrap: break-word;
 
         &:first-of-type {
           text-align: left;

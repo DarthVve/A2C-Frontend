@@ -2,8 +2,10 @@ import './adminActions.scss';
 import { useState, useEffect, useRef } from 'react';
 import { ActionMenu, OptionModal } from '../../components';
 import blurHandler from './blurHandler';
+import axios from '../../axios';
+import { toast } from 'react-toastify';
 
-const AdminActions = () => {
+const AdminActions = ({ transaction }) => {
   const [showMenu, setShowMenu] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
@@ -13,6 +15,18 @@ const AdminActions = () => {
 
   const hideActionMenu = (e) => {
     setShowMenu(false);
+  }
+
+  const cancelTransaction = () => {
+    axios.patch(`/transfer/cancel/${transaction.id}`)
+    .then(res => {
+      if (res.status === 200) {
+        toast.info("Transaction Cancelled");
+        transaction.status = "cancelled";
+      }
+    }).catch(err => {
+      toast.error("Transaction failed to update");
+    })
   }
 
   const menuRef = useRef();
@@ -29,11 +43,11 @@ const AdminActions = () => {
         <div>
           <ActionMenu actions={[
             { text: 'Edit', handler: () => { setShowModal(true) } },
-            { text: 'Cancel', handler: () => { console.log("canceling") } },
+            { text: 'Cancel', handler: () => { cancelTransaction() } },
           ]} close={hideActionMenu}/>
         </div>
       }
-      {showModal && <OptionModal close={() => {setShowModal(false)}} />}
+      {showModal && <OptionModal close={() => { setShowModal(false) }} transaction={transaction} />}
     </div>
   )
 }

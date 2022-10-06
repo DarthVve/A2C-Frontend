@@ -23,7 +23,7 @@ const AdminDashboard = () => {
 
   return (
     <div className='adminPage'>
-      <NavBar />
+      <NavBar dashboard/>
       <section className='adminDashboard'>
         <nav className='admin-sidebar'>
           <ul className='admin-tabs'>

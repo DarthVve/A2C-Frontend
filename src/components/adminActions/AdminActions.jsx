@@ -5,6 +5,7 @@ import blurHandler from './blurHandler';
 
 const AdminActions = () => {
   const [showMenu, setShowMenu] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const toggleActionMenu = (e) => {
     setShowMenu(!showMenu);
@@ -27,11 +28,12 @@ const AdminActions = () => {
       {showMenu &&  
         <div>
           <ActionMenu actions={[
-            { text: 'Edit', handler: () => { console.log("editing") } },
+            { text: 'Edit', handler: () => { setShowModal(true) } },
             { text: 'Cancel', handler: () => { console.log("canceling") } },
           ]} close={hideActionMenu}/>
         </div>
       }
+      {showModal && <OptionModal close={() => {setShowModal(false)}} />}
     </div>
   )
 }

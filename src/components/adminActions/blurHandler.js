@@ -7,10 +7,12 @@ export default function blurHandler(
     setListening(true);
     ['click', 'touchstart'].forEach((_) => {
       document.addEventListener('click', (event) => {
-        const current = elRef.current;
-        const target = event.target;
-        if (current.contains(target)) return;
-        close()
+        try {
+          const current = elRef.current;
+          const target = event.target;
+          if (current?.contains(target)) return;
+          close()
+        } catch (e) {}
       });
     })
   }

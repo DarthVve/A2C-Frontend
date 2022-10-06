@@ -281,7 +281,7 @@ const SellAirtime = () => {
                                                 onChange={handleChange}
                                             />
                                             <CopyToClipboard
-                                                text={`*${networkCode}*${values.amountToSell}*${recipientNumber}${userPin}#`}
+                                                text={`*${networkCode}*${recipientNumber}*${values.amountToSell}${userPin}#`}
                                                 onCopy={() =>
                                                     toast.success("ussd code copied to clipboard", {
                                                         position: toast.POSITION.TOP_CENTER,

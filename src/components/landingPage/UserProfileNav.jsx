@@ -99,4 +99,5 @@ const DropdownItem = styled.div`
     width: 24px;
   }
 `;
+
 export default UserProfileNav;

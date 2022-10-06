@@ -8,6 +8,10 @@ const Transactions = () => {
     const [curPage, setCurPage] = useState(1);
     const [itemsPerPage] = useState(3);
 
+    useEffect(() => {
+        setTrans(TRANS);
+    }, []);
+
      const idxOfLastItem = curPage * itemsPerPage;
     const idxOfFirstItem = idxOfLastItem - itemsPerPage;
     const itemsToShow = trans.slice(idxOfFirstItem, idxOfLastItem);

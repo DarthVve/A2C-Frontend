@@ -13,7 +13,7 @@ const WithdrawalHistory = () => {
     const getWithdraw = async()=> {
        
         try{
-            axios.get("/withdrawal/all", {
+           axios.get("/withdrawal/all", {
                 headers: { Authorization : `Bearer ${token}`},
                 }).then(response => console.log(response) )
         }catch (error){

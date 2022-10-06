@@ -58,8 +58,8 @@ const OptionModal = ({ transaction, close }) => {
       <div className='optionModal' ref={modalRef}>
         <h2 className='modalHeading'>Enter an amount</h2>
         <form className='modalForm' onSubmit={handleSubmit}>
-          <FormInput label="Amount sent" value={"₦" + amtSent} handleChange={handleAmtSentChange} />
-          <FormInput label="Amount to receive" disabled={true} value={"₦"+amtToReceive} />
+          <FormInput label="Amount sent" value={"N" + amtSent} handleChange={handleAmtSentChange} />
+          <FormInput label="Amount to receive" disabled={true} value={"N"+amtToReceive} />
           <Button type="submit">Confirm</Button>
         </form>
       </div>

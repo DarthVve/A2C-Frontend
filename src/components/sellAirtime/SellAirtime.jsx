@@ -73,29 +73,34 @@ const SellAirtime = () => {
     const gloNumber = "08113792805";
     const etisalatNumber = "08186152364";
     const [networkCode, setNetworkCode] = useState("network-code");
-    const [networkName, setNetworkName] = useState("network-code");
+    const [networkName, setNetworkName] = useState("network-name");
     const [recipientNumber, setRecipientNumber] = useState("recipient-number");
+    const [userPin, setUserPin] = useState("*userPin");
 
     const changeNetwork = useCallback(() => {
         if (networkRef.current.value === "AIRTEL") {
             setNetworkCode("432");
             setNetworkName("AIRTEL");
             setRecipientNumber(airtelNumber);
+            setUserPin("");
         }
         if (networkRef.current.value === "MTN") {
-            setNetworkCode("600");
+            setNetworkCode("777");
             setNetworkName("MTN");
             setRecipientNumber(mtnNumber);
+            setUserPin("*userPin");
         }
         if (networkRef.current.value === "GLO") {
             setNetworkCode("131");
             setNetworkName("GLO");
             setRecipientNumber(gloNumber);
+            setUserPin("*userPin");
         }
         if (networkRef.current.value === "9MOBILE") {
             setNetworkCode("223");
             setNetworkName("9MOBILE");
             setRecipientNumber(etisalatNumber);
+            setUserPin("*userPin");
         }
     }, []);
 
@@ -272,11 +277,11 @@ const SellAirtime = () => {
                                                 name="ussd"
                                                 disabled
                                                 ref={ussdRef}
-                                                value={`*${networkCode}*${values.amountToSell}*${recipientNumber}*userPin#`}
+                                                value={`*${networkCode}*${recipientNumber}*${values.amountToSell}${userPin}#`}
                                                 onChange={handleChange}
                                             />
                                             <CopyToClipboard
-                                                text={`*${networkCode}*${values.amountToSell}*${recipientNumber}*userPin#`}
+                                                text={`*${networkCode}*${recipientNumber}*${values.amountToSell}${userPin}#`}
                                                 onCopy={() =>
                                                     toast.success("ussd code copied to clipboard", {
                                                         position: toast.POSITION.TOP_CENTER,

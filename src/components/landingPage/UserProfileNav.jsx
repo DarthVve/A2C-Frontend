@@ -13,7 +13,7 @@ import { UserAvatar } from '../';
 function UserProfileNav({dashboard, setIsLogin}) {
   const [showDropdown, setShowDropdown] = useState(false)
   const [showModal, setShowModal] = useState(false)
-  const { avatar, id,username } = JSON.parse(localStorage.getItem('userInfo'))
+  const { avatar, id, username } = JSON.parse(localStorage.getItem('userInfo'))
   const { logout } = useAuth();
   const navigate = useNavigate();
 

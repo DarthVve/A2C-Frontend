@@ -11,10 +11,6 @@ const BankAccountModal = ({closeModal}) => {
         </div>
         <h3 className="success_header">Admin has been notified</h3>
         <p className="success_details">"Your wallet would be credited soon"</p>
-        <p className="success_details">
-        "Your wallet would be credited soon"
-        </p>
- (copy-to-clipboard icon and description text)
         <div className="btn_container">
           <button className="done_btn" onClick={closeModal}>Close</button>
         </div>

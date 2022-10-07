@@ -23,7 +23,6 @@ export { default as ManageAccountDetails } from './manageAccountDetails/manageAc
 export { default as ViewAccountDetails } from './viewAccountDetails/viewAccountDetails';
 export { default as BankAccountModal } from './BankAccountModal/BankAccountModal';
 export { default as Dashboardbtn } from "./dashBoardAcctBtn/dashBoardBtnAcct";
-export { default as WithdrawalHistory } from "./WithdrawalHistory/WithdrawalHistory";
 export { default as NotifyAdminModal } from "./NotifyAdminModal/NotifyAdminModal";
 export { default as PendingTransactions } from './pendingTransactions/PendingTransactions';
 export { default as AdminTransactions } from './adminTransactions/AdminTransactions';
@@ -31,3 +30,5 @@ export { default as Table } from './table/Table';
 export { default as AdminActions } from './adminActions/AdminActions';
 export { default as ActionMenu } from './adminActions/ActionMenu';
 export { default as OptionModal } from './adminActions/OptionModal';
+export { default as WithdrawalHistory } from "./WithdrawalHistory/WithdrawalHistory";
+export { default as Status } from "./table/Status";

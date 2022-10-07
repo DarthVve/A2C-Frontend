@@ -2,8 +2,8 @@ import React,{useState} from 'react'
 import styled from 'styled-components'
 
 function DashboardButton() {
-    const { wallet } = JSON.parse(localStorage.getItem('userInfo'))
-    const [balance] = useState(wallet);
+    // const { wallet } = JSON.parse(localStorage.getItem('userInfo'))
+    const [balance] = useState(5000);
     
     return (
         <DashboardButtonStyle>

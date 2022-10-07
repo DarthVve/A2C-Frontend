@@ -10,22 +10,28 @@ const WithdrawalHistory = () => {
     const [itemsPerPage] = useState(3);
     // const data = 
 
-    const token= localStorage.getItem("token")
-    const getWithdraw = async()=> {
-        try{
-            axios.get("localhost:3500/withdrawal/all", {
-                headers: { Authorization : `Bearer ${token}`},
-                }).then(response => console.log(response) )
-        }catch (error){
-            console.log(error)
-        }
-getWithdraw()
-    }
+//     const token= localStorage.getItem("token")
+//     const getWithdraw = async()=> {
+//         try{
+//             axios.get("localhost:3500/withdrawal/all", {
+//                 headers: { Authorization : `Bearer ${token}`},
+//                 }).then(response => console.log(response) )
+//         }catch (error){
+//             console.log(error)
+//         }
+// getWithdraw()
+//     }
 
+const getWithdrawal = async() => {
+const res = await axios.get(`/withdrawal/all`)
+console.log(res)
+}
 
+useEffect(() => {
+    getWithdrawal()
+  }, [])
 
-
-    useEffect(() => {
+  useEffect(() => {
         setWithdraw(withdrawal);
     }, []);
 

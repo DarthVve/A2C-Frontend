@@ -1,15 +1,34 @@
 import './Transaction.scss'
 import React, { useState, useEffect } from 'react';
-import TRANS from './transactions-sample'
+// import TRANS from './transactions-sample'
 import { Pagination } from '../'
+import axios from '../../axios'
 
 const Transactions = () => {
     const [trans, setTrans] = useState([]);
     const [curPage, setCurPage] = useState(1);
     const [itemsPerPage] = useState(3);
 
+
+    const getTransaction = async() => {
+        try{
+            const res = await axios.get(`/transactions/:type`)
+            console.log(res)
+            // let transact = res.data.withdrawals
+            setTrans()
+    // console.log(accounts)
+        }catch(error){
+    // console.log(error)
+        }
+    
+    }
+    
     useEffect(() => {
-        setTrans(TRANS);
+        getTransaction()
+      }, [])
+
+    useEffect(() => {
+        // setTrans();
     }, []);
 
      const idxOfLastItem = curPage * itemsPerPage;

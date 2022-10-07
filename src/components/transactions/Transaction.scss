@@ -75,14 +75,12 @@
                 font-family: 'Inter';
                 font-style: normal;
                 font-weight: 400;
-                font-size: 14px;
+                //@at-root: 14px;
                 line-height: 17px;
                 color: #21334F;
                 margin: inherit;
-
-                @media screen and (min-width: 280px) and (max-width: 600px) {
-                    font-size: 12px;
-                }
+                font-size: 12px;
+               
             }
         }
 
@@ -90,11 +88,11 @@
             display: flex;
             flex-direction: column;
             align-items: flex-end;
-            padding: 0px;
+            padding: 5px;
             width: 88px;
             height: 53px;
-
-            .status {
+            
+            .gen {
                 display: flex;
                 flex-direction: row;
                 justify-content: center;
@@ -111,7 +109,30 @@
                 font-weight: 400;
                 font-size: 14px;
                 line-height: 17px;
-                color: #34A853;
+                &.pending{
+                    background: #f7ecc7;
+                    .txt-color{
+                        position: relative;
+                        color:#E9B200 ;
+                        text-transform: capitalize;
+                    }
+                }
+                &.confirmed{
+                    background: #cac7f7;
+                    .txt-color{
+                        position: relative;
+                        color:rgb(31, 0, 233) ;
+                        text-transform: capitalize;
+                    }
+                }
+                &.sent{
+                    background: #c7f7c9;
+                    .txt-color{
+                        position: relative;
+                        color:rgb(3, 143, 17) ;
+                        text-transform: capitalize;
+                    }
+                }
 
                 @media screen and (min-width: 280px) and (max-width: 600px) {
                     font-size: 12px;

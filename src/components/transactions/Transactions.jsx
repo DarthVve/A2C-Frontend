@@ -1,6 +1,5 @@
 import './Transaction.scss'
 import React, { useState, useEffect } from 'react';
-// import TRANS from './transactions-sample'
 import { Pagination } from '../'
 import axios from '../../axios'
 
@@ -11,31 +10,29 @@ const Transactions = () => {
 
 
     const getTransaction = async() => {
+        const id = JSON.parse(localStorage.getItem("userInfo")).id
+     
         try{
-            const res = await axios.get(`/transactions/:type`)
-            console.log(res)
-            // let transact = res.data.withdrawals
-            setTrans()
-    // console.log(accounts)
+            const res = await axios.get(`transfer/${id}`)
+            console.log("data",res.data.transactions.rows)
+            setTrans(res.data.transactions.rows)
+    
         }catch(error){
-    // console.log(error)
+  
         }
     
     }
-    
+
     useEffect(() => {
         getTransaction()
       }, [])
 
-    useEffect(() => {
-        // setTrans();
-    }, []);
-
-     const idxOfLastItem = curPage * itemsPerPage;
+    const idxOfLastItem = curPage * itemsPerPage;
     const idxOfFirstItem = idxOfLastItem - itemsPerPage;
     const itemsToShow = trans.slice(idxOfFirstItem, idxOfLastItem);
 
     const paginate = (pageNum) => setCurPage(pageNum);
+    const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 
     return (
         <>
@@ -43,15 +40,24 @@ const Transactions = () => {
                 {itemsToShow.map((trans) => 
                     <div className='trans' key={trans.id}>
                         <div className='trans-details'>
-                            <p className='td1'>{trans.day + ', ' + trans.time}</p>
+                        <p className='td1'>{weekday[new Date (trans.createdAt).getUTCDay()] 
+                            +  "," + " " +
+                            trans.createdAt.slice(11, 19)}</p>
                             <p className='td2'>{trans.network}</p>
-                            <p className='td3'>{trans.date}</p>
+                            <p className='td3'>
+                                {trans.createdAt.substring(0, 10)}</p>
                         </div>
                         <div className='trans-status'>
-                            <div className='status'>
-                                Received
+                            <div className={
+                                
+                                trans.status ==="pending" ?"pending gen" :
+                                trans.status ==="confirmed" ?"confirmed gen" : trans.status ==="sent" ?"sent gen":"default gen" 
+                                
+                                }>
+                                  <span className='txt-color'> {trans.status}</span> 
+                            
                             </div>
-                            <p className='amount'>&#8358;{trans.amount}</p>
+                            <p className='amount'>&#8358;{trans.amountToSell}</p>
                         </div>
                     </div>
                 )}

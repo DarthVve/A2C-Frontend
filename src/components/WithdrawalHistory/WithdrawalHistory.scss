@@ -6,9 +6,7 @@
     height: 468px;
     max-width: 100%;
 
- 
-
-    .withdrawal{
+  .withdrawal{
         display: flex;
         flex-direction: row;
         align-items: flex-start;
@@ -20,11 +18,8 @@
         max-width: 93%;
         justify-content: space-between;
 
-    }}
 
-
-
-    @media screen and (max-width: 280px) {
+  @media screen and (max-width: 280px) {
         gap: 10px;
         width: 100%;
         max-width: 85%;
@@ -49,6 +44,7 @@
             font-family: 'Inter';
             font-style: normal;
             font-weight: 600;
+            font-size: 14px;
             line-height: 17px;
             color: #21334F;
             margin: inherit;
@@ -65,7 +61,7 @@
             font-style: normal;
             font-weight: 400;
             font-size: 14px;
-            line-height: 17px;
+            line-height: 15px;
             color: #21334F;
             margin: inherit;
 
@@ -80,14 +76,11 @@
             font-family: 'Inter';
             font-style: normal;
             font-weight: 400;
-            font-size: 14px;
+            font-size: 12px;
             line-height: 17px;
             color: #21334F;
-            margin: inherit;
+            margin-top: 10px;
 
-            @media screen and (min-width: 280px) and (max-width: 600px) {
-                font-size: 12px;
-            }
         }
     }
 
@@ -95,7 +88,7 @@
         display: flex;
         flex-direction: column;
         align-items: flex-end;
-        padding: 0px;
+        padding: 5px;
         width: 88px;
         height: 53px;
 

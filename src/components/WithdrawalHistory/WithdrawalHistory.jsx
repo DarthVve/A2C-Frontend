@@ -12,12 +12,9 @@ const WithdrawalHistory = () => {
 
     try {
       const res = await axios.get(`/withdrawal/all`);
-      console.log(res);
       let accounts = res.data.withdrawals;
       setWithdraw(accounts);
-      console.log(accounts);
     } catch (error) {
-      console.log(error);
     }
   };
 
@@ -58,7 +55,6 @@ const WithdrawalHistory = () => {
             </div>
             <div className="withdraw-status">
               <div className="withdrawal-status">
-                {/* {console.log(withdraw.status)} */}
                 {withdraw.status ? "Received" : "Pending"}
               </div>
               <p className="withdrawal-amount">&#8358;{withdraw.amount}</p>

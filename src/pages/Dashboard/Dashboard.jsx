@@ -6,7 +6,7 @@ import { FiChevronDown } from 'react-icons/fi';
 
 function Dashboard() {
   const [title,setTitle] = useState("Dashboard")
-  const [clicked,setClicked] = useState([{"sell":false,"withdraw":false,"account":false,"history":false, "withdrawalTransaction": false}])
+  const [clicked,setClicked] = useState([{ "sell": false, "withdraw": false, "account": false, "history": false, "withdrawalTransaction": false }])
   const [page,setPage] = useState("sellAirtime");
   const [isMobile, setIsMobile] = useState(false)
 

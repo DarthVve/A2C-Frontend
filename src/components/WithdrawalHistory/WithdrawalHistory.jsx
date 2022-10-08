@@ -2,6 +2,7 @@ import "./WithdrawalHistory.scss";
 import React, { useState, useEffect } from "react";
 import { Pagination } from "..";
 import axios from "../../axios";
+import { toast } from "react-toastify";
 
 const WithdrawalHistory = () => {
   const [withdraw, setWithdraw] = useState([]);
@@ -9,13 +10,11 @@ const WithdrawalHistory = () => {
   const [itemsPerPage] = useState(3);
 
   const getWithdrawal = async () => {
-
     try {
       const res = await axios.get(`/withdrawal/all`);
       let accounts = res.data.withdrawals;
       setWithdraw(accounts);
-    } catch (error) {
-    }
+    } catch (err) { toast.error(err.response?.data?.msg || "Something went wrong") }
   };
 
   useEffect(() => {
@@ -28,15 +27,7 @@ const WithdrawalHistory = () => {
 
   const paginate = (pageNumber) => setCurPage(pageNumber);
 
-  const weekday = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
+  const weekday = [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ];
 
   return (
     <>

@@ -79,7 +79,6 @@
                 color: #21334F;
                 margin: inherit;
                 font-size: 12px;
-               
             }
         }
 
@@ -108,7 +107,8 @@
                 font-weight: 400;
                 font-size: 14px;
                 line-height: 17px;
-                &.pending{
+
+                &.pending {
                     background: #f7ecc7;
                     .txt-color{
                         position: relative;
@@ -116,7 +116,8 @@
                         text-transform: capitalize;
                     }
                 }
-                &.confirmed{
+
+                &.confirmed {
                     background: #cac7f7;
                     .txt-color{
                         position: relative;
@@ -124,7 +125,8 @@
                         text-transform: capitalize;
                     }
                 }
-                &.sent{
+
+                &.sent {
                     background: #c7f7c9;
                     .txt-color{
                         position: relative;

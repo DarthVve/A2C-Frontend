@@ -17,7 +17,7 @@ export { default as UserAvatar } from './useravatar/UserAvatar';
 export { default as Transactions } from './transactions/Transactions';
 export { default as Pagination } from './pagination/Pagination'
 export { default as DashboardButton } from './dashboard/DashboardButton';
-export { default as SellAirtime } from './SellAirtime/SellAirtime';
+export { default as SellAirtime } from './sellAirtime/SellAirtime';
 export { default as WithdrawBalance} from './withdrawBalance/WithdrawBalance';
 export { default as ManageAccountDetails } from './manageAccountDetails/manageAccountDetails';
 export { default as ViewAccountDetails } from './viewAccountDetails/viewAccountDetails';

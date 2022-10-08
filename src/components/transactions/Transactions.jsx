@@ -2,6 +2,7 @@ import "./Transaction.scss";
 import React, { useState, useEffect } from "react";
 import { Pagination } from "../";
 import axios from "../../axios";
+import { toast } from "react-toastify";
 
 const Transactions = () => {
   const [trans, setTrans] = useState([]);
@@ -10,11 +11,10 @@ const Transactions = () => {
 
   const getTransaction = async () => {
     const id = JSON.parse(localStorage.getItem("userInfo")).id;
-
     try {
       const res = await axios.get(`transfer/${id}`);
       setTrans(res.data.transactions.rows);
-    } catch (error) {}
+    } catch (err) { toast.error(err.response?.data?.msg || "Something went wrong") }
   };
 
   useEffect(() => {
@@ -26,15 +26,7 @@ const Transactions = () => {
   const itemsToShow = trans.slice(idxOfFirstItem, idxOfLastItem);
 
   const paginate = (pageNum) => setCurPage(pageNum);
-  const weekday = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
+  const weekday = [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ];
 
   return (
     <>
@@ -69,11 +61,7 @@ const Transactions = () => {
             </div>
           </div>
         ))}
-        <Pagination
-          itemsPerPage={itemsPerPage}
-          totalItems={trans.length}
-          paginate={paginate}
-        />
+        <Pagination itemsPerPage={itemsPerPage} totalItems={trans.length} paginate={paginate}/>
       </div>
     </>
   );

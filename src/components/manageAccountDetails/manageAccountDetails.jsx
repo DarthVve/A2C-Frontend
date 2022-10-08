@@ -84,7 +84,7 @@ function ManageAccountDetails() {
 
     {!show && (<div><ViewAccountDetails makeTrue={handleTrue}/></div>)}
     </>
-  );
-}
+  )
+};
 
 export default ManageAccountDetails;

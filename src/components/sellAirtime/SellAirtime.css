@@ -85,7 +85,7 @@
   cursor: pointer;
 }
 
-.copy_icon:hover::after {
+.copy_icon:hover::after{
   content: "copy to clipboard";
   width: 10rem;
   display: block;
@@ -249,7 +249,7 @@
   }
 }
 
-@media (max-width: 280px){
+@media (max-width: 280px) {
   .dashboard_frame {
       width: 100%;
     }

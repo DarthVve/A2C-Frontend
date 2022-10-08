@@ -14,13 +14,13 @@ const BaseRoute = () => {
             <Route path="/" element={<Landing/>} />
             <Route path="/register" element={<SignUp/>} />
             <Route path="/login" element={<Login/>} />
-            <Route path="/verify-notice/:id" element={<VerifyNotice />} />
+            <Route path="/verify-notice/:id" element={<VerifyNotice/>} />
             
             {/*Protected Routes*/}
             <Route element={<ProtectedRoute/>}>
-                <Route path="/dashboard/:id" element={<Dashboard/>} />
                 <Route path="/userprofile/:id" element={<Userprofile/>} />
                 <Route path='/admin/dashboard' element={<AdminDashboard/>} />
+                <Route path="/dashboard/:id" element={<Dashboard/>} />
             </Route>
 
             {/*Catch Errors*/}

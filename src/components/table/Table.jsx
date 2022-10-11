@@ -7,8 +7,7 @@ const Table = ({ columns, data }) => {
     getTableBodyProps,
     headerGroups,
     rows,
-    prepareRow,
-    state,
+    prepareRow
   } = useTable({
     columns,
     data,

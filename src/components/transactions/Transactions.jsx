@@ -50,6 +50,8 @@ const Transactions = () => {
                     ? "pending gen"
                     : trans.status === "confirmed"
                     ? "confirmed gen"
+                    : trans.status === "cancelled"
+                    ? "cancelled gen"
                     : trans.status === "sent"
                     ? "sent gen"
                     : "default gen"

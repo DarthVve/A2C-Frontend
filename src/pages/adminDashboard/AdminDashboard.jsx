@@ -1,5 +1,5 @@
 import './adminDashboard.scss';
-import { AdminTransactions, PendingTransactions, NavBar } from '../../components';
+import { AdminTransactions, PendingTransactions, NavBar, TwoFAModal } from '../../components';
 import { useState } from 'react';
 
 const AdminDashboard = () => {
@@ -20,11 +20,13 @@ const AdminDashboard = () => {
     }
   ])
   const [activeTab, setActiveTab] = useState(tabs[0]);
+  const [showingTwoFA, setShowingTwoFA] = useState(true);
 
   return (
     <div className='adminPage'>
-      <NavBar dashboard/>
-      <section className='adminDashboard'>
+      <NavBar dashboard />
+      {showingTwoFA && <TwoFAModal close={() => {setShowingTwoFA(false)}} />}
+      {!showingTwoFA && <section className='adminDashboard'>
         <nav className='admin-sidebar'>
           <ul className='admin-tabs'>
             {tabs.map(tab => tab.name === activeTab.name ?
@@ -40,12 +42,12 @@ const AdminDashboard = () => {
                 </li>
               )
             )}
-          </ul> 
+          </ul>
         </nav>
         <main className="admin-main">
           {activeTab.component}
         </main>
-      </section>
+      </section>}
     </div>
   );
 }

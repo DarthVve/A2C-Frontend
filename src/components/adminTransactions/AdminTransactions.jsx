@@ -1,5 +1,5 @@
 import './adminTransactions.scss';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { Table, Status } from '../../components';
 import axios  from '../../axios';
 
@@ -27,9 +27,11 @@ const AdminTransactions = () => {
       accessor: 'status'
     }
   ]);
+  const [noOfPages, setNoOfPages] = useState(1);
   
-  const getPage = async (page=0, size=4) => {
+  const getPage = async (page=0, size=15) => {
     const res = await axios.get(`/transfer/transactions/all?page=${page}&size=${size}`)
+    setNoOfPages(res.data.totalPages)
     const { rows } = res.data.transactions;
     rows.sort((a, b) => {
       return new Date(b.createdAt) - new Date(a.createdAt);
@@ -42,6 +44,15 @@ const AdminTransactions = () => {
     }))
   }
 
+  const fetchIdRef = useRef(1);
+  const fetchData = useCallback(({ pageSize, pageIndex }) => {
+    const fetchId = ++fetchIdRef.current;
+    if (fetchId === fetchIdRef.current) {
+      getPage(pageIndex, pageSize)
+    }
+  },
+  [])
+
   useEffect(() => {
     getPage()
   }, [])
@@ -51,7 +62,7 @@ const AdminTransactions = () => {
       <h1 className='tab-title'>Transactions</h1>
       <div className='scroll-container'>
         <div className='transactions'>
-          <Table columns={columns} data={data} />
+          <Table columns={columns} data={data} fetchData={fetchData} controlledPageCount={noOfPages} />
         </div>
       </div>
     </div>

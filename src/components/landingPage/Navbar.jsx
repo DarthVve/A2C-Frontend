@@ -79,32 +79,36 @@ const NavbarStyle = styled.div`
   right:0;
   z-index:3;
 
-  .Navbar-container{
+  .Navbar-container {
     display: flex;
     justify-content:space-between;
     align-items:center;
     max-width: 85%;
-    margin: 12px auto;
+    margin: auto;
+    height: 100%;
     over-flow:hidden;
     
-    .hmg{
+    .hmg {
       position:absolute;
-      top:0.8rem;
+      top: 0;
+      bottom: 0;
+      height: 50%;
+      margin: auto;
       right:2rem;
       display:none;
     }
   }
-  .Navbar-brand{
+  .Navbar-brand {
     display: flex;
     align-items:center;
     justify-content:space-between;
 
     .logo {
-      width: clamp(30px, 4vw, 60px)
-      height: clamp(30px, 4vw, 60px)
+      width: 32px;
+      height: 56px;
     }
 
-    .subject{
+    .subject {
       font-style: normal;
       font-weight: 600;
       font-size: clamp(16px, 4vw, 30px);
@@ -113,18 +117,18 @@ const NavbarStyle = styled.div`
       margin-left:16.39px;
       text-decoration:none;
 
-      span{
+      span {
         color:#F5844C;
       }
     }
   }
 
-  .Navbar-menu{
+  .Navbar-menu {
     display:flex;
     justify-content:space-between;
     align-items:center;
     
-    a{
+    a {
       font-style: normal;
       font-weight: 400;
       font-size: 16px;
@@ -135,11 +139,11 @@ const NavbarStyle = styled.div`
       margin-left:2em;
     }
 
-    .last{
+    .last {
       margin-right:1em;
     }
 
-    .selected{
+    .selected {
       font-style: normal;
       font-weight: 700;
       font-size: 16px;
@@ -148,7 +152,7 @@ const NavbarStyle = styled.div`
       color: #DE3D6D;
     }
 
-    .btnLogin{
+    .btnLogin {
       text-decoration:none;
       display: flex;
       flex-direction: row;
@@ -171,28 +175,30 @@ const NavbarStyle = styled.div`
   }
 
   @media (max-width:950px){
-    .Navbar-menu{
+    .Navbar-menu {
       display:none;
     }
 
-    .Navbar-container{
+    .Navbar-container {
       .hmg{
         display:block;
       }
     }
 
-    .mobile-nav{
+    .mobile-nav {
       display: flex;
       flex-direction: column;
       justify-content: center;
       position: absolute;
       align-items: center;
-      width: 100%;
+      width: 100vw;
       top:96px;
+      left:0;
+      right:0;
       background:#fff;
       over-flow:none;
       padding-bottom:2rem;
-      box-shadow: 5px 5px 5px 5px #888888;
+      box-shadow: 0 2px 6px -3px rgba(0,0,0,0.1);
       padding:2rem;
 
       a.btnLogin {
@@ -201,20 +207,20 @@ const NavbarStyle = styled.div`
       }
     }
 
-    .menu-link{
+    .menu-link {
       text-decoration:none;
       color: #012A4A;
       margin-bottom:1rem;
     }
   }
 
-  @media (max-width:378px){
-    .Navbar-brand .subject{
-      margin-left:0.1rem;
+  @media (max-width:378px) {
+    .Navbar-brand .subject {
+      margin-left: 0.4rem;
       font-size:0.8rem;
     }
 
-    .Navbar-container{
+    .Navbar-container {
       width:100%;
     }
   }

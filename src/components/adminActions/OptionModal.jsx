@@ -38,12 +38,14 @@ const OptionModal = ({ transaction, close }) => {
             transaction.status = "sent"
           }
         }).catch(err => {
-          toast.error("Wallet Credit Failed!");
+          toast.error(err.response?.data?.msg || "Wallet Credit Failed!");
+          if(err.response?.status === 401) { window.location.reload() }
         })
         close();
       }
     }).catch(err => {
-      toast.error("Transaction failed to update");
+      toast.error(err.response?.data?.msg || "Transaction failed to update");
+      if(err.response?.status === 401) { window.location.reload() }
     })
   }
 

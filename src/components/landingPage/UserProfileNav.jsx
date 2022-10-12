@@ -24,7 +24,7 @@ function UserProfileNav({dashboard, setIsLogin}) {
         toast.success("Logged out successfully");
         logout();
         localStorage.removeItem('userInfo')
-        navigate('/');
+        window.location.replace('/');
       }
     } catch (error) {
       toast.error(error.message)
@@ -40,14 +40,14 @@ function UserProfileNav({dashboard, setIsLogin}) {
   return (
     <Profile >
         <img onClick={setShowModal.bind(null, true)} style={{borderRadius:"50%", width:"40px",height:"40px" }} 
-          src={avatar || userIcon}
+          src={avatar? avatar: userIcon}
         alt='Profile Pic'
         className='profile-avatar-img's/>
         <span>{username}</span>
           <>
             <FiChevronDown onClick={()=>setShowDropdown(!showDropdown)}/>
             <Dropdown showDropdown={showDropdown}>
-              <Link to={`/dashboard/${id}`} style={{textDecoration: 'none'}}><DropdownItem><img className='dropdown-img' src={avatar || userIcon} alt="" onClick={setShowModal.bind(null, true)}/><span>Account</span></DropdownItem></Link>
+              <Link to={`/dashboard/${id}`} style={{textDecoration: 'none'}}><DropdownItem><img className='dropdown-img' src={avatar? avatar: userIcon} alt="" onClick={setShowModal.bind(null, true)}/><span>Account</span></DropdownItem></Link>
               <DropdownItem><img src={settings} alt='settings' /><span onClick={route}>Settings</span></DropdownItem>
               <DropdownItem><img src={helpCenter} alt='help center' /><span>Help Center</span></DropdownItem>
               <DropdownItem><img src={logoutIcon} alt='logout'/><span onClick={handleLogout}>Logout</span></DropdownItem>
@@ -77,7 +77,7 @@ const Dropdown = styled.div`
   background-color: #fff;
   width: 226px;
   height: 180px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 6px -3px rgba(0,0,0,0.1);
   z-index: 100;
   display: ${({ showDropdown }) => (showDropdown ? 'block' : 'none')};
   transition: all 0.3s ease-in-out;  

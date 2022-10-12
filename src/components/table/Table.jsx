@@ -1,18 +1,37 @@
 import './table.scss'
-import { useTable } from "react-table";
+import { useTable, usePagination } from "react-table";
+import { useEffect } from 'react';
 
-const Table = ({ columns, data }) => {
+const Table = ({ columns, data, fetchData, controlledPageCount }) => {
   const {
     getTableProps,
     getTableBodyProps,
     headerGroups,
-    rows,
-    prepareRow
+    page,
+    canPreviousPage,
+    canNextPage,
+    pageOptions,
+    pageCount,
+    gotoPage,
+    nextPage,
+    previousPage,
+    prepareRow,
+    state: { pageIndex, pageSize }
   } = useTable({
-    columns,
-    data,
-  });
+      columns,
+      data,
+      initialState: { pageIndex: 0, pageSize: 15 },
+      manualPagination: true,
+      autoResetPage: false,
+      pageCount: controlledPageCount,
+    }, usePagination);
+
+  useEffect(() => {
+    fetchData && fetchData({ pageIndex, pageSize })
+  }, [fetchData, pageIndex, pageSize])
+
   return (
+  <>
     <table className="table" {...getTableProps()}>
       <thead className="table_header">
         {headerGroups.map(headerGroup => (
@@ -31,7 +50,7 @@ const Table = ({ columns, data }) => {
         ))}
       </thead>
       <tbody className="tbody" {...getTableBodyProps()}>
-        {rows.map((row, i) => {
+        {page.map((row) => {
           prepareRow(row)
           return (
             <tr className='tbody_row' {...row.getRowProps()}>
@@ -50,6 +69,44 @@ const Table = ({ columns, data }) => {
         })}
       </tbody>
     </table>
+    <div className='pagination'>
+      <span className='paginationTxt'>
+        Page{" "}
+          {pageIndex + 1} of {pageOptions.length}
+          {" "}
+      </span>
+        
+      <div>
+        <button className='paginationBtn' onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
+          {"<<"}
+        </button>{" "}
+        <button className='paginationBtn' onClick={() => previousPage()} disabled={!canPreviousPage}>
+          Previous
+        </button>{" "}
+        <button className='paginationBtn' onClick={() => nextPage()} disabled={!canNextPage}>
+          Next
+        </button>{" "}
+        <button className='paginationBtn' onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
+          {">>"}
+        </button>{" "}
+      </div>
+      
+      <span>
+        Go to page:{" "}
+        <input className='paginationInput'
+          type="number"
+          defaultValue={pageIndex + 1}
+          onChange={(e) => {
+            const pageNumber = e.target.value
+              ? Number(e.target.value) - 1
+              : 0;
+            gotoPage(pageNumber);
+          }}
+          style={{ width: "50px" }}
+        />
+      </span>
+      </div>
+  </>
   );
 };
 

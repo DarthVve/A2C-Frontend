@@ -186,6 +186,7 @@ const NavbarStyle = styled.div`
     }
 
     .mobile-nav {
+      box-sizing: border-box;
       display: flex;
       flex-direction: column;
       justify-content: center;

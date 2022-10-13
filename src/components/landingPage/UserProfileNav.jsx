@@ -9,6 +9,7 @@ import axios from "../../axios";
 import { useAuth } from "../../hooks/useAuth";
 import { toast } from 'react-toastify';
 import { UserAvatar } from '../';
+import Cookies from 'js-cookie'
 
 function UserProfileNav({dashboard, setIsLogin}) {
   const [showDropdown, setShowDropdown] = useState(false)
@@ -24,6 +25,7 @@ function UserProfileNav({dashboard, setIsLogin}) {
         toast.success("Logged out successfully");
         logout();
         localStorage.removeItem('userInfo')
+        Cookies.remove('login')
         window.location.replace('/');
       }
     } catch (error) {
@@ -42,8 +44,8 @@ function UserProfileNav({dashboard, setIsLogin}) {
         <img onClick={setShowModal.bind(null, true)} style={{borderRadius:"50%", width:"40px",height:"40px" }} 
           src={avatar? avatar: userIcon}
         alt='Profile Pic'
-        className='profile-avatar-img's/>
-        <span>{username}</span>
+        className='profile-avatar-img'/>
+        <span className='navbar-username'>{username}</span>
           <>
             <FiChevronDown onClick={()=>setShowDropdown(!showDropdown)}/>
             <Dropdown showDropdown={showDropdown}>
@@ -68,6 +70,13 @@ const Profile = styled.div`
     width: 36px;
     border-radius: 50%;
   }
+
+  @media (max-width: 400px) {
+    .navbar-username {
+      display: none;
+    }
+  }
+
 `;
 
 const Dropdown = styled.div`

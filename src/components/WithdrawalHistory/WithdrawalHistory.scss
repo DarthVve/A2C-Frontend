@@ -11,7 +11,6 @@
         align-items: flex-start;
         padding: 16px;
         gap: 16px;
-        width: 585px;
         background: #FFFFFF;
         box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.08);
         max-width: 93%;
@@ -95,11 +94,10 @@
                 flex-direction: row;
                 justify-content: center;
                 align-items: center;
-                padding: 8px;
+                padding: 8px 16px;
                 gap: 10px;
                 width: 88px;
                 height: 28px;
-                background: rgba(52, 168, 83, 0.1);
                 border-radius: 100px;
 
                 font-family: 'Inter';
@@ -107,12 +105,12 @@
                 font-weight: 400;
                 font-size: 14px;
                 line-height: 17px;
-                color: #34A853;
+                color: rgb(3, 143, 17) ;
+                background: #c7f7c9;
 
                 @media screen and (min-width: 280px) and (max-width: 600px) {
                     font-size: 12px;
                     width: 50px;
-                    margin-right: 25px;
                 }
             }
         
@@ -126,10 +124,10 @@
                 font-size: 14px;
                 line-height: 17px;
                 color: #03435F;
+                text-align: center;
 
                 @media screen and (min-width: 280px) and (max-width: 600px) {
                     font-size: 12px;
-                    margin-right: 20px;
                 }
             }
         }

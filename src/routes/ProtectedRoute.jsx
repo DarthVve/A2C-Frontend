@@ -1,12 +1,12 @@
 import React from 'react';
 import {useLocation, Navigate, Outlet } from 'react-router-dom';
-import { useAuth } from '../hooks/useAuth';
+import Cookies from 'js-cookie'
+
+const token = Cookies.get('login');
 
 const ProtectedRoute = ()=>{
     const location = useLocation();
-    const { loggedIn } = useAuth();
-
-    return loggedIn ? ( <Outlet/> ) : ( <Navigate to='/login' state={{ from: location }} replace />)
+    return token ? ( <Outlet/> ) : ( <Navigate to='/login' state={{ from: location }} replace />)
 }
 
 export default ProtectedRoute;

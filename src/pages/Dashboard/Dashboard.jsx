@@ -139,7 +139,7 @@ const DashboardStyle = styled.div`
   .button-container{
     max-width: 553px;
     width:100%;
-    margin-bottom:2rem;
+    margin-bottom:2.5rem;
     display:flex;
     flex-direction:column;
     align-item:center;
@@ -160,10 +160,11 @@ const DashboardStyle = styled.div`
       font-family: 'Inter';
       font-style: normal;
       font-weight: 400;
-      font-size: 0.75em;
+      font-size: 0.88em;
       line-height: 1.3em;
       color: #012A4A;
       text-decoration:none;
+      text-align:center;
       max-width:25%;
       cursor: pointer;
     }
@@ -227,12 +228,12 @@ const DashboardStyle = styled.div`
     display:none;
     right:0px;
     top:100%;
-    z-index:3;
+    z-index: 2;
     color:black;
   }
 
   .icon:hover{
-    color: red;
+    color: #DE3D6D;
   }
 
   @media (max-width:1066px){
@@ -254,7 +255,7 @@ const DashboardStyle = styled.div`
       align-item:center;
       top:100%;
       right:0;
-      box-shadow: 5px 10px 8px 10px #888888;
+      box-shadow: 0px 3px 5px -3px rgba(0, 0, 0, 0.2);
       padding:2rem;
       cursor:pointer;
       z-index:2;

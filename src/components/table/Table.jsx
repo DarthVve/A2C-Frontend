@@ -69,7 +69,7 @@ const Table = ({ columns, data, fetchData, controlledPageCount }) => {
         })}
       </tbody>
     </table>
-    <div className='pagination'>
+    <div className='tablePagination'>
       <span className='paginationTxt'>
         Page{" "}
           {pageIndex + 1} of {pageOptions.length}

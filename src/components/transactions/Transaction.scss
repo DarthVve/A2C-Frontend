@@ -3,7 +3,6 @@
     flex-direction: column;
     padding: 0px;
     gap: 24px;
-    height: 468px;
 
     .trans {
         display: flex;
@@ -93,7 +92,7 @@
                 flex-direction: row;
                 justify-content: center;
                 align-items: center;
-                padding: 8px;
+                padding: 8px 16px;
                 gap: 10px;
                 width: 88px;
                 height: 28px;
@@ -145,7 +144,6 @@
                 @media screen and (min-width: 280px) and (max-width: 600px) {
                     font-size: 12px;
                     width: 50px;
-                    margin-right: 25px;
                 }
             }
 
@@ -158,10 +156,10 @@
                 font-size: 14px;
                 line-height: 17px;
                 color: #03435F;
+                text-align: center;
 
                 @media screen and (min-width: 280px) and (max-width: 600px) {
                     font-size: 12px;
-                    margin-right: 20px;
                 }
             }
         }

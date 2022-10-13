@@ -50,7 +50,6 @@ export default function Userprofile() {
             const { firstname, lastname, phonenumber, avatar } = response.data;
             let localUser = JSON.parse(localStorage.getItem('userInfo'))
             localUser = { ...localUser, firstname, lastname, phonenumber, avatar };
-            console.log("Local user: ", localUser)
             localStorage.setItem('userInfo', JSON.stringify(localUser));
             navigate('/user/dashboard')
             if (response.status === 200) {
@@ -75,7 +74,7 @@ export default function Userprofile() {
 
     return (
         <>
-            <NavBar />
+            <NavBar dashboard/>
             <div className='profile-container'>
                 <div className='header-section'></div> 
                 <div action="" className='user-setting'>

@@ -11,14 +11,16 @@ export default function WithdrawBalance() {
         id: '',
         bank: '',
         name: '',
-        number: ''
+        number: '',
+        bankCode: '',
     });
 
     const [withdrawal, setWithdrawal] = useState({
         name: '',
         number: '',
         bank: '',
-        amount: ''
+        code: '',
+        amount: 0
     });
 
     const getAccounts = async () => {
@@ -43,6 +45,7 @@ export default function WithdrawBalance() {
             name: account.name,
             number: account.number,
             bank: account.bank,
+            code: account.bankCode,
             amount: ''
         })
     };
@@ -129,7 +132,7 @@ export default function WithdrawBalance() {
 
                         <label className='select_account_label'>Amount</label>
                         <Field
-                            type='text'
+                            type='number'
                             placeholder='NGN'
                             className='withdraw_balance_input'
                             name='amount'

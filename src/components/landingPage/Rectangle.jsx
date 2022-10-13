@@ -15,7 +15,7 @@ function Rectangle() {
             </div>
             <div className='rect-text'>
                 <h1 className='rect-title'>The best Platform for your convenient airtime exchange</h1>
-                <p className='rect-description'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusantium assumenda totam consequatur vitae perferendis quidem!</p>
+                <p className='rect-description'>We have administrators working round the clock to offer support and speedy processing for your transfers. You get up to 70% of the value of credits you convert with our service.</p>
                 <button className='rect-cta' onClick={() => { navigate('/register')}}>Get Started</button>
             </div>
             <div className='rect-graphic'>

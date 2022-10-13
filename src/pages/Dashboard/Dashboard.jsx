@@ -1,19 +1,19 @@
 import React,{useState} from 'react'
 import styled from "styled-components"
-import { NavBar, DashboardButton, SellAirtime, WithdrawBalance, ManageAccountDetails, Transactions } from '../../components';
+import { NavBar, DashboardButton, SellAirtime, WithdrawBalance, ManageAccountDetails, Transactions, WithdrawalHistory } from '../../components'
 import { FiChevronDown } from 'react-icons/fi';
 
 
 function Dashboard() {
   const [title,setTitle] = useState("Dashboard")
-  const [clicked,setClicked] = useState([{"sell":false,"withdraw":false,"account":false,"history":false}])
+  const [clicked,setClicked] = useState([{ "sell": false, "withdraw": false, "account": false, "history": false, "withdrawalTransaction": false }])
   const [page,setPage] = useState("sellAirtime");
   const [isMobile, setIsMobile] = useState(false)
 
   const handleSellAirtime = () => {
     setTitle("Dashboard");
     const newArr = clicked.map((val) => {
-      return { ...val, sell: true, widthraw: false, account: false, history: false }
+      return { ...val, sell: true, widthraw: false, account: false, history: false, withdrawalTransaction: false }
     })
     setPage("sellAirtime")
     setClicked(newArr)
@@ -22,7 +22,7 @@ function Dashboard() {
   const handleWithdraw = () => {
     setTitle("Dashboard")
     const newArr = clicked.map((val) => {
-      return { ...val, sell: false, widthraw: true, account: false, history: false }
+      return { ...val, sell: false, widthraw: true, account: false, history: false, withdrawalTransaction: false }
     })
     setPage("withdraw")
     setClicked(newArr)
@@ -31,7 +31,7 @@ function Dashboard() {
   const handleAccount = () => {
     setTitle("Manage Bank Accounts")
     const newArr = clicked.map((val) => {
-      return { ...val, sell: false, widthraw: false, account: true, history: false }
+      return { ...val, sell: false, widthraw: false, account: true, history: false, withdrawalTransaction: false }
     })
     setPage("account")
     setClicked(newArr)
@@ -40,9 +40,18 @@ function Dashboard() {
   const handleHistroy = () => {
     setTitle("Transactions")
     const newArr = clicked.map((val) => {
-      return { ...val, sell: false, widthraw: false, account: false, history: true }
+      return { ...val, sell: false, widthraw: false, account: false, history: true, withdrawalTransaction: false }
     })
     setPage("history")
+    setClicked(newArr)
+  };
+
+  const handlewithdrawalTransaction = () => {
+    setTitle("Withdrawal")
+    const newArr = clicked.map((val) => {
+      return { ...val, sell: false, widthraw: false, account: false, history: false, withdrawalTransaction: true }
+    })
+    setPage("withdrawalTransaction")
     setClicked(newArr)
   };
   
@@ -51,6 +60,7 @@ function Dashboard() {
     if (page === "withdraw") return <WithdrawBalance/>
     if (page === "account") return <ManageAccountDetails/>
     if (page === "history") return <Transactions/>
+    if (page === "withdrawalTransaction") return <WithdrawalHistory/>
   };
 
   return (
@@ -67,10 +77,11 @@ function Dashboard() {
                   }
                   
                   <div className={isMobile ? 'dashbord-mobil-nav' : 'dashboard-navigation'} onClick={()=>setIsMobile(false)}>
-                      <p className={`nav-link sell ${clicked[0]["sell"] && "selected"}`} onClick={handleSellAirtime}>Sell Airtime</p>
+                      <p className={`nav-link sell ${clicked[0]["sell"] && "selected"}`} onClick={handleSellAirtime}>Transfer Airtime</p>
                       <p className={`nav-link withdraw ${clicked[0]["widthraw"] && "selected"}`} onClick={handleWithdraw}>Withdraw Balance</p>
                       <p className={`nav-link account ${clicked[0]["account"] && "selected"}`} onClick={handleAccount}>Manage Bank Account</p>
                       <p className={`nav-link history ${clicked[0]["history"] && "selected"}`} onClick={handleHistroy}>Transaction History</p>
+                      <p className={`nav-link history ${clicked[0]["withdrawalTransaction"] && "selected"}`} onClick={handlewithdrawalTransaction}>Withdrawal History</p>
                   </div>
                   <FiChevronDown className='icon' onClick={()=>setIsMobile(!isMobile)} />
               </div>
@@ -104,7 +115,6 @@ const DashboardStyle = styled.div`
   }
 
   .container{
-
     position:absolute;
     top:11em;
     max-width: 90%;
@@ -116,6 +126,10 @@ const DashboardStyle = styled.div`
     align-items: center;
     padding: 1em;
     box-sizing: border-box;
+
+    .dashboard-title{
+      text-align: center;
+    }
   }
 
   .inner-container{
@@ -129,7 +143,7 @@ const DashboardStyle = styled.div`
   .button-container{
     max-width: 553px;
     width:100%;
-    margin-bottom:2rem;
+    margin-bottom:2.5rem;
     display:flex;
     flex-direction:column;
     align-item:center;
@@ -150,10 +164,11 @@ const DashboardStyle = styled.div`
       font-family: 'Inter';
       font-style: normal;
       font-weight: 400;
-      font-size: 0.75em;
+      font-size: 0.88em;
       line-height: 1.3em;
       color: #012A4A;
       text-decoration:none;
+      text-align:center;
       max-width:25%;
       cursor: pointer;
     }
@@ -217,12 +232,12 @@ const DashboardStyle = styled.div`
     display:none;
     right:0px;
     top:100%;
-    z-index:3;
+    z-index: 2;
     color:black;
   }
 
   .icon:hover{
-    color: red;
+    color: #DE3D6D;
   }
 
   @media (max-width:1066px){
@@ -244,7 +259,7 @@ const DashboardStyle = styled.div`
       align-item:center;
       top:100%;
       right:0;
-      box-shadow: 5px 10px 8px 10px #888888;
+      box-shadow: 0px 3px 5px -3px rgba(0, 0, 0, 0.2);
       padding:2rem;
       cursor:pointer;
       z-index:2;

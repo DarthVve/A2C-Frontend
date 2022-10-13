@@ -1,10 +1,10 @@
 import "./Login.scss"
 import { LogoWithTypeface, FormInput, Button } from "../../components";
 import { useState, useEffect, useCallback } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "../../axios";
-import { useAuth } from "../../hooks/useAuth";
 import { toast } from 'react-toastify';
+import Cookies from 'js-cookie';
 
 const Login = () => {
     const [form, setForm] = useState({
@@ -13,8 +13,6 @@ const Login = () => {
     });
     const [valid, setValid] = useState(false);
     const [validities, setValidity] = useState({ emailOrUsername: false, password: false });
-    const { login } = useAuth();
-    const navigate = useNavigate();
 
     const validate = useCallback(() => {
         for (const key in validities) {
@@ -40,11 +38,15 @@ const Login = () => {
         try {
             const res = await axios.post("/user/login", { ...form })
             if (res.status === 200) {
+                Cookies.set('login', res.data.userInfo.username, { expires: 7 });
                 toast.success("Login successful");
                 localStorage.setItem("userInfo", JSON.stringify(res.data.userInfo));
                 const id = res.data.userInfo.id;
-                login(id);
-                navigate(`/dashboard/${id}`, { replace: true });
+                if (res.data.userInfo.role === "admin" || res.data.userInfo.role === "superadmin") {
+                    window.location.replace("/admin/dashboard");
+                } else {
+                    window.location.replace(`/dashboard/${id}`);
+                }
             } else {
                 toast.error(res.data.msg);
             }

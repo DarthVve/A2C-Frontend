@@ -2,15 +2,18 @@
     font-family: 'Inter', sans-serif;
 } 
 
-.mgboardheader{
+.mgboardheader {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
+
+    @media screen and (min-width: 400px) and (max-width: 600px) {
+        flex-direction: row;
+    }
 }
 
-
-.mgboardcontainer{
+.mgboardcontainer {
     width: 100%;
     display:flex;
     flex-direction: column;
@@ -19,12 +22,12 @@
     padding-right: 0;
 }
 
-.mgboardsubtitle p{
+.mgboardsubtitle p {
     color: #DE3D6D;
     cursor: pointer;
 }
 
-.mgboardform label p{
+.mgboardform label p {
     font-size: 0.875rem;
     color: #012A4A;
 }
@@ -34,36 +37,38 @@
     height: 48px;
 }
 
-.mgboardform input {
+.mgboardinput {
+    box-sizing: border-box;
     width: 100%;
     height: 48px;
     padding-left: 1rem;
-    box-sizing: border-box;
+    border: 1px solid #D9D9D9;
 }
 
-.mgboardform select{
+.mgboardform select {
     width: 100%;
     height: 48px;
     color: #012A4A;
     background: #FFF;
     padding-left: 1rem;
+    border: 1px solid #D9D9D9;
 }
 
-.mgboardform{
+.mgboardform {
     margin-left: auto;
     margin-right: auto;
     width: 100%;
     padding-left: 0;
     padding-right: 0;
-
 }
 
-select option{
+select option {
     color: #012A4A;
     background: #fff;
     padding-left: 1rem;
 }
-.mgboardbtn{
+
+.mgboardbtn {
     width: 100%;
     height: 3rem;
     padding: 8px 10px;
@@ -74,7 +79,7 @@ select option{
     cursor: pointer;
 }
 
-.mgboardbtn :active{
+.mgboardbtn :active {
 animation-timing-function: ease-out;
 animation-duration: 300ms;
 }

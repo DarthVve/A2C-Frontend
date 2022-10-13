@@ -8,3 +8,4 @@ export { default as SignUp } from './signUp/SignUp';
 export { default as Userprofile } from './userprofile/Userprofile';
 export { default as VerifyNotice } from './verifyNotice/VerifyNotice';
 export { default as Landing } from './landing/Landing';
+export { default as AdminDashboard } from './adminDashboard/AdminDashboard';

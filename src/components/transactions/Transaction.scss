@@ -3,8 +3,6 @@
     flex-direction: column;
     padding: 0px;
     gap: 24px;
-    height: 468px;
-    max-width: 100%;
 
     .trans {
         display: flex;
@@ -12,11 +10,10 @@
         align-items: flex-start;
         padding: 16px;
         gap: 20px;
-        width: 585px;
         background: #FFFFFF;
         box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.08);
-        max-width: 93%;
         justify-content: space-between;
+        overflow-x: scroll;
 
         @media screen and (max-width: 280px) {
             gap: 10px;
@@ -34,11 +31,11 @@
             align-items: flex-start;
             padding: 0px;
             gap: 8px;
-            width: 115px;
+            width: max-content;
             height: 67px;
 
             .td1 {
-                width: 110px;
+                width: max-content;
                 height: 17px;
                 font-family: 'Inter';
                 font-style: normal;
@@ -75,14 +72,10 @@
                 font-family: 'Inter';
                 font-style: normal;
                 font-weight: 400;
-                font-size: 14px;
                 line-height: 17px;
                 color: #21334F;
                 margin: inherit;
-
-                @media screen and (min-width: 280px) and (max-width: 600px) {
-                    font-size: 12px;
-                }
+                font-size: 12px;
             }
         }
 
@@ -90,16 +83,16 @@
             display: flex;
             flex-direction: column;
             align-items: flex-end;
-            padding: 0px;
-            width: 88px;
+            padding: 5px;
+            width: max-content;
             height: 53px;
-
-            .status {
+            
+            .gen {
                 display: flex;
                 flex-direction: row;
                 justify-content: center;
                 align-items: center;
-                padding: 8px;
+                padding: 8px 16px;
                 gap: 10px;
                 width: 88px;
                 height: 28px;
@@ -111,12 +104,46 @@
                 font-weight: 400;
                 font-size: 14px;
                 line-height: 17px;
-                color: #34A853;
+
+                &.pending {
+                    background: #f7ecc7;
+                    .txt-color{
+                        position: relative;
+                        color:#E9B200 ;
+                        text-transform: capitalize;
+                    }
+                }
+
+                &.confirmed {
+                    background: #cac7f7;
+                    .txt-color{
+                        position: relative;
+                        color:rgb(31, 0, 233) ;
+                        text-transform: capitalize;
+                    }
+                }
+
+                &.sent {
+                    background: #c7f7c9;
+                    .txt-color{
+                        position: relative;
+                        color:rgb(3, 143, 17) ;
+                        text-transform: capitalize;
+                    }
+                }
+
+                &.cancelled {
+                    background: #f7c7c7;
+                    .txt-color{
+                        position: relative;
+                        color:rgb(143, 5, 3) ;
+                        text-transform: capitalize;
+                    }
+                }
 
                 @media screen and (min-width: 280px) and (max-width: 600px) {
                     font-size: 12px;
                     width: 50px;
-                    margin-right: 25px;
                 }
             }
 
@@ -129,10 +156,10 @@
                 font-size: 14px;
                 line-height: 17px;
                 color: #03435F;
+                text-align: center;
 
                 @media screen and (min-width: 280px) and (max-width: 600px) {
                     font-size: 12px;
-                    margin-right: 20px;
                 }
             }
         }

@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef,useCallback } from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import React, { useState, useRef,useCallback } from "react";
+import { Formik } from "formik";
 import "./SellAirtime.css";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { FaRegCopy } from "react-icons/fa";
@@ -123,7 +123,7 @@ const SellAirtime = () => {
             setIsLoading(true)
             const res = await axios.post(`/transfer/${ID}`, data)
             if (res.status === 201) {
-                setIsLoading(false)
+                setIsLoading(false);
                 setShowModal(true);
                 resetForm({ values: "" })
             }
@@ -133,6 +133,9 @@ const SellAirtime = () => {
         }
         catch (err) {
             toast.error("Error 500 : Transaction unsuccessful, server down");
+            setTimeout(()=>{
+                setIsLoading(false);
+            }, 3000)
         }
     };
 

@@ -1,5 +1,6 @@
 import './adminActions.scss';
 import { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ActionMenu, OptionModal } from '../../components';
 import blurHandler from './blurHandler';
 import axios from '../../axios';
@@ -8,6 +9,7 @@ import { toast } from 'react-toastify';
 const AdminActions = ({ transaction }) => {
   const [showMenu, setShowMenu] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
 
   const toggleActionMenu = (e) => {
     setShowMenu(!showMenu);
@@ -25,14 +27,17 @@ const AdminActions = ({ transaction }) => {
         transaction.status = "cancelled";
       }
     }).catch(err => {
-      toast.error("Transaction failed to update");
+      toast.error(err.response?.data?.msg || "Transaction failed to update");
+      if(err.response?.status === 401) { navigate('/login') }
     })
   }
 
   const menuRef = useRef();
   const [listening, setListening] = useState(false);
 
-  useEffect(blurHandler(listening, setListening, menuRef, hideActionMenu));
+  useEffect(() => {
+    blurHandler(listening, setListening, menuRef, hideActionMenu)
+  }, [listening]);
 
   return (
     <div className="dots" onClick={toggleActionMenu} ref={menuRef}>

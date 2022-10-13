@@ -30,5 +30,6 @@ export { default as Table } from './table/Table';
 export { default as AdminActions } from './adminActions/AdminActions';
 export { default as ActionMenu } from './adminActions/ActionMenu';
 export { default as OptionModal } from './adminActions/OptionModal';
-export { default as WithdrawalHistory } from "./WithdrawalHistory/WithdrawalHistory";
-export { default as Status } from "./table/Status";
+export { default as WithdrawalHistory } from './WithdrawalHistory/WithdrawalHistory';
+export { default as Status } from './table/Status';
+export { default as TwoFAModal } from './twoFA/twoFA';

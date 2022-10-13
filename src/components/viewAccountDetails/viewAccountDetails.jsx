@@ -45,8 +45,8 @@ function ViewAccountDetails({makeTrue}) {
 return (
     <div className="mgboardcontainer">
       <div className="mgboardheader">
-        <div className="mgbordtitle">
-          <h1>Bank Account</h1>
+        <div>
+          <h1 className="mgboardtitle">Bank Account</h1>
         </div>
         <div className="mgboardsubtitle" onClick = {makeTrue}>
           <p>Manage Bank accounts</p>
@@ -57,9 +57,9 @@ return (
         return (
           <div className='veiwAccContainer' key={item.id}>
             <div className="veiwAccText">
-                <p>{item.bank}</p>
-                <p>{item.number}</p>
-                <p>{item.name}</p>
+                <p className='acct_info'>{item.bank}</p>
+                <p className='acct_info'>{item.number}</p>
+                <p className='acct_info'>{item.name}</p>
             </div>
             <div className="viewAccBtn">
                 <button onClick={removeItem.bind(null, item.id)}>Remove</button>

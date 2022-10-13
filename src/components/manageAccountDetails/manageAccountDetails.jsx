@@ -71,11 +71,11 @@ function ManageAccountDetails() {
           </label>
           <label>
             <p>Account Name</p>
-            <input placeholder="Account Name" onChange={handleChange} name="name" ></input>
+            <input className="mgboardinput" placeholder="Account Name" onChange={handleChange} name="name" />
           </label>
           <label>
             <p>Account Number</p>
-            <input placeholder="Account Number" name="number" onChange={handleChange} minLength={10} maxLength={10} /> 
+            <input className="mgboardinput" placeholder="Account Number" name="number" onChange={handleChange} minLength={10} maxLength={10} /> 
           </label>
             <Dashboardbtn value="Add Bank"/>
         </form>

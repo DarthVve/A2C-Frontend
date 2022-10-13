@@ -74,7 +74,7 @@ export default function Userprofile() {
 
     return (
         <>
-            <NavBar />
+            <NavBar dashboard/>
             <div className='profile-container'>
                 <div className='header-section'></div> 
                 <div action="" className='user-setting'>

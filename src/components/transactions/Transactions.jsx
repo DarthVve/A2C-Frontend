@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 const Transactions = () => {
   const [trans, setTrans] = useState([]);
   const [curPage, setCurPage] = useState(1);
-  const [itemsPerPage] = useState(3);
+  const [itemsPerPage] = useState(5);
 
   const getTransaction = async () => {
     const id = JSON.parse(localStorage.getItem("userInfo")).id;
@@ -50,6 +50,8 @@ const Transactions = () => {
                     ? "pending gen"
                     : trans.status === "confirmed"
                     ? "confirmed gen"
+                    : trans.status === "cancelled"
+                    ? "cancelled gen"
                     : trans.status === "sent"
                     ? "sent gen"
                     : "default gen"

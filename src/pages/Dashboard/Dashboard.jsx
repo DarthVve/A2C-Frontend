@@ -126,6 +126,10 @@ const DashboardStyle = styled.div`
     align-items: center;
     padding: 1em;
     box-sizing: border-box;
+
+    .dashboard-title{
+      text-align: center;
+    }
   }
 
   .inner-container{

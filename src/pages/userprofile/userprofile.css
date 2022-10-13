@@ -195,7 +195,7 @@ input[type="file"] {
         align-items: center;
         padding: 30px 20px;
         gap: 60px;
-        width: 300px;
+        max-width: 80%;
         background: #FFFFFF;
         border: 1px solid #D9D9D9;
     }

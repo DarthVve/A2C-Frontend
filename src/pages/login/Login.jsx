@@ -39,12 +39,13 @@ const Login = () => {
             const res = await axios.post("/user/login", { ...form })
             if (res.status === 200) {
                 Cookies.set('token', res.data.userInfo.token, { expires: 7 });
-                toast.success("Login successful");
+                toast.success("Login Successful");
                 localStorage.setItem("userInfo", JSON.stringify(res.data.userInfo));
                 const id = res.data.userInfo.id;
                 if (res.data.userInfo.role === "admin" || res.data.userInfo.role === "superadmin") {
                     window.location.replace("/admin/dashboard");
                 } else {
+                    console.log(id);
                     window.location.replace(`/dashboard/${id}`);
                 }
             } else {

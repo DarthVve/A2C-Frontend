@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { FiChevronDown } from 'react-icons/fi';
 import helpCenter from '../../assets/helpCenter.svg';
@@ -11,7 +11,7 @@ import { toast } from 'react-toastify';
 import { UserAvatar } from '../';
 import Cookies from 'js-cookie'
 
-function UserProfileNav({dashboard, setIsLogin}) {
+function UserProfileNav({ dashboard, setIsLogin }) {
   const [showDropdown, setShowDropdown] = useState(false)
   const [showModal, setShowModal] = useState(false)
   const { avatar, id, username } = JSON.parse(localStorage.getItem('userInfo'))
@@ -25,7 +25,7 @@ function UserProfileNav({dashboard, setIsLogin}) {
         toast.success("Logged out successfully");
         logout();
         localStorage.removeItem('userInfo')
-        Cookies.remove('login')
+        Cookies.remove('token')
         window.location.replace('/');
       }
     } catch (error) {
@@ -41,21 +41,21 @@ function UserProfileNav({dashboard, setIsLogin}) {
 
   return (
     <Profile >
-        <img onClick={setShowModal.bind(null, true)} style={{borderRadius:"50%", width:"40px",height:"40px" }} 
-          src={avatar? avatar: userIcon}
+      <img onClick={setShowModal.bind(null, true)} style={{ borderRadius: "50%", width: "40px", height: "40px" }}
+        src={avatar ? avatar : userIcon}
         alt='Profile Pic'
-        className='profile-avatar-img'/>
-        <span className='navbar-username'>{username}</span>
-          <>
-            <FiChevronDown onClick={()=>setShowDropdown(!showDropdown)}/>
-            <Dropdown showDropdown={showDropdown}>
-              <Link to={`/dashboard/${id}`} style={{textDecoration: 'none'}}><DropdownItem><img className='dropdown-img' src={avatar? avatar: userIcon} alt="" onClick={setShowModal.bind(null, true)}/><span>Account</span></DropdownItem></Link>
-              <DropdownItem><img src={settings} alt='settings' /><span onClick={route}>Settings</span></DropdownItem>
-              <DropdownItem><img src={helpCenter} alt='help center' /><span>Help Center</span></DropdownItem>
-              <DropdownItem><img src={logoutIcon} alt='logout'/><span onClick={handleLogout}>Logout</span></DropdownItem>
-            </Dropdown>
-          </>
-      {showModal && <UserAvatar close={setShowModal.bind(null, false)}/>}
+        className='profile-avatar-img' />
+      <span className='navbar-username'>{username}</span>
+      <>
+        <FiChevronDown onClick={() => setShowDropdown(!showDropdown)} />
+        <Dropdown showDropdown={showDropdown}>
+          <Link to={`/dashboard/${id}`} style={{ textDecoration: 'none' }}><DropdownItem><img className='dropdown-img' src={avatar ? avatar : userIcon} alt="" onClick={setShowModal.bind(null, true)} /><span>Account</span></DropdownItem></Link>
+          <DropdownItem><img src={settings} alt='settings' /><span onClick={route}>Settings</span></DropdownItem>
+          <DropdownItem><img src={helpCenter} alt='help center' /><span>Help Center</span></DropdownItem>
+          <DropdownItem><img src={logoutIcon} alt='logout' /><span onClick={handleLogout}>Logout</span></DropdownItem>
+        </Dropdown>
+      </>
+      {showModal && <UserAvatar close={setShowModal.bind(null, false)} />}
     </Profile>
   )
 };

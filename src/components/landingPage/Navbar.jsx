@@ -58,7 +58,7 @@ function Navbar({ dashboard, Landing }) {
             </>
           }
           {(isLogin && Landing && !dashboard) && <UserProfileNav dashboard={dashboard} loginStatus={setIsLogin} />}
-          {!isLogin && <NavLink to="/Login" className='btnLogin'>Login</NavLink>}
+          {!isLogin && <NavLink to="/login" className='btnLogin'>Login</NavLink>}
         </div>
         {(isLogin && dashboard) && <UserProfileNav dashboard={dashboard} loginStatus={setIsLogin} />}
       </div>
@@ -67,7 +67,7 @@ function Navbar({ dashboard, Landing }) {
 };
 
 
-  const NavbarStyle = styled.div`
+const NavbarStyle = styled.div`
   width: 100%;
   max-width: 1440px;
   height: 96px;

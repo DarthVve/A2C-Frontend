@@ -38,7 +38,7 @@ const Login = () => {
         try {
             const res = await axios.post("/user/login", { ...form })
             if (res.status === 200) {
-                Cookies.set('login', res.data.userInfo.token, { expires: 7 });
+                Cookies.set('token', res.data.userInfo.token, { expires: 7 });
                 toast.success("Login successful");
                 localStorage.setItem("userInfo", JSON.stringify(res.data.userInfo));
                 const id = res.data.userInfo.id;

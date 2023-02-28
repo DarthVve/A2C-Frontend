@@ -38,7 +38,7 @@ const Login = () => {
         try {
             const res = await axios.post("/user/login", { ...form })
             if (res.status === 200) {
-                Cookies.set('login', res.data.userInfo.username, { expires: 7 });
+                Cookies.set('login', res.data.userInfo.token, { expires: 7 });
                 toast.success("Login successful");
                 localStorage.setItem("userInfo", JSON.stringify(res.data.userInfo));
                 const id = res.data.userInfo.id;
@@ -55,7 +55,7 @@ const Login = () => {
             toast.error(err.response?.data?.msg || "Something went wrong");
         }
     };
-    
+
     return (
         <div className="login">
             <div className="login_container">
@@ -64,20 +64,20 @@ const Login = () => {
                         <LogoWithTypeface />
                     </Link>
                     <section className="login_section">
-                        <h1 className="login_title">Login</h1> 
+                        <h1 className="login_title">Login</h1>
                         <div className="login_content">
-                            <form onSubmit={ handleSubmit } className="login_form">
+                            <form onSubmit={handleSubmit} className="login_form">
                                 <FormInput label="Email" type="email" name="emailOrUsername" placeholder="Enter your email"
-                                handleChange={handleChange} required={true} value={form.emailOrUsername} minLength={3} maxLength={250} setValidity={setValidity}/>
-                                <FormInput label="Password" type="password" name="password" placeholder="Enter your password" 
-                                handleChange={handleChange} required={true} value={form.password} minLength={3} maxLength={30} setValidity={setValidity}/>
+                                    handleChange={handleChange} required={true} value={form.emailOrUsername} minLength={3} maxLength={250} setValidity={setValidity} />
+                                <FormInput label="Password" type="password" name="password" placeholder="Enter your password"
+                                    handleChange={handleChange} required={true} value={form.password} minLength={3} maxLength={30} setValidity={setValidity} />
                                 <Link to='/forgotPassword' style={{ textDecoration: 'none' }}><span className="forgot-password">Forgot password?</span></Link>
                                 <Button type="submit" disabled={!valid} handleClick={handleSubmit}>Login</Button>
                             </form>
                             <p className="login_signup-prompt">Don't have an account? <Link to='/register' style={{ textDecoration: 'none' }}><span className="create-account">Create Account</span></Link></p>
                         </div>
                     </section>
-                </main> 
+                </main>
             </div>
         </div>
     )
